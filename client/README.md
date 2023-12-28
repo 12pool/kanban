@@ -27,3 +27,16 @@ local preview
 init layer
 
 `npm run create-layer`
+
+ESLint files project error in ts files VSCODE FIX
+
+1. Open the settings Ctrl + ,
+2. Search for `eslint.workingDirectories`
+3. Click on "Edit in settings.json"
+4. Add the following configuration:
+
+```sh {"id":"01HJS1VNF8SFNYGV7MQH4JVFYB"}
+{
+  "eslint.workingDirectories": ["./client"]
+}
+```
