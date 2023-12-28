@@ -1,5 +1,5 @@
 module.exports = {
-  root: true,
+  root: false,
   env: { browser: true, es2020: true },
   extends: [
     'eslint:recommended',
@@ -13,7 +13,7 @@ module.exports = {
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: ['./client/tsconfig.json'],
+    project: ['./tsconfig.json'],
   },
   plugins: ['react-refresh', '@typescript-eslint'],
   rules: {
