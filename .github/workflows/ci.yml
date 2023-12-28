@@ -17,10 +17,13 @@ jobs:
           node-version: "20" # specify the node version
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+        working-directory: client
 
       - name: Run lint
         run: npm run lint
+        working-directory: client
 
       - name: Run depcheck
         run: npm run depcheck
+        working-directory: client
