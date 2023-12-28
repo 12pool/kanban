@@ -13,7 +13,7 @@ module.exports = {
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: ['./tsconfig.json'],
+    project: ['./client/tsconfig.json'],
   },
   plugins: ['react-refresh', '@typescript-eslint'],
   rules: {
@@ -33,7 +33,7 @@ module.exports = {
     'import/resolver': {
       node: {
         paths: ['src'],
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions: ['.jsx', '.ts', '.tsx'],
       },
     },
   },

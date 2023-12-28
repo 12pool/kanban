@@ -1,9 +1,98 @@
 /** @type {import('dependency-cruiser').IConfiguration} */
 module.exports = {
   forbidden: [
+    // Layers rules
+    {
+      name: 'layer-violation',
+      comment:
+        'Code in the Shared layer is not allowed to import code from the entities, widgets, pages, or app layers.',
+      severity: 'error',
+      from: { path: '^src/Shared' },
+      to: { path: '^src/(entities|widgets|pages|app)' },
+    },
+    {
+      name: 'layer-violation',
+      comment:
+        'Code in the widgets layer is only allowed to import code from the entities layer.',
+      severity: 'error',
+      from: { path: '^src/widgets' },
+      to: { path: '^src/(?!entities)' },
+    },
+    {
+      name: 'layer-violation',
+      comment:
+        'Code in the pages layer is not allowed to import code from any layer other than the widgets layer.',
+      severity: 'error',
+      from: { path: '^src/pages' },
+      to: { pathNot: '^src/widgets' },
+    },
+    {
+      name: 'layer-violation',
+      comment:
+        'Code in the app layer is not allowed to import code from any layer other than the pages layer.',
+      severity: 'error',
+      from: { path: '^src/app' },
+      to: { pathNot: '^src/pages' },
+    },
+
+    // Segment rules
+    {
+      name: 'segment-violation',
+      comment:
+        'Code in the ui segment is not allowed to import code from any segment other than utils, model, or ui.',
+      severity: 'error',
+      from: { path: '^src/(entities|shared)/.*/ui' },
+      to: { path: '^src/(?!.*utils|.*model|.*ui)' },
+    },
+    {
+      name: 'segment-violation',
+      comment:
+        'Code in the feature segment is not allowed to import code from any segment other than api, ui, model, or feature.',
+      severity: 'error',
+      from: { path: '^src/(entities|shared)/.*/feature' },
+      to: { path: '^src/(?!.*api|.*ui|.*model|.*feature)' },
+    },
+    {
+      name: 'segment-violation',
+      comment:
+        'Code in the api segment is not allowed to import code from any segment other than model or api.',
+      severity: 'error',
+      from: { path: '^src/(entities|shared)/.*/api' },
+      to: { path: '^src/(?!.*model|.*api)' },
+    },
+    {
+      name: 'segment-violation',
+      comment:
+        'Code in the model segment is not allowed to import code from any segment other than model.',
+      severity: 'error',
+      from: { path: '^src/(entities|shared)/.*/model' },
+      to: { path: '^src/(?!.*model)' },
+    },
+    {
+      name: 'segment-violation',
+      comment:
+        'Code in the utils segment is not allowed to import code from any segment other than utils.',
+      severity: 'error',
+      from: { path: '^src/(entities|shared)/.*/utils' },
+      to: { path: '^src/(?!.*utils)' },
+    },
+
+    // Prevent imports between different objects within the same layer
+    {
+      name: 'object-violation',
+      comment:
+        'An object within a layer (entities, widgets, pages, app) is not allowed to import code from another object within the same layer, except for its own files.',
+      severity: 'error',
+      from: { path: '^src/(entities|widgets|pages|app)/([^/]+)' },
+      to: {
+        path: '^src/(entities|widgets|pages|app)/([^/]+)',
+        pathNot: '^src/(\\1)/(\\2)/',
+      },
+    },
+
     {
       name: 'no-circular',
-      severity: 'warn',
+      severity: 'error',
       comment:
         'This dependency is part of a circular relationship. You might want to revise ' +
         'your solution (i.e. use dependency inversion, make sure the modules have a single responsibility) ',
