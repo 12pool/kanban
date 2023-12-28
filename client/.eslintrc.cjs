@@ -1,5 +1,5 @@
 module.exports = {
-  root: true,
+  root: false,
   env: { browser: true, es2020: true },
   extends: [
     'eslint:recommended',
@@ -33,7 +33,7 @@ module.exports = {
     'import/resolver': {
       node: {
         paths: ['src'],
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions: ['.jsx', '.ts', '.tsx'],
       },
     },
   },

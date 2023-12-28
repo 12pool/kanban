@@ -6,3 +6,4 @@ env.d.ts
 vite.config.ts
 public/
 vite-env.d.ts
+scripts/
