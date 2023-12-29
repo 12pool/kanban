@@ -31,7 +31,7 @@
       "ui/*": ["src/ui/*"]
     }
   },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx", "scripts"],
+  "include": ["./src/**/*.ts", "./src/**/*.tsx", "scripts", ".storybook"],
   "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
