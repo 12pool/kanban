@@ -21,7 +21,7 @@ module.exports = {
     {
       name: 'layer-violation for pages',
       comment:
-        'Code in the pages layer is not allowed to import code from any layer other than the widgets layer.',
+        'Code in the pages layer is not allowed to import code from any layer other than the widgets layer and and itself.',
       severity: 'error',
       from: { path: '^src/pages' },
       to: { path: '^(?!src/pages|^src/widgets)' },
@@ -29,7 +29,7 @@ module.exports = {
     {
       name: 'layer-violation for app',
       comment:
-        'Code in the app layer is not allowed to import code from any layer other than the pages layer.',
+        'Code in the app layer is not allowed to import code from any layer other than the pages layer and itself.',
       severity: 'error',
       from: { path: '^src/app' },
       to: { path: '^(?!src/pages|^src/app)' },
