@@ -4,6 +4,8 @@ runme:
   version: v2.0
 ---
 
+testing
+
 install packaged
 
 `npm ci`
