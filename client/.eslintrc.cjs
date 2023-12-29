@@ -25,6 +25,7 @@ module.exports = {
       },
     ],
     '@typescript-eslint/no-unnecessary-condition': 'error',
+    '@typescript-eslint/consistent-type-definitions': 'off',
   },
   settings: {
     react: {

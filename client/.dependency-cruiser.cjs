@@ -3,15 +3,15 @@ module.exports = {
   forbidden: [
     // Layers rules
     {
-      name: 'layer-violation',
+      name: 'layer-violation for shared',
       comment:
         'Code in the Shared layer is not allowed to import code from the entities, widgets, pages, or app layers.',
       severity: 'error',
-      from: { path: '^src/Shared' },
-      to: { path: '^src/(entities|widgets|pages|app)' },
+      from: { path: '^src/shared' },
+      to: { path: '^(?!src/shared)' },
     },
     {
-      name: 'layer-violation',
+      name: 'layer-violation for widgets',
       comment:
         'Code in the widgets layer is only allowed to import code from the entities layer.',
       severity: 'error',
@@ -19,25 +19,25 @@ module.exports = {
       to: { path: '^src/(?!entities)' },
     },
     {
-      name: 'layer-violation',
+      name: 'layer-violation for pages',
       comment:
         'Code in the pages layer is not allowed to import code from any layer other than the widgets layer.',
       severity: 'error',
       from: { path: '^src/pages' },
-      to: { pathNot: '^src/widgets' },
+      to: { path: '^(?!src/pages|^src/widgets)' },
     },
     {
-      name: 'layer-violation',
+      name: 'layer-violation for app',
       comment:
         'Code in the app layer is not allowed to import code from any layer other than the pages layer.',
       severity: 'error',
       from: { path: '^src/app' },
-      to: { pathNot: '^src/pages' },
+      to: { path: '^(?!src/pages|^src/app)' },
     },
 
     // Segment rules
     {
-      name: 'segment-violation',
+      name: 'segment-violation for ui',
       comment:
         'Code in the ui segment is not allowed to import code from any segment other than utils, model, or ui.',
       severity: 'error',
@@ -45,7 +45,7 @@ module.exports = {
       to: { path: '^src/(?!.*utils|.*model|.*ui)' },
     },
     {
-      name: 'segment-violation',
+      name: 'segment-violation for feature',
       comment:
         'Code in the feature segment is not allowed to import code from any segment other than api, ui, model, or feature.',
       severity: 'error',
@@ -53,7 +53,7 @@ module.exports = {
       to: { path: '^src/(?!.*api|.*ui|.*model|.*feature)' },
     },
     {
-      name: 'segment-violation',
+      name: 'segment-violation for api',
       comment:
         'Code in the api segment is not allowed to import code from any segment other than model or api.',
       severity: 'error',
@@ -61,7 +61,7 @@ module.exports = {
       to: { path: '^src/(?!.*model|.*api)' },
     },
     {
-      name: 'segment-violation',
+      name: 'segment-violation for model',
       comment:
         'Code in the model segment is not allowed to import code from any segment other than model.',
       severity: 'error',
@@ -69,7 +69,7 @@ module.exports = {
       to: { path: '^src/(?!.*model)' },
     },
     {
-      name: 'segment-violation',
+      name: 'segment-violation for utils',
       comment:
         'Code in the utils segment is not allowed to import code from any segment other than utils.',
       severity: 'error',
@@ -81,11 +81,11 @@ module.exports = {
     {
       name: 'object-violation',
       comment:
-        'An object within a layer (entities, widgets, pages, app) is not allowed to import code from another object within the same layer, except for its own files.',
+        'An object within a layer (entities, widgets) is not allowed to import code from another object within the same layer, except for its own files.',
       severity: 'error',
-      from: { path: '^src/(entities|widgets|pages|app)/([^/]+)' },
+      from: { path: '^src/(entities|widgets)/([^/]+)' },
       to: {
-        path: '^src/(entities|widgets|pages|app)/([^/]+)',
+        path: '^src/(entities|widgets)/([^/]+)',
         pathNot: '^src/(\\1)/(\\2)/',
       },
     },
