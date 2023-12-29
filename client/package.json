@@ -10,7 +10,8 @@
     "format": "prettier ./src --write",
     "depcheck": "depcruise --config .dependency-cruiser.cjs --output-type err-long src",
     "preview": "vite preview",
-    "create-layer": "node scripts/init-layer.js"
+    "create-layer": "node scripts/init-layer.js",
+    "ts-check": "tsc --noEmit"
   },
   "dependencies": {
     "dependency-cruiser": "^15.5.0",
