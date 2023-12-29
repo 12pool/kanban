@@ -24,6 +24,12 @@ local preview
 
 `npm run preview`
 
+run storybook server
+
+```sh {"id":"01HJVGC6BG274MAP4MNDPHCDSB"}
+npm run storybook
+```
+
 init layer
 
 `npm run create-layer`
