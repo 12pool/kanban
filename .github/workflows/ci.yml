@@ -27,3 +27,7 @@ jobs:
       - name: Run depcheck
         run: npm run depcheck
         working-directory: client
+
+      - name: Run tsc
+        run: npm run ts-check
+        working-directory: client
