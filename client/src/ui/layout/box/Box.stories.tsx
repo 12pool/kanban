@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Box } from './Box';
 import { SizeOptions } from '../generic';
 
-
 const meta = {
   title: 'Example/Box',
   component: Box,
@@ -13,7 +12,7 @@ const meta = {
   argTypes: {
     margin: {
       description: 'The margin of the box.',
-      defaultValue: ['none', 'none','none', 'none'],
+      defaultValue: ['none', 'none', 'none', 'none'],
       control: {
         type: 'array',
         options: SizeOptions,
@@ -21,14 +20,14 @@ const meta = {
     },
     padding: {
       description: 'The padding of the box.',
-      defaultValue: ['none', 'none','none', 'none'],
+      defaultValue: ['none', 'none', 'none', 'none'],
       control: {
         type: 'array',
         options: SizeOptions,
       },
     },
   },
-  render: ({children, ...args}) => <Box {...args}>{children}</Box>,
+  render: ({ children, ...args }) => <Box {...args}>{children}</Box>,
 } as Meta<typeof Box>;
 
 export default meta;
@@ -40,8 +39,8 @@ export const Primary: Story = {};
 Primary.args = {
   children: 'Hello, world!',
   style: {
-    border: "1px solid black"
+    border: '1px solid black',
   },
-  margin: ['none', 'none','none', 'none'],
-  padding: ['none', 'none','none', 'none'],
-}
+  margin: ['none', 'none', 'none', 'none'],
+  padding: ['none', 'none', 'none', 'none'],
+};
