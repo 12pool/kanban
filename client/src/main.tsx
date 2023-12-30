@@ -6,6 +6,8 @@ import { RouterProvider } from '@tanstack/react-router';
 import { router } from 'app/router';
 import { queryClient } from 'app/query-client';
 
+import './reset.css';
+
 // eslint-disable-next-line
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
