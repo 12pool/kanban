@@ -125,6 +125,18 @@
   display: inline-flex;
 }
 
+.layout-generic[data-display='inline'] {
+  display: inline;
+}
+
+.layout-generic[data-display='inline-block'] {
+  display: inline-block;
+}
+
+.layout-generic[data-display='block'] {
+  display: block;
+}
+
 .layout-generic[data-display='none'] {
   display: none;
 }

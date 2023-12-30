@@ -1,32 +1,15 @@
-import { type GenericProps, type Size, sizesToCss } from '../generic';
+import { type GenericProps, sizesToCss } from '../generic';
 
 import '../layout-generic.css';
 
-export type FlexProps = {
-  gap?: Size;
-  direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
-  display?: 'flex' | 'inline-flex' | 'none';
-  wrap?: 'wrap' | 'nowrap';
-  justify?:
-    | 'start'
-    | 'end'
-    | 'center'
-    | 'between'
-    | 'around'
-    | 'baseline'
-    | 'stretch';
-  align?: 'start' | 'center' | 'end' | 'baseline' | 'stretch';
+export type BoxProps = {
+  display?: 'none' | 'inline' | 'inline-block' | 'block';
   children: React.ReactNode;
 } & GenericProps &
   React.HTMLAttributes<HTMLDivElement>;
 
-export const Flex = ({
-  gap = 'none',
-  direction = 'row',
-  display = 'flex',
-  wrap = 'nowrap',
-  justify = 'start',
-  align = 'start',
+export const Box = ({
+  display,
   position,
   top,
   left,
@@ -40,19 +23,14 @@ export const Flex = ({
   children,
   style,
   ...props
-}: FlexProps) => {
+}: BoxProps) => {
   const marginCss = sizesToCss('layout', margin);
   const paddingCss = sizesToCss('layout', padding);
 
   return (
     <div
       className={`layout-generic ${className}`}
-      data-wrap={wrap}
-      data-justify={justify}
-      data-align={align}
       data-display={display}
-      data-direction={direction}
-      data-gap={gap}
       data-position={position}
       data-top={top}
       data-left={left}
