@@ -1,0 +1,16 @@
+body {
+  --primary-color-100: hsl(252, 94%, 67%);
+  --primary-color-200: hsl(252, 100%, 73%);
+
+  --neutral-color-100: hsl(0, 80%, 63%);
+  --neutral-color-200: hsl(0, 100%, 80%);
+  --neutral-color-300: hsl(240, 27%, 98%);
+
+  --ascent-color-100: hsl(233, 31%, 17%);
+  --ascent-color-200: hsl(233, 30%, 21%);
+  --ascent-color-300: hsl(231, 73%, 93%);
+  --ascent-color-400: hsl(231, 20%, 61%);
+  --ascent-color-500: hsl(231, 37%, 63%);
+  --ascent-color-600: hsl(228, 29%, 7%);
+  --ascent-color-700: hsl(233, 30%, 11%);
+}
