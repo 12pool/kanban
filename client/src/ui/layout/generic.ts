@@ -1,5 +1,7 @@
 export type Size = 'sm' | 'md' | 'lg' | 'none';
 
+export const SizeOptions: Size[] = ['none', 'sm', 'md', 'lg'];
+
 export type ElementType = 'layout' | 'font';
 
 export type GenericProps = {
