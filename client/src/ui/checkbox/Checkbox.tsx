@@ -28,11 +28,9 @@ export const Checkbox = ({
           {checked === true && <CheckIcon />}
         </RadixCheckbox.Indicator>
       </RadixCheckbox.Root>
-      <label>
-        <Text as="span" className={styles.Label}>
-          {label}
-        </Text>
-      </label>
+      <Text as="span" className={styles.Label}>
+        {label}
+      </Text>
     </Flex>
   );
 };

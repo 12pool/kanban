@@ -11,7 +11,7 @@ export type TextProps = {
   weight?: 'light' | 'normal' | 'medium' | 'semibold' | 'bold';
   color?: 'primary' | 'secondary' | 'success' | 'warning' | 'error';
   align?: 'left' | 'center' | 'right';
-};
+} & React.HTMLAttributes<HTMLDivElement>;
 
 export const Text = ({
   children,
@@ -21,6 +21,7 @@ export const Text = ({
   color = 'primary',
   align = 'left',
   className,
+  ...restProps
 }: TextProps) => {
   const props = {
     className: `${styles.Text} ${className}`,
@@ -28,6 +29,7 @@ export const Text = ({
     'data-weight': weight,
     'data-color': color,
     'data-align': align,
+    ...restProps,
   };
 
   return React.createElement(as, props, children);
