@@ -1,14 +1,15 @@
 import React from 'react';
 
+import '../../index.css';
 import styles from './Text.module.css';
 
-type Text = {
-  children: React.ReactNode
+export type TextProps = {
+  children: React.ReactNode | string
   className?: string
   as?: 'p' | 'span' | 'div'
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   weight?: 'light' | 'normal' | 'medium' | 'semibold' | 'bold'
-  color?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger'
+  color?: 'primary' | 'secondary' | 'success' | 'warning' | 'error'
   align?: 'left' | 'center' | 'right'  
 }
 
@@ -20,7 +21,7 @@ export const Text = ({
   color = 'primary',
   align = 'left',
   className,
-} : Text) => {
+} : TextProps) => {
   const props = {
     className: `${styles.Text} ${className}`,
     'data-size': size,

@@ -39,23 +39,27 @@
 }
 
 .Text[data-color='primary'] {
-  color: var(--color-primary);
+  color: var(--text-primary);
 }
 
 .Text[data-color='secondary'] {
-  color: var(--color-secondary);
+  color: var(--text-secondary);
 }
 
 .Text[data-color='success'] {
-  color: var(--color-success);
+  color: var(--text-success);
 }
 
 .Text[data-color='warning'] {
-  color: var(--color-warning);
+  color: var(--text-warning);
 }
 
-.Text[data-color='danger'] {
-  color: var(--color-danger);
+.Text[data-color='error'] {
+  color: var(--text-error);
+}
+
+.Text[data-color='info'] {
+  color: var(--text-info);
 }
 
 .Text[data-align='left'] {
