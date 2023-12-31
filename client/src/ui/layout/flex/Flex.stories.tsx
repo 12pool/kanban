@@ -31,39 +31,43 @@ const meta = {
     <Flex {...args}>
       <span
         style={{
-          width: '20px',
+          color: 'white',
+          width: '100px',
           height: '20px',
-          border: '1px solid gray',
+          border: '1px solid #f3f3f3',
         }}
       >
-        1
+        flex item
       </span>
       <span
         style={{
-          width: '20px',
+          color: 'white',
+          width: '100px',
           height: '20px',
-          border: '1px solid gray',
+          border: '1px solid #f3f3f3',
         }}
       >
-        2
+        flex item
       </span>
       <span
         style={{
-          width: '20px',
+          color: 'white',
+          width: '100px',
           height: '20px',
-          border: '1px solid gray',
+          border: '1px solid #f3f3f3',
         }}
       >
-        3
+        flex item
       </span>
       <span
         style={{
-          width: '20px',
+          color: 'white',
+          width: '100px',
           height: '20px',
-          border: '1px solid gray',
+          border: '1px solid #f3f3f3',
         }}
       >
-        4
+        flex item
       </span>
     </Flex>
   ),
@@ -77,7 +81,7 @@ export const Primary: Story = {};
 
 Primary.args = {
   style: {
-    border: '1px solid black',
+    border: '1px solid gray',
   },
   margin: ['none', 'none', 'none', 'none'],
   padding: ['sm', 'sm', 'sm', 'sm'],
