@@ -6,27 +6,31 @@ const meta = {
   title: 'Example/Text',
   component: Text,
   tags: ['autodocs'],
-  render: ({children, ...args}) => <div style={{width: 400}}><Text {...args}>{children}</Text></div>,
+  render: ({ children, ...args }) => (
+    <div style={{ width: 400 }}>
+      <Text {...args}>{children}</Text>
+    </div>
+  ),
   argTypes: {
     align: {
       options: ['left', 'center', 'right'],
-      control: { type: 'select' } 
+      control: { type: 'select' },
     },
     as: {
       options: ['p', 'span', 'div'],
-      control: { type: 'select' } 
+      control: { type: 'select' },
     },
     color: {
       options: ['primary', 'secondary', 'success', 'warning', 'error'],
-      control: { type: 'select' } 
+      control: { type: 'select' },
     },
     size: {
       options: ['xs', 'sm', 'md', 'lg', 'xl'],
-      control: { type: 'select' } 
+      control: { type: 'select' },
     },
     weight: {
       options: ['light', 'normal', 'medium', 'semibold', 'bold'],
-      control: { type: 'select' } 
+      control: { type: 'select' },
     },
     className: { table: { disable: true } },
   },
@@ -38,6 +42,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    children: "Hello world"
-  }
+    children: 'Hello world',
+  },
 };

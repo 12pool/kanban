@@ -4,14 +4,14 @@ import '../../index.css';
 import styles from './Text.module.css';
 
 export type TextProps = {
-  children: React.ReactNode | string
-  className?: string
-  as?: 'p' | 'span' | 'div'
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-  weight?: 'light' | 'normal' | 'medium' | 'semibold' | 'bold'
-  color?: 'primary' | 'secondary' | 'success' | 'warning' | 'error'
-  align?: 'left' | 'center' | 'right'  
-}
+  children: React.ReactNode | string;
+  className?: string;
+  as?: 'p' | 'span' | 'div';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  weight?: 'light' | 'normal' | 'medium' | 'semibold' | 'bold';
+  color?: 'primary' | 'secondary' | 'success' | 'warning' | 'error';
+  align?: 'left' | 'center' | 'right';
+};
 
 export const Text = ({
   children,
@@ -21,7 +21,7 @@ export const Text = ({
   color = 'primary',
   align = 'left',
   className,
-} : TextProps) => {
+}: TextProps) => {
   const props = {
     className: `${styles.Text} ${className}`,
     'data-size': size,
@@ -31,4 +31,4 @@ export const Text = ({
   };
 
   return React.createElement(as, props, children);
-}
+};

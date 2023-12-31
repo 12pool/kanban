@@ -39,7 +39,7 @@ export const Primary: Story = {};
 Primary.args = {
   children: 'Hello, world!',
   style: {
-    color: "white",
+    color: 'white',
     border: '1px solid #f3f3f3',
   },
   margin: ['none', 'none', 'none', 'none'],
