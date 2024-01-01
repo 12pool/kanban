@@ -1,7 +1,14 @@
+import { Flex } from 'ui/layout';
+import { Text } from 'ui/text';
+
+import styles from './Sidebar.module.css';
+
 export const Sidebar = () => {
   return (
     <aside>
-      <h1>Sidebar</h1>
+      <Flex className={styles.Sidebar} direction="column">
+        <Text>Empty</Text>
+      </Flex>
     </aside>
   );
 };
