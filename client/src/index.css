@@ -6,21 +6,25 @@ body {
   --accent-color-200: hsl(0, 100%, 80%);
   --accent-color-300: hsl(240, 27%, 98%);
 
-  --neutral-color-100: hsl(233, 31%, 17%);
-  --neutral-color-200: hsl(233, 30%, 21%);
-  --neutral-color-300: hsl(231, 73%, 93%);
-  --neutral-color-400: hsl(231, 20%, 61%);
-  --neutral-color-500: hsl(231, 37%, 63%);
+  --neutral-color-100: hsl(231, 73%, 93%);
+  --neutral-color-200: hsl(231, 20%, 61%);
+  --neutral-color-300: hsl(231, 37%, 63%);
+  --neutral-color-400: hsl(233, 31%, 17%);
+  --neutral-color-500: hsl(233, 30%, 21%);
   --neutral-color-600: hsl(228, 29%, 7%);
   --neutral-color-700: hsl(233, 30%, 11%);
 
-  --text-primary: var(--neutral-color-300);
-  --text-secondary: var(--neutral-color-400);
+  --text-primary: var(--neutral-color-100);
+  --text-secondary: var(--neutral-color-200);
 
   --text-error: var(--accent-color-100);
   --text-info: var(--primary-color-200);
-  --text-warning: rgb(235, 202, 36);
-  --text-success: rgb(81, 199, 81);
+  --text-warning: hsl(50, 83%, 53%);
+  --text-success: hsl(120, 51%, 54%);
 
   --text-accent: var(--primary-color-100);
+}
+
+body {
+  background-color: var(--neutral-color-600);
 }

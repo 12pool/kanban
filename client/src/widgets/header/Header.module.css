@@ -1,0 +1,18 @@
+.Header {
+  height: 2.5rem;
+  background-color: var(--neutral-color-400);
+  border-bottom: 1px solid var(--neutral-color-500);
+  overflow: hidden;
+}
+
+.Logo {
+  height: 1.75rem;
+  aspect-ratio: 1;
+}
+
+.UserAvatar {
+  height: 1.75rem;
+  width: 1.75rem;
+  overflow: hidden;
+  object-fit: cover;
+}
