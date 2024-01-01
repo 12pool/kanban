@@ -13,7 +13,9 @@ export const RootComponent = () => {
       <Header />
       <Flex>
         <Sidebar />
-        <Outlet />
+        <main>
+          <Outlet />
+        </main>
       </Flex>
       <ReactQueryDevtools buttonPosition="bottom-left" />
       <TanStackRouterDevtools position="bottom-right" />

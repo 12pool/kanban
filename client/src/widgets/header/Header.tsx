@@ -9,7 +9,7 @@ export const Header = () => {
     <header>
       <Flex
         className={styles.Header}
-        padding={['none', 'md']}
+        padding="sm"
         align="center"
         justify="between"
       >
