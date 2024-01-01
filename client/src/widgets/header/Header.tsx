@@ -1,13 +1,24 @@
 import { UserAvatar } from 'entities/user-avatar/feature/UserAvatar';
 import { Logo } from 'shared/logo/ui';
-import { Flex } from 'ui/layout';
+import { Box, Flex } from 'ui/layout';
+
+import styles from './Header.module.css';
 
 export const Header = () => {
   return (
     <header>
-      <Flex>
-        <Logo />
-        <UserAvatar />
+      <Flex
+        className={styles.Header}
+        padding={['none', 'md']}
+        align="center"
+        justify="between"
+      >
+        <Box className={styles.Logo}>
+          <Logo />
+        </Box>
+        <Box className={styles.UserAvatar}>
+          <UserAvatar />
+        </Box>
       </Flex>
     </header>
   );

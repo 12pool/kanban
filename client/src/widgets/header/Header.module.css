@@ -1,0 +1,14 @@
+.Header {
+  height: 2.5rem;
+  background-color: var(--neutral-color-400);
+}
+
+.Logo {
+  height: 1.8rem;
+  aspect-ratio: 1;
+}
+
+.UserAvatar {
+  height: 1.8rem;
+  aspect-ratio: 1;
+}
