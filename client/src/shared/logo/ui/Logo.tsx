@@ -9,7 +9,7 @@ export type LogoProps = {
 export const Logo = ({ className }: LogoProps) => {
   return (
     <Link className={className} href={homePath}>
-      <img src="/logo.png" alt="logo" />
+      <img src="/logo.svg" alt="logo" />
     </Link>
   );
 };

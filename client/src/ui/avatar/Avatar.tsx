@@ -23,6 +23,7 @@ export const Avatar = ({
   alt,
   ...props
 }: AvatarProps) => {
+  console.log('in avatar', src);
   return (
     <RadixAvatar.Root className={`${styles.Avatar} ${className}`} {...props}>
       <RadixAvatar.Image

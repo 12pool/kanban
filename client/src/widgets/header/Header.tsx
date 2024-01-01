@@ -1,3 +1,4 @@
+import { UserAvatar } from 'entities/user-avatar/feature/UserAvatar';
 import { Logo } from 'shared/logo/ui';
 import { Flex } from 'ui/layout';
 
@@ -6,7 +7,7 @@ export const Header = () => {
     <header>
       <Flex>
         <Logo />
-        {/* user-avatar */}
+        <UserAvatar />
       </Flex>
     </header>
   );
