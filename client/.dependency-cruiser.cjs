@@ -91,14 +91,22 @@ module.exports = {
 
     // Prevent imports between different objects within the same layer, except for its own index file
     {
+      name: 'intra-object-allowance',
+      comment:
+        'An object within a layer (entities, widgets) is allowed to import code from its own index file.',
+      severity: 'info',
+      from: { path: '^src/(entities|widgets)/([^/]+)/.*' },
+      to: { path: '^src/(entities|widgets)/\\2/.*' },
+    },
+    {
       name: 'object-violation',
       comment:
-        'An object within a layer (entities, widgets) is not allowed to import code from another object within the same layer, except for its own index file.',
+        'An object within a layer (entities, widgets) is not allowed to import code from another object within the same layer.',
       severity: 'error',
-      from: { path: '^src/(entities|widgets)/([^/]+)/[^/]+$' },
+      from: { path: '^src/(entities|widgets)/([^/]+)/.*' },
       to: {
         path: '^src/(entities|widgets)/([^/]+)/[^/]+$',
-        pathNot: '^src/(entities|widgets)/\\2/index\\.ts$',
+        pathNot: '^src/(entities|widgets)/[^/]+/index\\.ts$',
       },
     },
 
