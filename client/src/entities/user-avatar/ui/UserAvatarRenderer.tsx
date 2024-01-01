@@ -1,10 +1,23 @@
-import { Avatar } from 'ui/avatar';
+import { Avatar, type AvatarProps } from 'ui/avatar';
 import { UserAvatarFallback } from './UserAvatarFallback';
 
-type UserAvatarRendererProps = {
-  src?: string;
-};
+export type UserAvatarRendererProps = Pick<
+  AvatarProps,
+  'imageClassName' | 'fallbackClassName' | 'className' | 'src'
+>;
 
-export const UserAvatarRenderer = ({ src }: UserAvatarRendererProps) => {
-  return <Avatar src={src} fallback={<UserAvatarFallback />} />;
+export const UserAvatarRenderer = ({
+  src,
+  className,
+  fallbackClassName,
+  imageClassName,
+}: UserAvatarRendererProps) => {
+  return (
+    <Avatar
+      src={src}
+      fallback={<UserAvatarFallback className={fallbackClassName} />}
+      imageClassName={imageClassName}
+      className={className}
+    />
+  );
 };

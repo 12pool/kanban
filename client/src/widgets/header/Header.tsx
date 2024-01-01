@@ -16,9 +16,10 @@ export const Header = () => {
         <Box className={styles.Logo}>
           <Logo />
         </Box>
-        <Box className={styles.UserAvatar}>
-          <UserAvatar />
-        </Box>
+        <UserAvatar
+          fallbackClassName={styles.UserAvatar}
+          imageClassName={styles.UserAvatar}
+        />
       </Flex>
     </header>
   );

@@ -1,7 +1,12 @@
 import { useUserAvatar } from 'entities/user-avatar/api';
-import { UserAvatarRenderer } from 'entities/user-avatar/ui';
+import {
+  UserAvatarRenderer,
+  type UserAvatarRendererProps,
+} from 'entities/user-avatar/ui';
 
-export const UserAvatar = () => {
+type UserAvatarProps = Omit<UserAvatarRendererProps, 'src'>;
+
+export const UserAvatar = (props: UserAvatarProps) => {
   const { data } = useUserAvatar();
-  return <UserAvatarRenderer src={data} />;
+  return <UserAvatarRenderer src={data} {...props} />;
 };

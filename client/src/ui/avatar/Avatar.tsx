@@ -4,7 +4,7 @@ import { Text } from 'ui/text';
 
 import styles from './Avatar.module.css';
 
-type AvatarProps = RadixAvatar.AvatarProps & {
+export type AvatarProps = RadixAvatar.AvatarProps & {
   src?: string;
   fallback: string | React.ReactNode;
   alt?: string;

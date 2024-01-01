@@ -1,1 +1,4 @@
-export { UserAvatarRenderer } from './UserAvatarRenderer';
+export {
+  UserAvatarRenderer,
+  type UserAvatarRendererProps,
+} from './UserAvatarRenderer';
