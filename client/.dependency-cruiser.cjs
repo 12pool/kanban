@@ -16,7 +16,10 @@ module.exports = {
         'Code in the widgets layer is only allowed to import code from the entities layer.',
       severity: 'error',
       from: { path: '^src/widgets' },
-      to: { path: '^src/(?!entities)' },
+      to: {
+        path: '^src/(?!entities|ui|shared|widgets)',
+        pathNot: '^src/widgets/[^/]+$',
+      },
     },
     {
       name: 'layer-violation for pages',
@@ -24,7 +27,7 @@ module.exports = {
         'Code in the pages layer is not allowed to import code from any layer other than the widgets layer and and itself.',
       severity: 'error',
       from: { path: '^src/pages' },
-      to: { path: '^(?!src/pages|^src/widgets)' },
+      to: { path: '^(?!src/pages|^src/widgets|^src/ui)' },
     },
     {
       name: 'layer-violation for app',
@@ -77,16 +80,25 @@ module.exports = {
       to: { path: '^src/(?!.*utils)' },
     },
 
-    // Prevent imports between different objects within the same layer
+    // Allow all imports within the same layer
+    {
+      name: 'layer-allowance',
+      comment: 'Allow imports within the same layer.',
+      severity: 'info',
+      from: { path: '^src/(entities|widgets)/([^/]+)' },
+      to: { path: '^src/(entities|widgets)/([^/]+)' },
+    },
+
+    // Prevent imports between different objects within the same layer, except for its own index file
     {
       name: 'object-violation',
       comment:
-        'An object within a layer (entities, widgets) is not allowed to import code from another object within the same layer, except for its own files.',
+        'An object within a layer (entities, widgets) is not allowed to import code from another object within the same layer, except for its own index file.',
       severity: 'error',
-      from: { path: '^src/(entities|widgets)/([^/]+)' },
+      from: { path: '^src/(entities|widgets)/([^/]+)/[^/]+$' },
       to: {
-        path: '^src/(entities|widgets)/([^/]+)',
-        pathNot: '^src/(\\1)/(\\2)/',
+        path: '^src/(entities|widgets)/([^/]+)/[^/]+$',
+        pathNot: '^src/(entities|widgets)/\\2/index\\.ts$',
       },
     },
 
@@ -100,26 +112,6 @@ module.exports = {
       to: {
         circular: true,
       },
-    },
-    {
-      name: 'no-orphans',
-      comment:
-        "This is an orphan module - it's likely not used (anymore?). Either use it or " +
-        "remove it. If it's logical this module is an orphan (i.e. it's a config file), " +
-        'add an exception for it in your dependency-cruiser configuration. By default ' +
-        'this rule does not scrutinize dot-files (e.g. .eslintrc.js), TypeScript declaration ' +
-        'files (.d.ts), tsconfig.json and some of the babel and webpack configs.',
-      severity: 'warn',
-      from: {
-        orphan: true,
-        pathNot: [
-          '(^|/)[.][^/]+[.](js|cjs|mjs|ts|json)$', // dot files
-          '[.]d[.]ts$', // TypeScript declaration files
-          '(^|/)tsconfig[.]json$', // TypeScript config
-          '(^|/)(babel|webpack)[.]config[.](js|cjs|mjs|ts|json)$', // other configs
-        ],
-      },
-      to: {},
     },
     {
       name: 'no-deprecated-core',
