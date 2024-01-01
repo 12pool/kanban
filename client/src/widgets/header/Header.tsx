@@ -1,7 +1,13 @@
+import { Logo } from "shared/logo/ui";
+import { Flex } from "ui/layout";
+
 export const Header = () => {
   return (
     <header>
-      <h1>Header</h1>
+     <Flex>
+        <Logo />
+        {/* user-avatar */}
+     </Flex>
     </header>
   );
 };

@@ -24,3 +24,7 @@ body {
 
   --text-accent: var(--primary-color-100);
 }
+
+body {
+  background-color: var(--neutral-color-600);
+}
