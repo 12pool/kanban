@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router';
 
-import { homePath } from 'shared/config/routes';
+import { HOME_PATH } from 'shared/config/api';
 
 export type LogoProps = {
   className?: string;
@@ -8,7 +8,7 @@ export type LogoProps = {
 
 export const Logo = ({ className }: LogoProps) => {
   return (
-    <Link className={className} href={homePath}>
+    <Link className={className} href={HOME_PATH}>
       <img src="/logo.svg" alt="logo" />
     </Link>
   );

@@ -1,12 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+
 import { fetchUserAvatar } from './fetchAvatar';
 
 export const useUserAvatar = () => {
-  const [userAvatar, setUserAvatar] = useState<string>('');
-
-  useEffect(() => {
-    fetchUserAvatar().then(setUserAvatar).catch(console.error);
-  }, []);
-
-  return userAvatar;
+  return useQuery({
+    queryKey: ['user-avatar'],
+    queryFn: fetchUserAvatar,
+  });
 };

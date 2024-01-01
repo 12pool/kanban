@@ -1,8 +1,7 @@
-import { useUserAvatar } from '../api/useUserAvatar';
-import { UserAvatarRenderer } from '../ui/UserAvatarRenderer';
+import { useUserAvatar } from 'entities/user-avatar/api';
+import { UserAvatarRenderer } from 'entities/user-avatar/ui';
 
 export const UserAvatar = () => {
-  const img = useUserAvatar();
-  console.log('img', img);
-  return <UserAvatarRenderer src={img} />;
+  const { data } = useUserAvatar();
+  return <UserAvatarRenderer src={data} />;
 };

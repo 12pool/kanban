@@ -5,7 +5,7 @@ import { Text } from 'ui/text';
 import styles from './Avatar.module.css';
 
 type AvatarProps = RadixAvatar.AvatarProps & {
-  src: string;
+  src?: string;
   fallback: string | React.ReactNode;
   alt?: string;
   delayMs?: number;
@@ -23,7 +23,6 @@ export const Avatar = ({
   alt,
   ...props
 }: AvatarProps) => {
-  console.log('in avatar', src);
   return (
     <RadixAvatar.Root className={`${styles.Avatar} ${className}`} {...props}>
       <RadixAvatar.Image

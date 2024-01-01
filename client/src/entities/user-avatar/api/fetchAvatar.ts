@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { isString } from 'lodash';
+import { convertUserAvatarApiToLocal } from './convertUserAvatarApiToLocal';
 
 export const fetchUserAvatar = async (): Promise<string> => {
   const response = await axios.get<ArrayBuffer>(
@@ -8,14 +10,9 @@ export const fetchUserAvatar = async (): Promise<string> => {
     },
   );
 
-  console.log('response', response);
+  const contentType = isString(response.headers['content-type'])
+    ? response.headers['content-type']
+    : 'image/jpeg';
 
-  const base64 = btoa(
-    new Uint8Array(response.data).reduce(
-      (data, byte) => data + String.fromCharCode(byte),
-      '',
-    ),
-  );
-
-  return `data:${response.headers['content-type']};base64,${base64}`;
+  return convertUserAvatarApiToLocal(response.data, contentType);
 };
