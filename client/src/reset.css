@@ -55,6 +55,8 @@ h2,
 h3,
 h4 {
   text-wrap: balance;
+  font-size: inherit;
+  font-weight: normal;
 }
 
 /* A elements that don't have a class get default styles */
@@ -65,7 +67,8 @@ a:not([class]) {
 
 /* Make images easier to work with */
 img,
-picture {
+picture,
+svg {
   max-width: 100%;
   display: block;
 }
