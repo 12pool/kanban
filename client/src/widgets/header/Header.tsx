@@ -1,4 +1,4 @@
-import { UserAvatar } from 'entities/user-avatar/feature/UserAvatar';
+import { UserAvatar } from 'entities/user-avatar/feature';
 import { Logo } from 'shared/logo/ui';
 import { Box, Flex } from 'ui/layout';
 
