@@ -66,9 +66,7 @@ export const Fallback: Story = {
 export const FallbackWithImage: Story = {
   args: {
     src: 'asd',
-    fallback: (
-      <img src="/user-avatar-fallback.svg" />
-    ),
+    fallback: <img src="/user-avatar-fallback.svg" />,
   },
   render: ({ src, ...args }) => <Avatar src={src} {...args} />,
 };
