@@ -34,6 +34,14 @@ init layer
 
 `npm run create-layer`
 
+run tests
+
+`npm run test`
+
+to run a single file use
+
+`npm run test path/to/file`
+
 ESLint files project error in ts files VSCODE FIX
 
 1. Open the settings Ctrl + ,
