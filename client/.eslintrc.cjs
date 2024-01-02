@@ -15,7 +15,7 @@ module.exports = {
   parserOptions: {
     project: ['./tsconfig.json'],
   },
-  plugins: ['react-refresh', '@typescript-eslint'],
+  plugins: ['react-refresh', '@typescript-eslint', 'vitest'],
   rules: {
     '@typescript-eslint/consistent-type-imports': [
       'warn',
