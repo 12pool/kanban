@@ -2,6 +2,6 @@
   width: 3.75rem;
   height: 100%;
   position: fixed;
-  background-color: var(--neutral-color-400);
-  border-right: 1px solid var(--neutral-color-500);
+  background-color: var(--neutral-color-500);
+  border-right: 1px solid var(--neutral-color-400);
 }

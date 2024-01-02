@@ -1,6 +1,28 @@
+:root {
+  --layout-size-xxs: 0.125rem;
+  --layout-size-xs: 0.25rem;
+  --layout-size-sm: 0.5rem;
+  --layout-size-md: 1rem;
+  --layout-size-lg: 2rem;
+  --layout-size-none: 0;
+
+  --font-size-xs: 0.625rem;
+  --font-size-sm: 0.8125rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.5rem;
+  --font-size-xl: 2rem;
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+}
+
 body {
   --primary-color-100: hsl(252, 94%, 67%);
   --primary-color-200: hsl(252, 100%, 73%);
+  --primary-color-300: hsl(241, 32%, 52%);
 
   --accent-color-100: hsl(0, 80%, 63%);
   --accent-color-200: hsl(0, 100%, 80%);
@@ -8,23 +30,30 @@ body {
 
   --neutral-color-100: hsl(231, 73%, 93%);
   --neutral-color-200: hsl(231, 20%, 61%);
-  --neutral-color-300: hsl(231, 37%, 63%);
+  --neutral-color-300: hsl(233, 30%, 21%);
   --neutral-color-400: hsl(233, 31%, 17%);
-  --neutral-color-500: hsl(233, 30%, 21%);
+  --neutral-color-500: hsl(233, 30%, 11%);
   --neutral-color-600: hsl(228, 29%, 7%);
-  --neutral-color-700: hsl(233, 30%, 11%);
 
-  --text-primary: var(--neutral-color-100);
-  --text-secondary: var(--neutral-color-200);
+  --font-primary: var(--neutral-color-100);
+  --font-secondary: var(--primary-color-200);
+  --font-sub: var(--primary-color-300);
+  --font-accent: var(--primary-color-100);
+  --font-disabled: var(--neutral-color-200);
 
-  --text-error: var(--accent-color-100);
-  --text-info: var(--primary-color-200);
-  --text-warning: hsl(50, 83%, 53%);
-  --text-success: hsl(120, 51%, 54%);
+  --font-error: var(--accent-color-100);
+  --font-info: var(--primary-color-200);
+  --font-warning: hsl(50, 83%, 53%);
+  --font-success: hsl(120, 51%, 54%);
 
-  --text-accent: var(--primary-color-100);
+  --outline-indicator: var(--accent-color-300);
+}
+
+body.dark {
 }
 
 body {
+  font-family: 'Noto Sans', sans-serif;
+  color: var(--font-primary);
   background-color: var(--neutral-color-600);
 }

@@ -1,5 +1,9 @@
 import * as RadixDropdownMenu from '@radix-ui/react-dropdown-menu';
 
+import { CheckIcon, DotFilledIcon } from '@radix-ui/react-icons';
+
+import styles from './DropdownMenu.module.css';
+
 type DropdownMenuContentProps = {
   open: boolean;
   defaultOpen?: boolean;
@@ -39,7 +43,15 @@ export const DropdownMenu = ({
       modal={modal}
       onOpenChange={onOpenChange}
     >
-      <RadixDropdownMenu.Trigger onClick={handleDropdownToggle}>
+      <RadixDropdownMenu.Trigger
+        className={styles.DropdownMenuTrigger}
+        onClick={handleDropdownToggle}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            handleDropdownToggle();
+          }
+        }}
+      >
         {trigger}
       </RadixDropdownMenu.Trigger>
 
@@ -64,24 +76,59 @@ DropdownMenu.Portal = function DropdownMenuPortal({
 
 DropdownMenu.Content = function DropdownMenuContent({
   children,
+  className,
   ...props
-}: RadixDropdownMenu.DropdownMenuSubContentProps) {
+}: RadixDropdownMenu.DropdownMenuContentProps) {
   return (
-    <RadixDropdownMenu.Content {...props}>{children}</RadixDropdownMenu.Content>
+    <RadixDropdownMenu.Content
+      className={`${styles.DropdownMenuContent} ${className}`}
+      {...props}
+    >
+      {children}
+    </RadixDropdownMenu.Content>
   );
 };
 
-DropdownMenu.Arrow = function DropdownMenuArrow(
-  props: RadixDropdownMenu.DropdownMenuArrowProps,
-) {
-  return <RadixDropdownMenu.Arrow {...props} />;
+DropdownMenu.Arrow = function DropdownMenuArrow({
+  className,
+  ...props
+}: RadixDropdownMenu.DropdownMenuArrowProps) {
+  return (
+    <RadixDropdownMenu.Arrow
+      className={`${styles.DropdownMenuArrow} ${className}`}
+      {...props}
+    />
+  );
 };
 
 DropdownMenu.Item = function DropdownMenuItem({
   children,
+  icon,
+  rightSlot,
+  className,
   ...props
-}: RadixDropdownMenu.DropdownMenuItemProps) {
-  return <RadixDropdownMenu.Item {...props}>{children}</RadixDropdownMenu.Item>;
+}: RadixDropdownMenu.DropdownMenuItemProps & {
+  icon?: React.ReactNode;
+  rightSlot?: React.ReactNode;
+}) {
+  return (
+    <RadixDropdownMenu.Item
+      className={`${styles.DropdownMenuItem} ${className}`}
+      {...props}
+    >
+      {icon ? (
+        <RadixDropdownMenu.ItemIndicator
+          forceMount={true}
+          className={styles.DropdownMenuItemIndicator}
+        >
+          {icon}
+        </RadixDropdownMenu.ItemIndicator>
+      ) : null}
+
+      {children}
+      {rightSlot ? <div className={styles.RightSlot}>{rightSlot}</div> : null}
+    </RadixDropdownMenu.Item>
+  );
 };
 
 DropdownMenu.Group = function DropdownMenuGroup({
@@ -95,19 +142,34 @@ DropdownMenu.Group = function DropdownMenuGroup({
 
 DropdownMenu.Label = function DropdownMenuLabel({
   children,
+  className,
   ...props
 }: RadixDropdownMenu.DropdownMenuLabelProps) {
   return (
-    <RadixDropdownMenu.Label {...props}>{children}</RadixDropdownMenu.Label>
+    <RadixDropdownMenu.Label
+      className={`${styles.DropdownMenuLabel} ${className}`}
+      {...props}
+    >
+      {children}
+    </RadixDropdownMenu.Label>
   );
 };
 
 DropdownMenu.CheckboxItem = function DropdownMenuCheckboxItem({
   children,
+  className,
   ...props
 }: RadixDropdownMenu.DropdownMenuCheckboxItemProps) {
   return (
-    <RadixDropdownMenu.CheckboxItem {...props}>
+    <RadixDropdownMenu.CheckboxItem
+      className={`${styles.DropdownMenuCheckboxItem} ${className}`}
+      {...props}
+    >
+      <RadixDropdownMenu.ItemIndicator
+        className={styles.DropdownMenuItemIndicator}
+      >
+        <CheckIcon />
+      </RadixDropdownMenu.ItemIndicator>
       {children}
     </RadixDropdownMenu.CheckboxItem>
   );
@@ -126,30 +188,34 @@ DropdownMenu.RadioGroup = function DropdownMenuRadioGroup({
 
 DropdownMenu.RadioItem = function DropdownMenuRadioItem({
   children,
+  className,
   ...props
 }: RadixDropdownMenu.DropdownMenuRadioItemProps) {
   return (
-    <RadixDropdownMenu.RadioItem {...props}>
+    <RadixDropdownMenu.RadioItem
+      className={`${styles.DropdownMenuRadioItem} ${className}`}
+      {...props}
+    >
+      <RadixDropdownMenu.ItemIndicator
+        className={styles.DropdownMenuItemIndicator}
+      >
+        <DotFilledIcon />
+      </RadixDropdownMenu.ItemIndicator>
       {children}
     </RadixDropdownMenu.RadioItem>
   );
 };
 
-DropdownMenu.ItemIndicator = function DropdownMenuItemIndicator({
-  children,
+DropdownMenu.Separator = function DropdownMenuSeparator({
+  className,
   ...props
-}: RadixDropdownMenu.DropdownMenuItemIndicatorProps) {
+}: RadixDropdownMenu.DropdownMenuSeparatorProps) {
   return (
-    <RadixDropdownMenu.ItemIndicator {...props}>
-      {children}
-    </RadixDropdownMenu.ItemIndicator>
+    <RadixDropdownMenu.Separator
+      className={`${styles.DropdownMenuSeparator} ${className}`}
+      {...props}
+    />
   );
-};
-
-DropdownMenu.Separator = function DropdownMenuSeparator(
-  props: RadixDropdownMenu.DropdownMenuSeparatorProps,
-) {
-  return <RadixDropdownMenu.Separator {...props} />;
 };
 
 DropdownMenu.Sub = function DropdownMenuSub({
@@ -161,10 +227,14 @@ DropdownMenu.Sub = function DropdownMenuSub({
 
 DropdownMenu.SubTrigger = function DropdownMenuSubTrigger({
   children,
+  className,
   ...props
 }: RadixDropdownMenu.DropdownMenuSubTriggerProps) {
   return (
-    <RadixDropdownMenu.SubTrigger {...props}>
+    <RadixDropdownMenu.SubTrigger
+      className={`${styles.DropdownMenuSubTrigger} ${className}`}
+      {...props}
+    >
       {children}
     </RadixDropdownMenu.SubTrigger>
   );
@@ -172,10 +242,14 @@ DropdownMenu.SubTrigger = function DropdownMenuSubTrigger({
 
 DropdownMenu.SubContent = function DropdownMenuSubContent({
   children,
+  className,
   ...props
 }: RadixDropdownMenu.DropdownMenuSubContentProps) {
   return (
-    <RadixDropdownMenu.SubContent {...props}>
+    <RadixDropdownMenu.SubContent
+      className={`${styles.DropdownMenuSubContent} ${className}`}
+      {...props}
+    >
       {children}
     </RadixDropdownMenu.SubContent>
   );
