@@ -1,7 +1,7 @@
 .Header {
   height: 2.5rem;
-  background-color: var(--neutral-color-400);
-  border-bottom: 1px solid var(--neutral-color-500);
+  background-color: var(--neutral-color-500);
+  border-bottom: 1px solid var(--neutral-color-400);
   overflow: hidden;
 }
 
