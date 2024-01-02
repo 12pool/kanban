@@ -1,4 +1,5 @@
 import { UserAvatar } from 'entities/user-avatar/feature';
+import { UserDropdownMenu } from 'entities/user-dropdown-menu/feature';
 import { Logo } from 'shared/logo/ui';
 import { Box, Flex } from 'ui/layout';
 
@@ -16,9 +17,14 @@ export const Header = () => {
         <Box className={styles.Logo}>
           <Logo />
         </Box>
-        <UserAvatar
-          fallbackClassName={styles.UserAvatar}
-          imageClassName={styles.UserAvatar}
+
+        <UserDropdownMenu
+          trigger={
+            <UserAvatar
+              fallbackClassName={styles.UserAvatar}
+              imageClassName={styles.UserAvatar}
+            />
+          }
         />
       </Flex>
     </header>
