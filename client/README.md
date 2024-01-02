@@ -40,7 +40,7 @@ run tests
 
 to run a single file use
 
-npm run test path/to/file
+`npm run test path/to/file`
 
 ESLint files project error in ts files VSCODE FIX
 
