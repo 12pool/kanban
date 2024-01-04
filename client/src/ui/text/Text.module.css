@@ -62,6 +62,14 @@
   color: var(--font-info);
 }
 
+.Text[data-color='accent'] {
+  color: var(--font-accent);
+}
+
+.Text[data-color='disabled'] {
+  color: var(--font-disabled);
+}
+
 .Text[data-align='left'] {
   text-align: left;
 }

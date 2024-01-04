@@ -1,6 +1,5 @@
 import React from 'react';
 
-import '../../index.css';
 import styles from './Text.module.css';
 
 export type TextProps = {
@@ -9,7 +8,7 @@ export type TextProps = {
   as?: 'p' | 'span' | 'div';
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   weight?: 'light' | 'normal' | 'medium' | 'semibold' | 'bold';
-  color?: 'primary' | 'secondary' | 'success' | 'warning' | 'error';
+  color?: 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'accent' | 'disabled';
   align?: 'left' | 'center' | 'right';
 } & React.HTMLAttributes<HTMLDivElement>;
 
