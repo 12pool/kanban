@@ -1,13 +1,10 @@
 import { useState } from 'react';
 import {
-  ExitIcon,
-  GearIcon,
-  InfoCircledIcon,
-  PersonIcon,
+  CardStackIcon,
+  PlusIcon,
 } from '@radix-ui/react-icons';
 
 import { DropdownMenu } from 'ui/dropdown-menu';
-import { Flex } from 'ui/layout';
 
 type UserDropdownMenuProps = {
   trigger: React.ReactNode;
@@ -39,20 +36,12 @@ export const UserDropdownMenu = ({ trigger }: UserDropdownMenuProps) => {
         onInteractOutside={handleClose}
       >
         <DropdownMenu.Arrow />
-        <DropdownMenu.Item icon={<PersonIcon />}>Profile</DropdownMenu.Item>
-        <DropdownMenu.Item
-          icon={<GearIcon />}
-          rightSlot={
-            <Flex>
-              <div>⌘</div>
-              <div>⇧</div>
-            </Flex>
-          }
-        >
-          Settings
+        <DropdownMenu.Item icon={<CardStackIcon />}>
+          Manage projects
         </DropdownMenu.Item>
-        <DropdownMenu.Item icon={<ExitIcon />}>Logout</DropdownMenu.Item>
-        <DropdownMenu.Item icon={<InfoCircledIcon />}>Help</DropdownMenu.Item>
+        <DropdownMenu.Item icon={<PlusIcon />}>
+          Create project
+        </DropdownMenu.Item>
       </DropdownMenu.Content>
     </DropdownMenu>
   );
