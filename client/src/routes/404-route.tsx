@@ -1,7 +1,7 @@
 import { NotFoundRoute } from '@tanstack/react-router';
-import { rootRoute } from 'pages/root-route';
+import { rootRoute } from 'routes/root-route';
 
-import { PageNotFound } from './404';
+import { PageNotFound } from 'pages/404/404';
 
 export const notFoundRoute = new NotFoundRoute({
   getParentRoute: () => rootRoute,

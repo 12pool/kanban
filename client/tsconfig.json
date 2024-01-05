@@ -28,7 +28,8 @@
       "widgets/*": ["src/widgets/*"],
       "entities/*": ["src/entities/*"],
       "shared/*": ["src/shared/*"],
-      "ui/*": ["src/ui/*"]
+      "ui/*": ["src/ui/*"],
+      "routes/*": ["src/routes/*"]
     }
   },
   "include": ["./src/**/*.ts", "./src/**/*.tsx", "scripts", ".storybook"],
