@@ -1,4 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
+import '../../../reset.css';
+import '../../../index.css';
+
 import { Box } from './Box';
 import { SizeOptions } from '../generic';
 

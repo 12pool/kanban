@@ -3,6 +3,7 @@ import { useArgs } from '@storybook/client-api';
 
 import { SunIcon } from '@radix-ui/react-icons';
 
+import '../../reset.css';
 import '../../index.css';
 
 import { DropdownMenu } from './DropdownMenu';
