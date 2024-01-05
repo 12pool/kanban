@@ -1,7 +1,11 @@
 .Header {
   height: 2.5rem;
-  background-color: var(--neutral-color-500);
-  border-bottom: 1px solid var(--neutral-color-400);
+  background: linear-gradient(
+    to right,
+    var(--neutral-color-400),
+    var(--neutral-color-300),
+    var(--primary-color-300)
+  );
   overflow: hidden;
 }
 

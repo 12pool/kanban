@@ -3,20 +3,27 @@
   --layout-size-xs: 0.25rem;
   --layout-size-sm: 0.5rem;
   --layout-size-md: 1rem;
-  --layout-size-lg: 2rem;
+  --layout-size-lg: 1.5rem;
+  --layout-size-xl: 2rem;
   --layout-size-none: 0;
 
   --font-size-xs: 0.625rem;
   --font-size-sm: 0.8125rem;
   --font-size-md: 1rem;
-  --font-size-lg: 1.5rem;
-  --font-size-xl: 2rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-xxl: 2rem;
 
   --font-weight-light: 300;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
+
+  --border-radius-sm: 0.125rem;
+  --border-radius-md: 0.25rem;
+  --border-radius-lg: 0.5rem;
+  --border-radius-full: 9999px;
 }
 
 body {

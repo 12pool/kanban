@@ -54,3 +54,12 @@ ESLint files project error in ts files VSCODE FIX
   "eslint.workingDirectories": ["./client"]
 }
 ```
+
+```
+Example when add lightmode and need explicit color assign
+:global(:where(body.light)) {
+  .DialogContent {
+    background-color: red;
+  }
+}
+```
