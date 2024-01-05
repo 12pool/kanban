@@ -1,10 +1,10 @@
 import * as RadixDialog from '@radix-ui/react-dialog';
 import { Cross1Icon } from '@radix-ui/react-icons';
 
-import styles from './Dialog.module.css';
-
 import { Box, Flex } from 'ui/layout';
 import { Text } from 'ui/text';
+
+import styles from './Dialog.module.css';
 
 export type DialogProps = {
   defaultOpen?: boolean;
