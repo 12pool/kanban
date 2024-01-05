@@ -14,11 +14,11 @@ const meta = {
     trigger: { table: { disable: true } },
     children: {
       control: { type: 'text' },
-    }
+    },
   },
   args: {
-    children: "This is dialog content"
-  }
+    children: 'This is dialog content',
+  },
 } as Meta<typeof Dialog>;
 
 export default meta;
@@ -27,21 +27,15 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   render: ({ children }) => (
-    <Dialog trigger={
-      <button>Open Dialog</button>
-    }>
-      <Dialog.Content>
-        {children}
-      </Dialog.Content>
+    <Dialog trigger={<button>Open Dialog</button>}>
+      <Dialog.Content>{children}</Dialog.Content>
     </Dialog>
   ),
 };
 
 export const WithTitleAndDescription: Story = {
   render: ({ children }) => (
-    <Dialog  trigger={
-      <button>Open Dialog</button>
-    }>
+    <Dialog trigger={<button>Open Dialog</button>}>
       <Dialog.Content title="This is title" description="This is description">
         {children}
       </Dialog.Content>
