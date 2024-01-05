@@ -18,6 +18,10 @@
   font-size: var(--font-size-xl);
 }
 
+.Text[data-size='xxl'] {
+  font-size: var(--font-size-xxl);
+}
+
 .Text[data-weight='light'] {
   font-weight: var(--font-weight-light);
 }
@@ -60,6 +64,14 @@
 
 .Text[data-color='info'] {
   color: var(--font-info);
+}
+
+.Text[data-color='accent'] {
+  color: var(--font-accent);
+}
+
+.Text[data-color='disabled'] {
+  color: var(--font-disabled);
 }
 
 .Text[data-align='left'] {

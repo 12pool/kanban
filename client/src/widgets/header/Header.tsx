@@ -1,11 +1,13 @@
-import { UserAvatar } from 'entities/user-avatar/feature';
-import { UserDropdownMenu } from 'entities/user-dropdown-menu/feature';
 import { Logo } from 'shared/logo/ui';
 import { Box, Flex } from 'ui/layout';
 
 import styles from './Header.module.css';
 
-export const Header = () => {
+type HeaderProps = {
+  userDropdown: React.ReactNode;
+};
+
+export const Header = ({ userDropdown }: HeaderProps) => {
   return (
     <header>
       <Flex
@@ -18,14 +20,7 @@ export const Header = () => {
           <Logo />
         </Box>
 
-        <UserDropdownMenu
-          trigger={
-            <UserAvatar
-              fallbackClassName={styles.UserAvatar}
-              imageClassName={styles.UserAvatar}
-            />
-          }
-        />
+        <Flex align="center">{userDropdown}</Flex>
       </Flex>
     </header>
   );
