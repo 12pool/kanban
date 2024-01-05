@@ -11,7 +11,9 @@ export type DialogProps = {
   modal?: boolean;
   triggerClassName?: string;
   children: React.ReactNode;
-  trigger: React.ReactNode;
+  trigger?: React.ReactNode;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 };
 
 export const Dialog = ({
@@ -20,9 +22,16 @@ export const Dialog = ({
   trigger,
   children,
   triggerClassName,
+  open,
+  onOpenChange,
 }: DialogProps) => {
   return (
-    <RadixDialog.Root defaultOpen={defaultOpen} modal={modal}>
+    <RadixDialog.Root
+      onOpenChange={onOpenChange}
+      open={open}
+      defaultOpen={defaultOpen}
+      modal={modal}
+    >
       <RadixDialog.Trigger
         className={`${styles.DialogTrigger} ${triggerClassName}`}
       >

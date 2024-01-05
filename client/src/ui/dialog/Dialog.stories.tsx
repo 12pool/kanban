@@ -12,6 +12,8 @@ const meta = {
   argTypes: {
     triggerClassName: { table: { disable: true } },
     trigger: { table: { disable: true } },
+    open: { table: { disable: true } },
+    onOpenChange: { table: { disable: true } },
     children: {
       control: { type: 'text' },
     },
