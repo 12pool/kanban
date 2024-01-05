@@ -6,11 +6,16 @@ import { Flex } from 'ui/layout';
 
 import { Header } from 'widgets/header';
 import { Sidebar } from 'widgets/sidebar';
+import { UserDropdownMenu } from 'widgets/user-menu-dropdown';
 
 export const RootComponent = () => {
   return (
     <>
-      <Header />
+      <Header
+        userDropdown={
+          <UserDropdownMenu />
+        }
+      />
       <Flex>
         <Sidebar />
         <main>
