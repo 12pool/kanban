@@ -5,9 +5,9 @@ import styles from './Header.module.css';
 
 type HeaderProps = {
   userDropdown: React.ReactNode;
-}
+};
 
-export const Header = ({ userDropdown } : HeaderProps) => {
+export const Header = ({ userDropdown }: HeaderProps) => {
   return (
     <header>
       <Flex
@@ -20,9 +20,7 @@ export const Header = ({ userDropdown } : HeaderProps) => {
           <Logo />
         </Box>
 
-        <Flex align="center">
-          {userDropdown}
-        </Flex>
+        <Flex align="center">{userDropdown}</Flex>
       </Flex>
     </header>
   );

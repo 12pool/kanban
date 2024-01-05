@@ -11,11 +11,7 @@ import { UserDropdownMenu } from 'widgets/user-menu-dropdown';
 export const RootComponent = () => {
   return (
     <>
-      <Header
-        userDropdown={
-          <UserDropdownMenu />
-        }
-      />
+      <Header userDropdown={<UserDropdownMenu />} />
       <Flex>
         <Sidebar />
         <main>
