@@ -31,7 +31,7 @@ export const UserDropdownMenu = () => {
     void navigate({
       search: (prev) => ({ ...prev, addProjectDialogOpen: open }),
     });
-  }
+  };
 
   return (
     <DropdownMenu

@@ -12,7 +12,6 @@ export const ProjectDialog = ({
   open,
   onOpenChange,
 }: ProjectDialogProps) => {
-
   return (
     <Dialog
       defaultOpen={defaultOpen}
