@@ -1,6 +1,6 @@
-export type Size = 'sm' | 'md' | 'lg' | 'none';
+export type Size = 'sm' | 'md' | 'lg' | 'xl' | 'none';
 
-export const SizeOptions: Size[] = ['none', 'sm', 'md', 'lg'];
+export const SizeOptions: Size[] = ['none', 'sm', 'md', 'lg', 'xl'];
 
 export type ElementType = 'layout' | 'font';
 
@@ -24,6 +24,8 @@ const sizeToCss = (type: ElementType, size: Size) => {
       return `var(--${type}-size-md)`;
     case 'lg':
       return `var(--${type}-size-lg)`;
+    case 'xl':
+      return `var(--${type}-size-xl)`;
     case 'none':
       return `var(--${type}-size-none)`;
   }

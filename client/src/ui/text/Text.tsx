@@ -6,7 +6,7 @@ export type TextProps = {
   children: React.ReactNode | string;
   className?: string;
   as?: 'p' | 'span' | 'div';
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
   weight?: 'light' | 'normal' | 'medium' | 'semibold' | 'bold';
   color?:
     | 'primary'
