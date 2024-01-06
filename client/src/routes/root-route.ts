@@ -6,7 +6,7 @@ import { rootRouteWithContext } from '@tanstack/react-router';
 import { RootComponent } from 'pages/RootComponent';
 
 const layoutSearchSchema = z.object({
-  addProjectDialogOpen: z.boolean().catch(false),
+  insertProjectDialogOpen: z.boolean().optional().catch(undefined),
 });
 
 type LayoutSearch = z.infer<typeof layoutSearchSchema>;

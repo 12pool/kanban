@@ -15,9 +15,11 @@ import styles from './UserDropdownMenu.module.css';
 export const UserDropdownMenu = () => {
   const navigate = useNavigate();
 
-  const { addProjectDialogOpen } = rootRoute.useSearch();
+  const { insertProjectDialogOpen } = rootRoute.useSearch();
 
-  const [userMenuOpen, setUserMenuOpen] = useState(addProjectDialogOpen);
+  const [userMenuOpen, setUserMenuOpen] = useState(
+    insertProjectDialogOpen ?? false,
+  );
 
   const handleToggle = () => {
     setUserMenuOpen((prev) => !prev);
@@ -29,7 +31,7 @@ export const UserDropdownMenu = () => {
 
   const handleProjectDialogOpen = (open: boolean) => {
     void navigate({
-      search: (prev) => ({ ...prev, addProjectDialogOpen: open }),
+      search: (prev) => ({ ...prev, insertProjectDialogOpen: open }),
     });
   };
 
@@ -65,7 +67,7 @@ export const UserDropdownMenu = () => {
           Manage projects
         </DropdownMenu.Item>
         <ProjectDialog
-          defaultOpen={addProjectDialogOpen}
+          defaultOpen={insertProjectDialogOpen}
           onOpenChange={handleProjectDialogOpen}
           triggerClassName={styles.ProjectDialogTrigger}
           trigger={
