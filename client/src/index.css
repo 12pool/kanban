@@ -45,7 +45,7 @@ body {
 
   --font-primary: var(--neutral-color-100);
   --font-secondary: var(--primary-color-200);
-  --font-sub: var(--primary-color-300);
+  --font-sub: var(--neutral-color-200);
   --font-accent: var(--primary-color-100);
   --font-disabled: var(--neutral-color-200);
 
