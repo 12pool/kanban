@@ -1,4 +1,5 @@
 import { Dialog, type DialogProps } from 'ui/dialog';
+import { ProjectForm } from './ProjectForm';
 
 type ProjectDialogProps = Pick<
   DialogProps,
@@ -24,7 +25,7 @@ export const ProjectDialog = ({
       triggerClassName={triggerClassName}
     >
       <Dialog.Content title="Create project">
-        this will be project form
+        <ProjectForm />
       </Dialog.Content>
     </Dialog>
   );
