@@ -1,0 +1,11 @@
+.Input {
+  color: var(--font-primary);
+  background-color: transparent;
+  border: 1px solid var(--font-sub);
+  border-radius: var(--border-radius-sm);
+  padding-inline: var(--layout-size-sm);
+}
+
+.Input::placeholder {
+  color: var(--font-sub);
+}
