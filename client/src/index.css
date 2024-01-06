@@ -23,6 +23,7 @@
   --border-radius-sm: 0.125rem;
   --border-radius-md: 0.25rem;
   --border-radius-lg: 0.5rem;
+  --border-radius-xl: 0.5rem;
   --border-radius-full: 9999px;
 }
 
@@ -52,6 +53,13 @@ body {
   --font-info: var(--primary-color-200);
   --font-warning: hsl(50, 83%, 53%);
   --font-success: hsl(120, 51%, 54%);
+
+  --primary-gradient: linear-gradient(
+    to right,
+    var(--neutral-color-400),
+    var(--neutral-color-300),
+    var(--primary-color-300)
+  );
 
   --outline-indicator: var(--accent-color-300);
 }

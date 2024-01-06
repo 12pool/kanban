@@ -54,10 +54,10 @@ Dialog.Content = function DialogContent({
 }: RadixDialog.DialogContentProps & { description?: string }) {
   return (
     <RadixDialog.Content
-      className={`${styles.DialogContent} ${className}`}
+      className={`${styles.DialogBody} ${className}`}
       {...props}
     >
-      <Box padding={['none', 'none', 'md', 'none']}>
+      <Box className={styles.DialogHeader} padding="lg">
         <Flex justify="between" align="center">
           <RadixDialog.Title>
             <Text size="lg" weight="medium">
@@ -79,7 +79,7 @@ Dialog.Content = function DialogContent({
         )}
       </Box>
 
-      {children}
+      <Box padding="lg">{children}</Box>
     </RadixDialog.Content>
   );
 };
