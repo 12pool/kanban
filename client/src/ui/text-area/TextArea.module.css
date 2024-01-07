@@ -4,6 +4,7 @@
   border: 1px solid var(--font-sub);
   border-radius: var(--border-radius-sm);
   padding-inline: var(--layout-size-sm);
+  width: 100%;
 }
 
 .TextArea::placeholder {

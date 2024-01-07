@@ -1,9 +1,28 @@
+import type { FieldValues, Path, UseFormRegister } from 'react-hook-form';
+
 import styles from './TextArea.module.css';
 
-type TextAreaProps = React.InputHTMLAttributes<HTMLTextAreaElement>;
+type TextAreaProps<T extends FieldValues> =
+  React.InputHTMLAttributes<HTMLTextAreaElement> & {
+    label: Path<T>;
+    register: UseFormRegister<T>;
+    error?: boolean;
+  };
 
-export const TextArea = ({ className, ...restProps }: TextAreaProps) => {
+export function TextArea<T extends FieldValues>({
+  className,
+  register,
+  label,
+  required,
+  error,
+  ...restProps
+}: TextAreaProps<T>) {
   return (
-    <textarea className={`${styles.TextArea} ${className}`} {...restProps} />
+    <textarea
+      data-error={error}
+      className={`${styles.TextArea} ${className}`}
+      {...register(label, { required })}
+      {...restProps}
+    />
   );
-};
+}

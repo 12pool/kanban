@@ -78,6 +78,10 @@
   flex-shrink: 1;
 }
 
+.layout-generic[data-gap='xs'] {
+  gap: var(--layout-size-xs);
+}
+
 .layout-generic[data-gap='sm'] {
   gap: var(--layout-size-sm);
 }
