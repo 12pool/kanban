@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { CardStackIcon, PlusIcon } from '@radix-ui/react-icons';
+import { useNavigate } from '@tanstack/react-router';
 
+import { rootRoute } from 'routes/root-route';
 import { ProjectDialog } from 'entities/project-dialog/feature/ProjectDialog';
 import { UserAvatar } from 'entities/user-avatar/feature';
 
@@ -11,7 +13,13 @@ import { Text } from 'ui/text';
 import styles from './UserDropdownMenu.module.css';
 
 export const UserDropdownMenu = () => {
-  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const { insertProjectDialogOpen } = rootRoute.useSearch();
+
+  const [userMenuOpen, setUserMenuOpen] = useState(
+    insertProjectDialogOpen ?? false,
+  );
 
   const handleToggle = () => {
     setUserMenuOpen((prev) => !prev);
@@ -19,6 +27,12 @@ export const UserDropdownMenu = () => {
 
   const handleClose = () => {
     setUserMenuOpen(false);
+  };
+
+  const handleProjectDialogOpen = (open: boolean) => {
+    void navigate({
+      search: (prev) => ({ ...prev, insertProjectDialogOpen: open }),
+    });
   };
 
   return (
@@ -49,24 +63,20 @@ export const UserDropdownMenu = () => {
           <Text size="sm">placeholder@gmail.com</Text>
         </Flex>
         <DropdownMenu.Separator />
-        <Content />
+        <DropdownMenu.Item icon={<CardStackIcon />}>
+          Manage projects
+        </DropdownMenu.Item>
+        <ProjectDialog
+          defaultOpen={insertProjectDialogOpen}
+          onOpenChange={handleProjectDialogOpen}
+          triggerClassName={styles.ProjectDialogTrigger}
+          trigger={
+            <DropdownMenu.Item icon={<PlusIcon />}>
+              Add project
+            </DropdownMenu.Item>
+          }
+        />
       </DropdownMenu.Content>
     </DropdownMenu>
   );
 };
-
-function Content() {
-  return (
-    <>
-      <DropdownMenu.Item icon={<CardStackIcon />}>
-        Manage projects
-      </DropdownMenu.Item>
-      <ProjectDialog
-        triggerClassName={styles.ProjectDialogTrigger}
-        trigger={
-          <DropdownMenu.Item icon={<PlusIcon />}>Add project</DropdownMenu.Item>
-        }
-      />
-    </>
-  );
-}

@@ -5,7 +5,7 @@
   animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.DialogContent {
+.DialogBody {
   position: fixed;
   background-color: var(--neutral-color-400);
   border-radius: var(--border-radius-sm);
@@ -15,12 +15,17 @@
   width: 90vw;
   max-width: 35rem;
   max-height: 85vh;
-  padding: var(--layout-size-lg);
   animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.DialogContent:focus {
+.DialogBody:focus {
   outline: none;
+}
+
+.DialogHeader {
+  border-top-left-radius: var(--border-radius-sm);
+  border-top-right-radius: var(--border-radius-sm);
+  background: var(--primary-gradient);
 }
 
 .DialogTrigger {
@@ -31,14 +36,14 @@
 }
 
 .DialogClose {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 2rem;
+  height: 2rem;
   cursor: pointer;
   padding: var(--layout-size-xs);
 }
 
 .DialogClose:hover {
-  border: 2px solid var(--font-sub);
+  border: 2px solid var(--font-primary);
   border-radius: var(--border-radius-full);
 }
 

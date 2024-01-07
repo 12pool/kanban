@@ -1,8 +1,8 @@
 import { Router } from '@tanstack/react-router';
 
-import { homeRoute } from 'pages/home/route';
-import { rootRoute } from 'pages/root-route';
-import { notFoundRoute } from 'pages/404/route';
+import { homeRoute } from 'routes/home-route';
+import { rootRoute } from 'routes/root-route';
+import { notFoundRoute } from 'routes/404-route';
 
 import { queryClient } from './query-client';
 

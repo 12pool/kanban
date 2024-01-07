@@ -1,0 +1,17 @@
+.Input {
+  color: var(--font-primary);
+  background-color: transparent;
+  border: 1px solid var(--font-sub);
+  border-radius: var(--border-radius-sm);
+  padding-inline: var(--layout-size-sm);
+  padding-block: var(--layout-size-xs);
+  width: 100%;
+}
+
+.Input::placeholder {
+  color: var(--font-sub);
+}
+
+.Input[data-error='true'] {
+  border-color: var(--font-error);
+}

@@ -74,6 +74,10 @@
   color: var(--font-disabled);
 }
 
+.Text[data-color='sub'] {
+  color: var(--font-sub);
+}
+
 .Text[data-align='left'] {
   text-align: left;
 }

@@ -1,0 +1,52 @@
+.Button {
+  display: flex;
+  gap: var(--layout-size-xs);
+  align-items: center;
+  cursor: pointer;
+  border-radius: var(--border-radius-md);
+  border-color: transparent;
+  border-width: 1px;
+  border-style: solid;
+  background-color: transparent;
+  font-weight: var(--font-weight-medium);
+  transition: background-color 0.2s ease-in-out;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.Button[data-size='sm'] {
+  min-width: 3.75rem;
+  font-size: var(--font-size-sm);
+  padding: var(--layout-size-xs) var(--layout-size-sm);
+}
+
+.Button[data-size='md'] {
+  min-width: 4.375rem;
+  font-size: var(--font-size-md);
+  padding: var(--layout-size-xs) var(--layout-size-sm);
+}
+
+.Button[data-size='lg'] {
+  min-width: 5rem;
+  font-size: var(--font-size-lg);
+  padding: var(--layout-size-xs) var(--layout-size-md);
+}
+
+.Button[data-variant='primary'] {
+  background-color: var(--primary-color-100);
+  color: var(--primary-color-contrast);
+}
+
+.Button[data-variant='primary']:hover {
+  background-color: hsla(var(--primary-color-opacity) / 0.8);
+}
+
+.Button[data-variant='basic'] {
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color-100);
+}
+
+.Button[data-variant='basic']:hover {
+  background-color: hsla(var(--primary-color-opacity) / 0.25);
+}
