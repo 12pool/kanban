@@ -29,6 +29,8 @@
 
 body {
   --primary-color-100: hsl(252, 94%, 67%);
+  --primary-color-contrast: hsl(0, 0%, 100%);
+  --primary-color-opacity: 252 94% 67%;
   --primary-color-200: hsl(252, 100%, 73%);
   --primary-color-300: hsl(241, 32%, 52%);
 

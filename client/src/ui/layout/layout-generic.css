@@ -90,6 +90,10 @@
   gap: var(--layout-size-lg);
 }
 
+.layout-generic[data-gap='xl'] {
+  gap: var(--layout-size-xl);
+}
+
 .layout-generic[data-gap='none'] {
   gap: var(--layout-size-none);
 }
