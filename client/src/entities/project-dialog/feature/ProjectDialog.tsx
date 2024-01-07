@@ -6,9 +6,6 @@ type ProjectDialogProps = Pick<
   'trigger' | 'triggerClassName' | 'defaultOpen' | 'open' | 'onOpenChange'
 >;
 
-// TODO implement route masking fr project dialog open
-// https://tanstack.com/router/v1/docs/guide/route-masking
-
 export const ProjectDialog = ({
   trigger,
   triggerClassName,
