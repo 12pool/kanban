@@ -1,6 +1,8 @@
 import { type SubmitHandler, useForm } from 'react-hook-form';
 import { FormField } from 'shared/form-field/ui';
+
 import { AvatarPicker } from 'shared/avatar-picker/feature';
+
 import { Button } from 'ui/button';
 import { Input } from 'ui/input';
 import { Flex } from 'ui/layout';

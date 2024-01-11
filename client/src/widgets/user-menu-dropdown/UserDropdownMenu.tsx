@@ -3,7 +3,9 @@ import { CardStackIcon, PlusIcon } from '@radix-ui/react-icons';
 import { useNavigate } from '@tanstack/react-router';
 
 import { rootRoute } from 'routes/root-route';
+
 import { ProjectDialog } from 'entities/project-dialog/feature';
+
 import { UserAvatar } from 'entities/user-avatar/feature';
 
 import { DropdownMenu } from 'ui/dropdown-menu';
