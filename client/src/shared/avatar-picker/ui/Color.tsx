@@ -1,10 +1,10 @@
 import styles from './Color.module.css';
 
 declare module 'react' {
-  interface CSSProperties {
-    // eslint-disable-line
-    [key: `--${string}`]: string | number;
-  }
+  // prettier-ignore
+  interface CSSProperties { // eslint-disable-line
+        [key: `--${string}`]: string | number;
+    }
 }
 
 type ColorProps = {
