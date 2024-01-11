@@ -1,5 +1,8 @@
 import { type SubmitHandler, useForm } from 'react-hook-form';
 import { FormField } from 'shared/form-field/ui';
+
+import { AvatarPicker } from 'shared/avatar-picker/feature';
+
 import { Button } from 'ui/button';
 import { Input } from 'ui/input';
 import { Flex } from 'ui/layout';
@@ -41,6 +44,8 @@ export const ProjectForm = () => {
       <FormField label="Description" fieldId="description">
         <TextArea<Inputs> register={register} label="description" />
       </FormField>
+
+      <AvatarPicker />
 
       <Flex margin={['md', 'none', 'none', 'none']} justify="end">
         <Button>Create project</Button>

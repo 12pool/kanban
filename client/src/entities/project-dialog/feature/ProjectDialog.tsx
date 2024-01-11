@@ -1,5 +1,6 @@
 import { Dialog, type DialogProps } from 'ui/dialog';
-import { ProjectForm } from './ProjectForm';
+
+import { ProjectForm } from './ProjectForm.tsx';
 
 type ProjectDialogProps = Pick<
   DialogProps,

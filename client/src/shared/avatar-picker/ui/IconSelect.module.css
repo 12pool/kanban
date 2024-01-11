@@ -1,0 +1,7 @@
+.IconSelect {
+  cursor: pointer;
+}
+
+.IconSelect:hover {
+  color: var(--primary-color-100);
+}

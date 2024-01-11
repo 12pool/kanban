@@ -1,0 +1,13 @@
+.Color {
+  --avatar-picker-color: transparent;
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+  border-radius: var(--border-radius-full);
+  background-color: var(--avatar-picker-color);
+}
+
+.Color[data-selected='true'] {
+  outline: 2px solid var(--avatar-picker-color);
+  outline-offset: 2px;
+}
