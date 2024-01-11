@@ -1,2 +1,2 @@
 export { colors } from './colors';
-export { icons } from './icons';
+export { icons, iconsList } from './icons';

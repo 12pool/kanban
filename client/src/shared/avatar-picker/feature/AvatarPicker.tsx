@@ -18,7 +18,8 @@ import styles from './AvatarPicker.module.css';
 export const AvatarPicker = () => {
   const [Icon, setIcon] = useState<
     ForwardRefExoticComponent<IconProps & RefAttributes<SVGSVGElement>>
-  >(icons[0]);
+  >(icons.AvatarIcon);
+
   const [color, setColor] = useState<string>(colors[0]);
   return (
     <Flex className={styles.AvatarPicker} gap="lg" align="center">
