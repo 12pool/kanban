@@ -51,6 +51,7 @@ export const DropdownMenu = ({
             handleDropdownToggle();
           }
         }}
+        data-testid="dropdown-menu-trigger"
       >
         {trigger}
       </RadixDropdownMenu.Trigger>
