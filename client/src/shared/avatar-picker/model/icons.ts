@@ -18,9 +18,26 @@ import {
   CommitIcon,
 } from '@radix-ui/react-icons';
 
-export const icons: ForwardRefExoticComponent<
-  IconProps & RefAttributes<SVGSVGElement>
->[] = [
+export type Icons =
+  | 'AvatarIcon'
+  | 'AccessibilityIcon'
+  | 'ActivityLogIcon'
+  | 'ArchiveIcon'
+  | 'CardStackIcon'
+  | 'BarChartIcon'
+  | 'ClipboardIcon'
+  | 'CookieIcon'
+  | 'DiscIcon'
+  | 'BellIcon'
+  | 'BackpackIcon'
+  | 'BadgeIcon'
+  | 'Cross1Icon'
+  | 'CommitIcon';
+
+export const icons: Record<
+  Icons,
+  ForwardRefExoticComponent<IconProps & RefAttributes<SVGSVGElement>>
+> = {
   AvatarIcon,
   AccessibilityIcon,
   ActivityLogIcon,
@@ -35,4 +52,6 @@ export const icons: ForwardRefExoticComponent<
   BadgeIcon,
   Cross1Icon,
   CommitIcon,
-];
+};
+
+export const iconsList = Object.keys(icons) as Icons[];
