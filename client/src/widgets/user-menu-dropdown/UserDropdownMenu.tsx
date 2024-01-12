@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { CardStackIcon, PlusIcon } from '@radix-ui/react-icons';
 import { useNavigate } from '@tanstack/react-router';
 
-import { rootRoute } from 'routes/root-route';
+import { Route as rootRoute } from 'routes/__root.ts';
 
 import { ProjectDialog } from 'entities/project-dialog/feature';
 

@@ -9,31 +9,31 @@ import { ColorPicker } from './ColorPicker.tsx';
 import styles from './AvatarPicker.module.css';
 
 type AvatarPickerProps = {
-    projectAvatar: {
-        icon: Icons;
-        color: string;
-    }
+  projectAvatar: {
+    icon: Icons;
+    color: string;
+  };
 
-    setProjectAvatar: (projectAvatar: {
-        icon: Icons;
-        color: string;
-    }) => void;
-}
+  setProjectAvatar: (projectAvatar: { icon: Icons; color: string }) => void;
+};
 
-export const AvatarPicker = ({setProjectAvatar, projectAvatar}: AvatarPickerProps) => {
-    const setColor = (color: string) => {
-        setProjectAvatar({
-        ...projectAvatar,
-        color,
-        });
-    };
+export const AvatarPicker = ({
+  setProjectAvatar,
+  projectAvatar,
+}: AvatarPickerProps) => {
+  const setColor = (color: string) => {
+    setProjectAvatar({
+      ...projectAvatar,
+      color,
+    });
+  };
 
-    const setIcon = (icon: Icons) => {
-        setProjectAvatar({
-        ...projectAvatar,
-        icon,
-        });
-    };
+  const setIcon = (icon: Icons) => {
+    setProjectAvatar({
+      ...projectAvatar,
+      icon,
+    });
+  };
 
   return (
     <Flex className={styles.AvatarPicker} gap="lg" align="center">

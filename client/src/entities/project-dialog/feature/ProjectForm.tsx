@@ -7,8 +7,8 @@ import { Flex } from 'ui/layout';
 import { TextArea } from 'ui/text-area';
 
 import { FormField } from 'shared/form-field/ui';
-import {colors, type Icons} from 'shared/avatar-picker/model';
-import {AvatarPicker} from "shared/avatar-picker/feature";
+import { colors, type Icons } from 'shared/avatar-picker/model';
+import { AvatarPicker } from 'shared/avatar-picker/feature';
 
 import styles from './ProjectForm.module.css';
 
@@ -18,13 +18,13 @@ type Inputs = {
 };
 
 export const ProjectForm = () => {
-    const [projectAvatar, setProjectAvatar] = useState<{
-        icon: Icons;
-        color: string;
-    }>({
-        icon: 'AvatarIcon',
-        color: colors.blue,
-    });
+  const [projectAvatar, setProjectAvatar] = useState<{
+    icon: Icons;
+    color: string;
+  }>({
+    icon: 'AvatarIcon',
+    color: colors.blue,
+  });
 
   const {
     register,
@@ -56,7 +56,10 @@ export const ProjectForm = () => {
         <TextArea<Inputs> register={register} label="description" />
       </FormField>
 
-      <AvatarPicker projectAvatar={projectAvatar} setProjectAvatar={setProjectAvatar} />
+      <AvatarPicker
+        projectAvatar={projectAvatar}
+        setProjectAvatar={setProjectAvatar}
+      />
 
       <Flex margin={['md', 'none', 'none', 'none']} justify="end">
         <Button>Create project</Button>

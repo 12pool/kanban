@@ -1,13 +1,11 @@
-import { type Icons, icons, iconsList} from 'shared/avatar-picker/model';
+import { type Icons, icons, iconsList } from 'shared/avatar-picker/model';
 import { IconSelect } from 'shared/avatar-picker/ui/IconSelect.tsx';
 import { Flex } from 'ui/layout';
 
 import styles from './IconPicker.module.css';
 
 type IconPickerProps = {
-  onSelect: (
-    icon: Icons,
-  ) => void;
+  onSelect: (icon: Icons) => void;
 };
 
 export const IconPicker = ({ onSelect }: IconPickerProps) => {

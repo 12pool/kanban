@@ -11,7 +11,7 @@ const layoutSearchSchema = z.object({
 
 type LayoutSearch = z.infer<typeof layoutSearchSchema>;
 
-export const rootRoute = rootRouteWithContext<{
+export const Route = rootRouteWithContext<{
   queryClient: QueryClient;
 }>()({
   component: RootComponent,
