@@ -7,3 +7,4 @@ vite.config.ts
 public/
 vite-env.d.ts
 scripts/
+routeTree.gen.ts
