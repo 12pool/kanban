@@ -7,3 +7,5 @@ vite.config.ts
 public/
 vite-env.d.ts
 scripts/
+src/tests/
+*.test.ts

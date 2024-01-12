@@ -55,18 +55,34 @@ export const UserDropdownMenu = () => {
   );
 };
 
+export const menuItems = [
+  {
+    label: 'Manage projects',
+    component: DropdownMenu.Item,
+    componentProps: { icon: <CardStackIcon />, children: 'Manage projects' },
+  },
+  {
+    label: 'Add project',
+    component: ProjectDialog,
+    componentProps: {
+      icon: <PlusIcon />,
+      triggerClassName: styles.ProjectDialogTrigger,
+      trigger: <DropdownMenu.Item icon={<PlusIcon />}>Add project</DropdownMenu.Item>,
+    },
+  },
+];
+
 function Content() {
   return (
     <>
-      <DropdownMenu.Item icon={<CardStackIcon />}>
-        Manage projects
-      </DropdownMenu.Item>
-      <ProjectDialog
-        triggerClassName={styles.ProjectDialogTrigger}
-        trigger={
-          <DropdownMenu.Item icon={<PlusIcon />}>Add project</DropdownMenu.Item>
-        }
-      />
+      {menuItems.map((item, index) => {
+        const Component = item.component;
+        return (
+          <Component key={index} {...item.componentProps}>
+            {item.label}
+          </Component>
+        );
+      })}
     </>
   );
 }

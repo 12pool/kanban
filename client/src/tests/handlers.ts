@@ -11,5 +11,3 @@ export const handlers = [
     },
   ),
 ];
-
-//this is example how to write mockup api

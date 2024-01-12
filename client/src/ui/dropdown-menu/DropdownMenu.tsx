@@ -45,7 +45,7 @@ export const DropdownMenu = ({
     >
       <RadixDropdownMenu.Trigger
         className={styles.DropdownMenuTrigger}
-        onClick={handleDropdownToggle}
+        onPointerDown={handleDropdownToggle}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
             handleDropdownToggle();
@@ -82,6 +82,7 @@ DropdownMenu.Content = function DropdownMenuContent({
 }: RadixDropdownMenu.DropdownMenuContentProps) {
   return (
     <RadixDropdownMenu.Content
+      data-testid="dropdown-menu-content"
       className={`${styles.DropdownMenuContent} ${className}`}
       {...props}
     >
