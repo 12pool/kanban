@@ -1,30 +1,44 @@
-import {
-  type ForwardRefExoticComponent,
-  type RefAttributes,
-  useState,
-} from 'react';
-
 import { Flex } from 'ui/layout';
-import type { IconProps } from '@radix-ui/react-icons/dist/types';
 
 import { Avatar } from 'shared/avatar-picker/ui/Avatar.tsx';
-import { colors, icons } from 'shared/avatar-picker/model';
+import { icons, type Icons } from 'shared/avatar-picker/model';
 
 import { IconPicker } from './IconPicker.tsx';
 import { ColorPicker } from './ColorPicker.tsx';
 
 import styles from './AvatarPicker.module.css';
 
-export const AvatarPicker = () => {
-  const [Icon, setIcon] = useState<
-    ForwardRefExoticComponent<IconProps & RefAttributes<SVGSVGElement>>
-  >(icons.AvatarIcon);
+type AvatarPickerProps = {
+    projectAvatar: {
+        icon: Icons;
+        color: string;
+    }
 
-  const [color, setColor] = useState<string>(colors[0]);
+    setProjectAvatar: (projectAvatar: {
+        icon: Icons;
+        color: string;
+    }) => void;
+}
+
+export const AvatarPicker = ({setProjectAvatar, projectAvatar}: AvatarPickerProps) => {
+    const setColor = (color: string) => {
+        setProjectAvatar({
+        ...projectAvatar,
+        color,
+        });
+    };
+
+    const setIcon = (icon: Icons) => {
+        setProjectAvatar({
+        ...projectAvatar,
+        icon,
+        });
+    };
+
   return (
     <Flex className={styles.AvatarPicker} gap="lg" align="center">
-      <Avatar Icon={Icon} color={color} />
-      <ColorPicker selectedColor={color} onSelect={setColor} />
+      <Avatar Icon={icons[projectAvatar.icon]} color={projectAvatar.color} />
+      <ColorPicker selectedColor={projectAvatar.color} onSelect={setColor} />
       <IconPicker onSelect={setIcon} />
     </Flex>
   );

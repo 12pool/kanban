@@ -18,7 +18,7 @@ import {
   CommitIcon,
 } from '@radix-ui/react-icons';
 
-type Icons =
+export type Icons =
   | 'AvatarIcon'
   | 'AccessibilityIcon'
   | 'ActivityLogIcon'

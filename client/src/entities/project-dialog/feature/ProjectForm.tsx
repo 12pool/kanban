@@ -1,12 +1,14 @@
+import { useState } from 'react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
-import { FormField } from 'shared/form-field/ui';
-
-import { AvatarPicker } from 'shared/avatar-picker/feature';
 
 import { Button } from 'ui/button';
 import { Input } from 'ui/input';
 import { Flex } from 'ui/layout';
 import { TextArea } from 'ui/text-area';
+
+import { FormField } from 'shared/form-field/ui';
+import {colors, type Icons} from 'shared/avatar-picker/model';
+import {AvatarPicker} from "shared/avatar-picker/feature";
 
 import styles from './ProjectForm.module.css';
 
@@ -16,6 +18,14 @@ type Inputs = {
 };
 
 export const ProjectForm = () => {
+    const [projectAvatar, setProjectAvatar] = useState<{
+        icon: Icons;
+        color: string;
+    }>({
+        icon: 'AvatarIcon',
+        color: colors.blue,
+    });
+
   const {
     register,
     handleSubmit,
@@ -23,6 +33,7 @@ export const ProjectForm = () => {
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     alert(JSON.stringify(data));
+    alert(JSON.stringify(projectAvatar));
   };
 
   return (
@@ -45,7 +56,7 @@ export const ProjectForm = () => {
         <TextArea<Inputs> register={register} label="description" />
       </FormField>
 
-      <AvatarPicker />
+      <AvatarPicker projectAvatar={projectAvatar} setProjectAvatar={setProjectAvatar} />
 
       <Flex margin={['md', 'none', 'none', 'none']} justify="end">
         <Button>Create project</Button>
