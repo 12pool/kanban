@@ -7,8 +7,11 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
+
 import { ProjectService } from './project.service';
+
 import { CreateProjectDTO } from './dtos/create-project.dto';
+import { UpdateProjectDTO } from './dtos/update-project.dto';
 
 @Controller('project')
 export class ProjectController {
@@ -32,7 +35,7 @@ export class ProjectController {
   @Put(':id')
   async update(
     @Param('id') id: string,
-    @Body() updateProjectDTO: CreateProjectDTO,
+    @Body() updateProjectDTO: UpdateProjectDTO,
   ) {
     return await this.projectService.update(id, updateProjectDTO);
   }
