@@ -59,7 +59,11 @@ export const menuItems = [
   {
     label: 'Manage projects',
     component: DropdownMenu.Item,
-    componentProps: { icon: <CardStackIcon />, children: 'Manage projects' },
+    componentProps: {
+      icon: <CardStackIcon />,
+      children: 'Manage projects',
+      'data-testid': 'manage-projects',
+    },
   },
   {
     label: 'Add project',
@@ -67,7 +71,11 @@ export const menuItems = [
     componentProps: {
       icon: <PlusIcon />,
       triggerClassName: styles.ProjectDialogTrigger,
-      trigger: <DropdownMenu.Item icon={<PlusIcon />}>Add project</DropdownMenu.Item>,
+      trigger: (
+        <DropdownMenu.Item icon={<PlusIcon />} data-testid="add-project">
+          Add project
+        </DropdownMenu.Item>
+      ),
     },
   },
 ];

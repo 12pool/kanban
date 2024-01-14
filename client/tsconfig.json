@@ -28,13 +28,19 @@
       "widgets/*": ["src/widgets/*"],
       "entities/*": ["src/entities/*"],
       "shared/*": ["src/shared/*"],
-      "ui/*": ["src/ui/*"]
+      "ui/*": ["src/ui/*"],
+      "tests/*": ["src/tests/*"]
     },
 
     //for globals
     "types": ["vitest/globals"]
   },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx", "scripts", ".storybook"],
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "scripts",
+    ".storybook",
+  ],
   "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -21,6 +21,7 @@ export default defineConfig({
       entities: '/src/entities',
       shared: '/src/shared',
       ui: '/src/ui',
+      tests: '/src/tests',
     },
   },
   test: {
@@ -28,5 +29,6 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './src/tests/setup.ts',
     css: true,
+    include: ['./src/**/*.test.tsx'],
   },
 });
