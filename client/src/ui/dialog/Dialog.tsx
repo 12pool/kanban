@@ -1,10 +1,10 @@
 import * as RadixDialog from '@radix-ui/react-dialog';
 import { Cross1Icon } from '@radix-ui/react-icons';
 
-import styles from './Dialog.module.css';
-
 import { Box, Flex } from 'ui/layout';
 import { Text } from 'ui/text';
+
+import styles from './Dialog.module.css';
 
 export type DialogProps = {
   defaultOpen?: boolean;
@@ -54,10 +54,10 @@ Dialog.Content = function DialogContent({
 }: RadixDialog.DialogContentProps & { description?: string }) {
   return (
     <RadixDialog.Content
-      className={`${styles.DialogContent} ${className}`}
+      className={`${styles.DialogBody} ${className}`}
       {...props}
     >
-      <Box padding={['none', 'none', 'md', 'none']}>
+      <Box className={styles.DialogHeader} padding="lg">
         <Flex justify="between" align="center">
           <RadixDialog.Title>
             <Text size="lg" weight="medium">
@@ -79,7 +79,7 @@ Dialog.Content = function DialogContent({
         )}
       </Box>
 
-      {children}
+      <Box padding="lg">{children}</Box>
     </RadixDialog.Content>
   );
 };

@@ -15,7 +15,8 @@ export type TextProps = {
     | 'warning'
     | 'error'
     | 'accent'
-    | 'disabled';
+    | 'disabled'
+    | 'sub';
   align?: 'left' | 'center' | 'right';
 } & React.HTMLAttributes<HTMLDivElement>;
 

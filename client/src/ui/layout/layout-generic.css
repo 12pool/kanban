@@ -78,6 +78,10 @@
   flex-shrink: 1;
 }
 
+.layout-generic[data-gap='xs'] {
+  gap: var(--layout-size-xs);
+}
+
 .layout-generic[data-gap='sm'] {
   gap: var(--layout-size-sm);
 }
@@ -88,6 +92,10 @@
 
 .layout-generic[data-gap='lg'] {
   gap: var(--layout-size-lg);
+}
+
+.layout-generic[data-gap='xl'] {
+  gap: var(--layout-size-xl);
 }
 
 .layout-generic[data-gap='none'] {

@@ -17,7 +17,7 @@ module.exports = {
       severity: 'error',
       from: { path: '^src/widgets' },
       to: {
-        path: '^src/(?!entities|ui|shared|widgets)',
+        path: '^src/(?!entities|ui|shared|widgets|routes)',
         pathNot: '^src/widgets/[^/]+$',
       },
     },
@@ -32,10 +32,10 @@ module.exports = {
     {
       name: 'layer-violation for app',
       comment:
-        'Code in the app layer is not allowed to import code from any layer other than the pages layer and itself.',
+        'Code in the app layer is not allowed to import code from any layer other than the pages, routes layer and itself.',
       severity: 'error',
       from: { path: '^src/app' },
-      to: { path: '^(?!src/pages|^src/app)' },
+      to: { path: '^(?!src/pages|^src/app|^src/routes|src/routeTree.gen.ts)' },
     },
 
     // Segment rules

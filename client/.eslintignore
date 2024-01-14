@@ -9,3 +9,4 @@ vite-env.d.ts
 scripts/
 src/tests/
 *.test.ts
+routeTree.gen.ts

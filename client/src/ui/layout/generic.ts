@@ -1,4 +1,4 @@
-export type Size = 'sm' | 'md' | 'lg' | 'xl' | 'none';
+export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'none';
 
 export const SizeOptions: Size[] = ['none', 'sm', 'md', 'lg', 'xl'];
 
@@ -18,6 +18,8 @@ export type GenericProps = {
 
 const sizeToCss = (type: ElementType, size: Size) => {
   switch (size) {
+    case 'xs':
+      return `var(--${type}-size-xs)`;
     case 'sm':
       return `var(--${type}-size-sm)`;
     case 'md':

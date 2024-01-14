@@ -5,7 +5,7 @@ import { CheckIcon, DotFilledIcon } from '@radix-ui/react-icons';
 import styles from './DropdownMenu.module.css';
 
 type DropdownMenuContentProps = {
-  open: boolean;
+  open?: boolean;
   defaultOpen?: boolean;
   modal?: boolean;
   handleDropdownToggle: () => void;
