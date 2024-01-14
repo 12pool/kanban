@@ -35,16 +35,6 @@
     //for globals
     "types": ["vitest/globals"]
   },
-  "include": [
-    "./src/**/*.ts",
-    "./src/**/*.tsx",
-    "scripts",
-    ".storybook",
-  ],
-  "exclude": ["node_modules"],
-      "routes/*": ["src/routes/*"]
-    }
-  },
   "include": ["./src/**/*.ts", "./src/**/*.tsx", "scripts", ".storybook"],
   "exclude": ["node_modules", "./src/routeTree.gen.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
