@@ -55,7 +55,12 @@ export const ProjectForm = () => {
       </FormField>
 
       <FormField label="Description" fieldId="description">
-        <TextArea<Inputs> register={register} label="description" />
+        <TextArea<Inputs>
+          reactHookForm={{
+            label: 'description',
+            register,
+          }}
+        />
       </FormField>
 
       <AvatarPicker
