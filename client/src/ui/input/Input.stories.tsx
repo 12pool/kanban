@@ -9,6 +9,10 @@ const meta = {
   title: 'Example/Input',
   component: Input,
   tags: ['autodocs'],
+  argTypes: {
+    register: { table: { disable: true } },
+    label: { table: { disable: true } },
+  },
 } as Meta<typeof Input>;
 
 export default meta;
@@ -21,6 +25,9 @@ export const Primary: Story = {
     className: '',
     placeholder: 'Placeholder',
     value: '',
+    error: false,
   },
-  render: (args) => <Input {...args} />,
+  render: (args) => {
+    return <Input {...args} />;
+  },
 };

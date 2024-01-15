@@ -46,8 +46,10 @@ export const ProjectForm = () => {
       >
         <Input<Inputs>
           error={!!errors.name}
-          register={register}
-          label="name"
+          reactHookForm={{
+            label: 'name',
+            register,
+          }}
           required
         />
       </FormField>
