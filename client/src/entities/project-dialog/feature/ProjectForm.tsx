@@ -1,78 +1,50 @@
 import { useState } from 'react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button } from 'ui/button';
-import { Input } from 'ui/input';
-import { Flex } from 'ui/layout';
-import { TextArea } from 'ui/text-area';
+import { colors } from 'shared/avatar-picker/model';
 
-import { FormField } from 'shared/form-field/ui';
-import { colors, type Icons } from 'shared/avatar-picker/model';
-import { AvatarPicker } from 'shared/avatar-picker/feature';
-
-import styles from './ProjectForm.module.css';
-
-type Inputs = {
-  name: string;
-  description: string;
-};
+import { useCreateProject } from 'entities/project-dialog/api';
+import type { Avatar } from 'entities/project-dialog/model';
+import { ProjectFormRenderer, type Inputs } from 'entities/project-dialog/ui';
 
 export const ProjectForm = () => {
-  const [projectAvatar, setProjectAvatar] = useState<{
-    icon: Icons;
-    color: string;
-  }>({
+  const [projectAvatar, setProjectAvatar] = useState<Avatar>({
     icon: 'AvatarIcon',
     color: colors.blue,
   });
+
+  const { mutate: createProject, isSuccess, isPending } = useCreateProject();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
+
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    alert(JSON.stringify(data));
-    alert(JSON.stringify(projectAvatar));
+    createProject({
+      ...data,
+      ...projectAvatar,
+    });
   };
 
+  if (isSuccess) {
+    alert('Project created successfully');
+  }
+
+  if (isPending) {
+    return <div>Creating project...</div>;
+  }
+
   return (
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
-    <form className={styles.Form} onSubmit={handleSubmit(onSubmit)}>
-      <FormField
-        label="Name"
-        fieldId="name"
-        error={errors.name && 'This field is required'}
-      >
-        <Input<Inputs>
-          error={!!errors.name}
-          reactHookForm={{
-            label: 'name',
-            register,
-          }}
-          required
-        />
-      </FormField>
-
-      <FormField label="Description" fieldId="description">
-        <TextArea<Inputs>
-          reactHookForm={{
-            label: 'description',
-            register,
-          }}
-        />
-      </FormField>
-
-      <FormField label='Avatar' fieldId='Avatar'>
-        <AvatarPicker
-          projectAvatar={projectAvatar}
-          setProjectAvatar={setProjectAvatar}
-        />
-      </FormField>
-
-      <Flex margin={['md', 'none', 'none', 'none']} justify="end">
-        <Button>Create project</Button>
-      </Flex>
+    // eslint-disable-next-line
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <ProjectFormRenderer
+        errors={errors}
+        projectAvatar={projectAvatar}
+        setProjectAvatar={setProjectAvatar}
+        register={register}
+      />
     </form>
   );
 };
