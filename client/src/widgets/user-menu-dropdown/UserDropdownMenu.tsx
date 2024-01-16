@@ -65,7 +65,10 @@ export const UserDropdownMenu = () => {
           <Text size="sm">placeholder@gmail.com</Text>
         </Flex>
         <DropdownMenu.Separator />
-        <DropdownMenu.Item icon={<CardStackIcon />}>
+        <DropdownMenu.Item
+          icon={<CardStackIcon />}
+          data-testid="manage-projects"
+        >
           Manage projects
         </DropdownMenu.Item>
         <ProjectDialog
@@ -73,7 +76,7 @@ export const UserDropdownMenu = () => {
           onOpenChange={handleProjectDialogOpen}
           triggerClassName={styles.ProjectDialogTrigger}
           trigger={
-            <DropdownMenu.Item icon={<PlusIcon />}>
+            <DropdownMenu.Item icon={<PlusIcon />} data-testid="add-project">
               Add project
             </DropdownMenu.Item>
           }
@@ -82,43 +85,3 @@ export const UserDropdownMenu = () => {
     </DropdownMenu>
   );
 };
-
-export const menuItems = [
-  {
-    label: 'Manage projects',
-    component: DropdownMenu.Item,
-    componentProps: {
-      icon: <CardStackIcon />,
-      children: 'Manage projects',
-      'data-testid': 'manage-projects',
-    },
-  },
-  {
-    label: 'Add project',
-    component: ProjectDialog,
-    componentProps: {
-      icon: <PlusIcon />,
-      triggerClassName: styles.ProjectDialogTrigger,
-      trigger: (
-        <DropdownMenu.Item icon={<PlusIcon />} data-testid="add-project">
-          Add project
-        </DropdownMenu.Item>
-      ),
-    },
-  },
-];
-
-function Content() {
-  return (
-    <>
-      {menuItems.map((item, index) => {
-        const Component = item.component;
-        return (
-          <Component key={index} {...item.componentProps}>
-            {item.label}
-          </Component>
-        );
-      })}
-    </>
-  );
-}

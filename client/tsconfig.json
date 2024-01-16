@@ -29,7 +29,8 @@
       "entities/*": ["src/entities/*"],
       "shared/*": ["src/shared/*"],
       "ui/*": ["src/ui/*"],
-      "tests/*": ["src/tests/*"]
+      "tests/*": ["src/tests/*"],
+      "routes/*": ["src/routes/*"]
     },
 
     //for globals

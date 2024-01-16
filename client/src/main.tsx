@@ -18,8 +18,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   </React.StrictMode>,
 );
 
-export function App () {
-  return (
-    <RouterProvider router={router} />
-  )
+export function App() {
+  return <RouterProvider router={router} />;
 }
