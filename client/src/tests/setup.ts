@@ -10,9 +10,6 @@ import {
   Route,
   createMemoryHistory,
 } from '@tanstack/react-router';
-import { routeTree } from '../routeTree.gen.ts';
-import { Route as NotFound } from '../routes/_not-found.tsx';
-import { queryClient } from './query-client.ts';
 
 afterEach(() => {
   cleanup();
