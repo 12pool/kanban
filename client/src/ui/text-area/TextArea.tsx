@@ -4,19 +4,32 @@ import styles from './TextArea.module.css';
 
 type TextAreaProps<T extends FieldValues> =
   React.InputHTMLAttributes<HTMLTextAreaElement> & {
-    label: Path<T>;
-    register: UseFormRegister<T>;
+    reactHookForm?: {
+      label: Path<T>;
+      register: UseFormRegister<T>;
+    };
     error?: boolean;
   };
 
 export function TextArea<T extends FieldValues>({
   className,
-  register,
-  label,
+  reactHookForm,
   required,
   error,
   ...restProps
 }: TextAreaProps<T>) {
+  if (reactHookForm === undefined) {
+    return (
+      <textarea
+        data-error={error}
+        className={`${styles.TextArea} ${className}`}
+        {...restProps}
+      />
+    );
+  }
+
+  const { label, register } = reactHookForm;
+
   return (
     <textarea
       data-error={error}
