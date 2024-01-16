@@ -63,10 +63,12 @@ export const ProjectForm = () => {
         />
       </FormField>
 
-      <AvatarPicker
-        projectAvatar={projectAvatar}
-        setProjectAvatar={setProjectAvatar}
-      />
+      <FormField label='Avatar' fieldId='Avatar'>
+        <AvatarPicker
+          projectAvatar={projectAvatar}
+          setProjectAvatar={setProjectAvatar}
+        />
+      </FormField>
 
       <Flex margin={['md', 'none', 'none', 'none']} justify="end">
         <Button>Create project</Button>
