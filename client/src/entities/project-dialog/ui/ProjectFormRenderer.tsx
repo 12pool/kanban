@@ -5,12 +5,10 @@ import { Input } from 'ui/input';
 import { Flex } from 'ui/layout';
 import { TextArea } from 'ui/text-area';
 
-import { FormField } from 'shared/form-field/ui';
+import { FormButtons, FormField } from 'shared/form/ui';
 import { AvatarPicker } from 'shared/avatar-picker/feature';
 
 import type { Avatar, Project } from 'entities/project-dialog/model';
-
-import styles from './ProjectFormRenderer.module.css';
 
 export type Inputs = Pick<Project, 'description' | 'name'>;
 
@@ -60,9 +58,9 @@ export function ProjectFormRenderer({
         />
       </FormField>
 
-      <Flex className={styles.Button} margin={['md', 'none', 'none', 'none']} justify="end">
+      <FormButtons>
         <Button>Create project</Button>
-      </Flex>
+      </FormButtons>
     </Flex>
   );
 }
