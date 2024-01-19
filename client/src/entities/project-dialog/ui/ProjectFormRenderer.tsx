@@ -10,6 +10,8 @@ import { AvatarPicker } from 'shared/avatar-picker/feature';
 
 import type { Avatar, Project } from 'entities/project-dialog/model';
 
+import styles from './ProjectFormRenderer.module.css';
+
 export type Inputs = Pick<Project, 'description' | 'name'>;
 
 type ProjectFormProps = {
@@ -58,7 +60,7 @@ export function ProjectFormRenderer({
         />
       </FormField>
 
-      <Flex margin={['md', 'none', 'none', 'none']} justify="end">
+      <Flex className={styles.Button} margin={['md', 'none', 'none', 'none']} justify="end">
         <Button>Create project</Button>
       </Flex>
     </Flex>
