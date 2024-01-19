@@ -1,12 +1,24 @@
 import { useMutation } from '@tanstack/react-query';
-import { type CreateProjectDTO } from 'entities/project-dialog/model';
+import type { AxiosPromise } from 'axios';
+
+import {
+  type Project,
+  type CreateProjectDTO,
+} from 'entities/project-dialog/model';
 
 import { createProject } from './create-project';
 
-export const useCreateProject = () => {
+type UseCreateProject = {
+  onSuccess?: (project: Project) => Promise<void>;
+};
+
+export const useCreateProject = ({ onSuccess }: UseCreateProject) => {
   return useMutation({
     mutationFn: (project: CreateProjectDTO) => {
-      return createProject(project);
+      return createProject(project) as AxiosPromise<Project>;
+    },
+    onSuccess: async (response) => {
+      await onSuccess?.(response.data);
     },
   });
 };

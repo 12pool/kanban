@@ -19,6 +19,10 @@ export const UserDropdownMenu = () => {
 
   const { insertProjectDialogOpen } = rootRoute.useSearch();
 
+  const [projectCreationDialogOpen, setProjectCreationDialogOpen] = useState(
+    insertProjectDialogOpen ?? false,
+  );
+
   const [userMenuOpen, setUserMenuOpen] = useState(
     insertProjectDialogOpen ?? false,
   );
@@ -31,9 +35,17 @@ export const UserDropdownMenu = () => {
     setUserMenuOpen(false);
   };
 
-  const handleProjectDialogOpen = (open: boolean) => {
+  const closeProjectCreationDialog = () => {
+    setProjectCreationDialogOpen(false);
     void navigate({
-      search: (prev) => ({ ...prev, insertProjectDialogOpen: open }),
+      search: (prev) => ({ ...prev, insertProjectDialogOpen: false }),
+    });
+  };
+
+  const openProjectCreationDialog = () => {
+    setProjectCreationDialogOpen(true);
+    void navigate({
+      search: (prev) => ({ ...prev, insertProjectDialogOpen: true }),
     });
   };
 
@@ -70,10 +82,14 @@ export const UserDropdownMenu = () => {
         </DropdownMenu.Item>
         <ProjectDialog
           defaultOpen={insertProjectDialogOpen}
-          onOpenChange={handleProjectDialogOpen}
+          open={projectCreationDialogOpen}
+          closeDialog={closeProjectCreationDialog}
           triggerClassName={styles.ProjectDialogTrigger}
           trigger={
-            <DropdownMenu.Item icon={<PlusIcon />}>
+            <DropdownMenu.Item
+              icon={<PlusIcon />}
+              onPointerDown={openProjectCreationDialog}
+            >
               Add project
             </DropdownMenu.Item>
           }

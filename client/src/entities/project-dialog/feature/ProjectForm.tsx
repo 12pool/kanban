@@ -1,19 +1,25 @@
 import { useState } from 'react';
+import { useNavigate } from '@tanstack/react-router';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 
 import { colors } from 'shared/avatar-picker/model';
+import { toast } from 'shared/toaster';
 
 import { useCreateProject } from 'entities/project-dialog/api';
-import type { Avatar } from 'entities/project-dialog/model';
+import type { Avatar, Project } from 'entities/project-dialog/model';
 import { ProjectFormRenderer, type Inputs } from 'entities/project-dialog/ui';
 
-export const ProjectForm = () => {
+type ProjectFormProps = {
+  closeDialog: () => void;
+};
+
+export const ProjectForm = ({ closeDialog }: ProjectFormProps) => {
+  const navigate = useNavigate();
+
   const [projectAvatar, setProjectAvatar] = useState<Avatar>({
     icon: 'AvatarIcon',
     color: colors.blue,
   });
-
-  const { mutate: createProject, isSuccess, isPending } = useCreateProject();
 
   const {
     register,
@@ -28,9 +34,20 @@ export const ProjectForm = () => {
     });
   };
 
-  if (isSuccess) {
-    alert('Project created successfully');
-  }
+  const onSuccess = async (data: Project) => {
+    toast.success('Project created successfully');
+    closeDialog();
+
+    await navigate({
+      to: `/project/$projectId`,
+      params: { projectId: data.id },
+      search: (prev) => ({ ...prev, insertProjectDialogOpen: false }),
+    });
+  };
+
+  const { mutate: createProject, isPending } = useCreateProject({
+    onSuccess,
+  });
 
   if (isPending) {
     return <div>Creating project...</div>;

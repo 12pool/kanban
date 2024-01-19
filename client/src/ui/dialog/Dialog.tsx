@@ -50,8 +50,12 @@ Dialog.Content = function DialogContent({
   className,
   title,
   description,
+  closeDialog,
   ...props
-}: RadixDialog.DialogContentProps & { description?: string }) {
+}: RadixDialog.DialogContentProps & {
+  description?: string;
+  closeDialog?: () => void;
+}) {
   return (
     <RadixDialog.Content
       className={`${styles.DialogBody} ${className}`}
@@ -64,7 +68,11 @@ Dialog.Content = function DialogContent({
               {title}
             </Text>
           </RadixDialog.Title>
-          <RadixDialog.Close asChild aria-label="Close">
+          <RadixDialog.Close
+            asChild
+            aria-label="Close"
+            onPointerDown={closeDialog}
+          >
             <Cross1Icon className={styles.DialogClose} />
           </RadixDialog.Close>
         </Flex>
