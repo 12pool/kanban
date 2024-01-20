@@ -1,11 +1,13 @@
+import { useMemo } from 'react';
 import type { FieldErrors, UseFormRegister } from 'react-hook-form';
 
 import { Button } from 'ui/button';
 import { Input } from 'ui/input';
 import { Flex } from 'ui/layout';
 import { TextArea } from 'ui/text-area';
+import { Loader } from 'ui/loader';
 
-import { FormButtons, FormField } from 'shared/form/ui';
+import { FormBody, FormField } from 'shared/form/ui';
 import { AvatarPicker } from 'shared/avatar-picker/feature';
 
 import type { Avatar, Project } from 'entities/project-dialog/model';
@@ -17,6 +19,7 @@ type ProjectFormProps = {
   projectAvatar: Avatar;
   setProjectAvatar: React.Dispatch<React.SetStateAction<Avatar>>;
   register: UseFormRegister<Inputs>;
+  isPending?: boolean;
 };
 
 export function ProjectFormRenderer({
@@ -24,9 +27,25 @@ export function ProjectFormRenderer({
   projectAvatar,
   setProjectAvatar,
   register,
+  isPending,
 }: ProjectFormProps) {
+  const buttons = useMemo(() => {
+    if (isPending) {
+      return (
+        <Button>
+          <Flex gap="md" align="center">
+            <Loader />
+            Creating
+          </Flex>
+        </Button>
+      );
+    }
+
+    return <Button>Create Project</Button>;
+  }, [isPending]);
+
   return (
-    <Flex direction="column" gap="md">
+    <FormBody buttons={buttons}>
       <FormField
         label="Name"
         fieldId="name"
@@ -57,10 +76,6 @@ export function ProjectFormRenderer({
           setProjectAvatar={setProjectAvatar}
         />
       </FormField>
-
-      <FormButtons>
-        <Button>Create project</Button>
-      </FormButtons>
-    </Flex>
+    </FormBody>
   );
 }

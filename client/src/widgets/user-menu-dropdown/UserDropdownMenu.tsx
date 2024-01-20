@@ -36,6 +36,7 @@ export const UserDropdownMenu = () => {
   };
 
   const closeProjectCreationDialog = () => {
+    handleClose();
     setProjectCreationDialogOpen(false);
     void navigate({
       search: (prev) => ({ ...prev, insertProjectDialogOpen: false }),

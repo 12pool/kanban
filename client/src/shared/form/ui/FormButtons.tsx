@@ -8,11 +8,7 @@ type FormButtonsProps = {
 
 export const FormButtons = ({ children }: FormButtonsProps) => {
   return (
-    <Flex
-      className={styles.Container}
-      margin={['md', 'none', 'none', 'none']}
-      justify="end"
-    >
+    <Flex className={styles.Container} justify="end">
       {children}
     </Flex>
   );

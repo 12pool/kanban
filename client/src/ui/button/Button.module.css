@@ -10,7 +10,7 @@
   background-color: transparent;
   font-weight: var(--font-weight-medium);
   transition: background-color 0.2s ease-in-out;
-  max-width: 150px;
+  max-width: 12.5rem;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -38,7 +38,7 @@
   color: var(--primary-color-contrast);
 }
 
-.Button[data-variant='primary']:hover {
+.Button[data-variant='primary']:not([disabled]):hover {
   background-color: hsla(var(--primary-color-opacity) / 0.8);
 }
 
@@ -47,6 +47,10 @@
   border: 2px solid var(--primary-color-100);
 }
 
-.Button[data-variant='basic']:hover {
+.Button[data-variant='basic']:not([disabled]):hover {
   background-color: hsla(var(--primary-color-opacity) / 0.25);
+}
+
+.Button[disabled] {
+  cursor: not-allowed;
 }

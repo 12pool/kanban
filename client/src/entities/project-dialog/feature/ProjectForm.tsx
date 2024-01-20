@@ -36,6 +36,7 @@ export const ProjectForm = ({ closeDialog }: ProjectFormProps) => {
 
   const onSuccess = async (data: Project) => {
     toast.success('Project created successfully');
+
     closeDialog();
 
     await navigate({
@@ -49,14 +50,11 @@ export const ProjectForm = ({ closeDialog }: ProjectFormProps) => {
     onSuccess,
   });
 
-  if (isPending) {
-    return <div>Creating project...</div>;
-  }
-
   return (
     // eslint-disable-next-line
     <form onSubmit={handleSubmit(onSubmit)}>
       <ProjectFormRenderer
+        isPending={isPending}
         errors={errors}
         projectAvatar={projectAvatar}
         setProjectAvatar={setProjectAvatar}
