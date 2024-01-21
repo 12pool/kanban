@@ -5,6 +5,7 @@ import { Box, Flex } from 'ui/layout';
 import { Text } from 'ui/text';
 
 import styles from './Dialog.module.css';
+import { forwardRef } from 'react';
 
 export type DialogProps = {
   defaultOpen?: boolean;
@@ -16,7 +17,7 @@ export type DialogProps = {
   onOpenChange?: (open: boolean) => void;
 };
 
-export const Dialog = ({
+const DialogRaw = ({
   defaultOpen,
   modal = true,
   trigger,
@@ -45,19 +46,19 @@ export const Dialog = ({
   );
 };
 
-Dialog.Content = function DialogContent({
-  children,
-  className,
-  title,
-  description,
-  closeDialog,
-  ...props
-}: RadixDialog.DialogContentProps & {
-  description?: string;
-  closeDialog?: () => void;
-}) {
+const DialogContent = forwardRef<
+  HTMLDivElement,
+  RadixDialog.DialogContentProps & {
+    description?: string;
+    closeDialog?: () => void;
+  }
+>(function DialogContent(
+  { children, className, title, description, closeDialog, ...props },
+  ref,
+) {
   return (
     <RadixDialog.Content
+      ref={ref}
       className={`${styles.DialogBody} ${className}`}
       {...props}
     >
@@ -90,4 +91,8 @@ Dialog.Content = function DialogContent({
       <Box padding="lg">{children}</Box>
     </RadixDialog.Content>
   );
-};
+});
+
+export const Dialog = Object.assign(DialogRaw, {
+  Content: DialogContent,
+});
