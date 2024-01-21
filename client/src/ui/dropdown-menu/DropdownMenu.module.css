@@ -10,20 +10,20 @@
   will-change: transform, opacity;
 }
 
-.DropdownMenuContent[data-side='top'],
-.DropdownMenuSubContent[data-side='top'] {
+.DropdownMenuContent:where(:where([data-side='top'])),
+.DropdownMenuSubContent:where(:where([data-side='top'])) {
   animation-name: slideDownAndFade;
 }
-.DropdownMenuContent[data-side='right'],
-.DropdownMenuSubContent[data-side='right'] {
+.DropdownMenuContent:where(:where([data-side='right'])),
+.DropdownMenuSubContent:where(:where([data-side='right'])) {
   animation-name: slideLeftAndFade;
 }
-.DropdownMenuContent[data-side='bottom'],
-.DropdownMenuSubContent[data-side='bottom'] {
+.DropdownMenuContent:where(:where([data-side='bottom'])),
+.DropdownMenuSubContent:where(:where([data-side='bottom'])) {
   animation-name: slideUpAndFade;
 }
-.DropdownMenuContent[data-side='left'],
-.DropdownMenuSubContent[data-side='left'] {
+.DropdownMenuContent:where(:where([data-side='left'])),
+.DropdownMenuSubContent:where(:where([data-side='left'])) {
   animation-name: slideRightAndFade;
 }
 
@@ -53,23 +53,23 @@
   align-items: center;
 }
 
-.DropdownMenuSubTrigger[data-state='open'] {
+.DropdownMenuSubTrigger:where([data-state='open']) {
   background-color: var(--primary-color-300);
   color: var(--font-primary);
 }
 
-.DropdownMenuItem[data-disabled],
-.DropdownMenuCheckboxItem[data-disabled],
-.DropdownMenuRadioItem[data-disabled],
-.DropdownMenuSubTrigger[data-disabled] {
+.DropdownMenuItem:where([data-disabled]),
+.DropdownMenuCheckboxItem:where([data-disabled]),
+.DropdownMenuRadioItem:where([data-disabled]),
+.DropdownMenuSubTrigger:where([data-disabled]) {
   color: var(--neutral-color-200);
   pointer-events: none;
 }
 
-.DropdownMenuItem[data-highlighted],
-.DropdownMenuCheckboxItem[data-highlighted],
-.DropdownMenuRadioItem[data-highlighted],
-.DropdownMenuSubTrigger[data-highlighted] {
+.DropdownMenuItem:where([data-highlighted]),
+.DropdownMenuCheckboxItem:where([data-highlighted]),
+.DropdownMenuRadioItem:where([data-highlighted]),
+.DropdownMenuSubTrigger:where([data-highlighted]) {
   background-color: var(--primary-color-100);
 }
 
@@ -106,7 +106,7 @@
   padding-left: 20px;
 }
 
-[data-disabled] .RightSlot {
+:where([data-disabled] .RightSlot) {
   color: var(--neutral-color-200);
 }
 

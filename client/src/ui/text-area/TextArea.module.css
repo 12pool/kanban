@@ -11,6 +11,6 @@
   color: var(--font-sub);
 }
 
-.TextArea[data-error='true'] {
+.TextArea:where([data-error='true']) {
   border-color: var(--font-error);
 }

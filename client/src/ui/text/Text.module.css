@@ -1,91 +1,91 @@
-.Text[data-size='xs'] {
+.Text:where([data-size='xs']) {
   font-size: var(--font-size-xs);
 }
 
-.Text[data-size='sm'] {
+.Text:where([data-size='sm']) {
   font-size: var(--font-size-sm);
 }
 
-.Text[data-size='md'] {
+.Text:where([data-size='md']) {
   font-size: var(--font-size-md);
 }
 
-.Text[data-size='lg'] {
+.Text:where([data-size='lg']) {
   font-size: var(--font-size-lg);
 }
 
-.Text[data-size='xl'] {
+.Text:where([data-size='xl']) {
   font-size: var(--font-size-xl);
 }
 
-.Text[data-size='xxl'] {
+.Text:where([data-size='xxl']) {
   font-size: var(--font-size-xxl);
 }
 
-.Text[data-weight='light'] {
+.Text:where([data-weight='light']) {
   font-weight: var(--font-weight-light);
 }
 
-.Text[data-weight='normal'] {
+.Text:where([data-weight='normal']) {
   font-weight: var(--font-weight-normal);
 }
 
-.Text[data-weight='medium'] {
+.Text:where([data-weight='medium']) {
   font-weight: var(--font-weight-medium);
 }
 
-.Text[data-weight='semibold'] {
+.Text:where([data-weight='semibold']) {
   font-weight: var(--font-weight-semibold);
 }
 
-.Text[data-weight='bold'] {
+.Text:where([data-weight='bold']) {
   font-weight: var(--font-weight-bold);
 }
 
-.Text[data-color='primary'] {
+.Text:where([data-color='primary']) {
   color: var(--font-primary);
 }
 
-.Text[data-color='secondary'] {
+.Text:where([data-color='secondary']) {
   color: var(--font-secondary);
 }
 
-.Text[data-color='success'] {
+.Text:where([data-color='success']) {
   color: var(--font-success);
 }
 
-.Text[data-color='warning'] {
+.Text:where([data-color='warning']) {
   color: var(--font-warning);
 }
 
-.Text[data-color='error'] {
+.Text:where([data-color='error']) {
   color: var(--font-error);
 }
 
-.Text[data-color='info'] {
+.Text:where([data-color='info']) {
   color: var(--font-info);
 }
 
-.Text[data-color='accent'] {
+.Text:where([data-color='accent']) {
   color: var(--font-accent);
 }
 
-.Text[data-color='disabled'] {
+.Text:where([data-color='disabled']) {
   color: var(--font-disabled);
 }
 
-.Text[data-color='sub'] {
+.Text:where([data-color='sub']) {
   color: var(--font-sub);
 }
 
-.Text[data-align='left'] {
+.Text:where([data-align='left']) {
   text-align: left;
 }
 
-.Text[data-align='center'] {
+.Text:where([data-align='center']) {
   text-align: center;
 }
 
-.Text[data-align='right'] {
+.Text:where([data-align='right']) {
   text-align: right;
 }

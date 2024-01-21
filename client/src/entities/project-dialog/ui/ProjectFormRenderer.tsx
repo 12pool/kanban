@@ -32,7 +32,7 @@ export function ProjectFormRenderer({
   const buttons = useMemo(() => {
     if (isPending) {
       return (
-        <Button>
+        <Button disabled>
           <Flex gap="md" align="center">
             <Loader />
             Creating
