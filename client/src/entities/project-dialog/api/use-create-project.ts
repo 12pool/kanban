@@ -9,13 +9,13 @@ import {
 import { createProject } from './create-project';
 
 type UseCreateProject = {
-  onSuccess?: (project: Project) => Promise<void>;
+  onSuccess?: (project: Required<Project>) => Promise<void>;
 };
 
 export const useCreateProject = ({ onSuccess }: UseCreateProject) => {
   return useMutation({
     mutationFn: (project: CreateProjectDTO) => {
-      return createProject(project) as AxiosPromise<Project>;
+      return createProject(project) as AxiosPromise<Required<Project>>;
     },
     onSuccess: async (response) => {
       await onSuccess?.(response.data);

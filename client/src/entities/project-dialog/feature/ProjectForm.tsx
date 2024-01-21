@@ -35,7 +35,7 @@ export const ProjectForm = ({ closeDialog }: ProjectFormProps) => {
     });
   };
 
-  const onSuccess = async (data: Project) => {
+  const onSuccess = async (data: Required<Project>) => {
     toast.success('Project created successfully');
 
     closeDialog();

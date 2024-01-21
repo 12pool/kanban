@@ -39,7 +39,8 @@ export const UserDropdownMenu = () => {
     handleClose();
     setProjectCreationDialogOpen(false);
     void navigate({
-      search: (prev) => ({ ...prev, insertProjectDialogOpen: false }),
+      search: (prev) => ({ ...prev, insertProjectDialogOpen: true }),
+      params: (params) => params,
     });
   };
 
@@ -47,6 +48,7 @@ export const UserDropdownMenu = () => {
     setProjectCreationDialogOpen(true);
     void navigate({
       search: (prev) => ({ ...prev, insertProjectDialogOpen: true }),
+      params: (params) => params,
     });
   };
 
