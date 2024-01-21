@@ -1,27 +1,23 @@
 import { useState } from 'react';
+import { useNavigate } from '@tanstack/react-router';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button } from 'ui/button';
-import { Input } from 'ui/input';
-import { Flex } from 'ui/layout';
-import { TextArea } from 'ui/text-area';
+import { colors } from 'shared/avatar-picker/model';
+import { ErrorMessage } from 'shared/error-message/feature';
+import { toast } from 'shared/toaster';
 
-import { FormField } from 'shared/form-field/ui';
-import { colors, type Icons } from 'shared/avatar-picker/model';
-import { AvatarPicker } from 'shared/avatar-picker/feature';
+import { useCreateProject } from 'entities/project-dialog/api';
+import type { Avatar, Project } from 'entities/project-dialog/model';
+import { ProjectFormRenderer, type Inputs } from 'entities/project-dialog/ui';
 
-import styles from './ProjectForm.module.css';
-
-type Inputs = {
-  name: string;
-  description: string;
+type ProjectFormProps = {
+  closeDialog: () => void;
 };
 
-export const ProjectForm = () => {
-  const [projectAvatar, setProjectAvatar] = useState<{
-    icon: Icons;
-    color: string;
-  }>({
+export const ProjectForm = ({ closeDialog }: ProjectFormProps) => {
+  const navigate = useNavigate();
+
+  const [projectAvatar, setProjectAvatar] = useState<Avatar>({
     icon: 'AvatarIcon',
     color: colors.blue,
   });
@@ -31,46 +27,49 @@ export const ProjectForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
+
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    alert(JSON.stringify(data));
-    alert(JSON.stringify(projectAvatar));
+    createProject({
+      ...data,
+      ...projectAvatar,
+    });
   };
 
+  const onSuccess = async (data: Required<Project>) => {
+    toast.success('Project created successfully');
+
+    closeDialog();
+
+    await navigate({
+      to: `/project/$projectId`,
+      params: { projectId: data.id },
+      search: (prev) => ({ ...prev, insertProjectDialogOpen: false }),
+    });
+  };
+
+  const {
+    mutate: createProject,
+    isPending,
+    error,
+    reset,
+  } = useCreateProject({
+    onSuccess,
+  });
+
+  if (error) {
+    return <ErrorMessage error={error} reset={reset} />;
+  }
+
   return (
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
-    <form className={styles.Form} onSubmit={handleSubmit(onSubmit)}>
-      <FormField
-        label="Name"
-        fieldId="name"
-        error={errors.name && 'This field is required'}
-      >
-        <Input<Inputs>
-          error={!!errors.name}
-          reactHookForm={{
-            label: 'name',
-            register,
-          }}
-          required
-        />
-      </FormField>
-
-      <FormField label="Description" fieldId="description">
-        <TextArea<Inputs>
-          reactHookForm={{
-            label: 'description',
-            register,
-          }}
-        />
-      </FormField>
-
-      <AvatarPicker
+    // eslint-disable-next-line
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <ProjectFormRenderer
+        isPending={isPending}
+        errors={errors}
         projectAvatar={projectAvatar}
         setProjectAvatar={setProjectAvatar}
+        register={register}
       />
-
-      <Flex margin={['md', 'none', 'none', 'none']} justify="end">
-        <Button>Create project</Button>
-      </Flex>
     </form>
   );
 };

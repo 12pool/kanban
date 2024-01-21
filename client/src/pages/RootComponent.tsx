@@ -7,6 +7,7 @@ import { Flex } from 'ui/layout';
 import { Header } from 'widgets/header';
 import { Sidebar } from 'widgets/sidebar';
 import { UserDropdownMenu } from 'widgets/user-menu-dropdown';
+import { ToastContainer } from 'react-toastify';
 
 export const RootComponent = () => {
   return (
@@ -18,6 +19,7 @@ export const RootComponent = () => {
           <Outlet />
         </main>
       </Flex>
+      <ToastContainer theme="colored" position="bottom-right" />
       <ReactQueryDevtools buttonPosition="bottom-left" />
       <TanStackRouterDevtools position="bottom-right" />
     </>

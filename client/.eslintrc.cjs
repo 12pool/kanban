@@ -10,13 +10,14 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'eslint-config-prettier',
     'plugin:storybook/recommended',
+    'plugin:@tanstack/eslint-plugin-query/recommended',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: ['./tsconfig.json'],
   },
-  plugins: ['react-refresh', '@typescript-eslint'],
+  plugins: ['react-refresh', '@typescript-eslint', '@tanstack/query'],
   rules: {
     '@typescript-eslint/consistent-type-imports': [
       'warn',
@@ -27,6 +28,9 @@ module.exports = {
     ],
     '@typescript-eslint/no-unnecessary-condition': 'error',
     '@typescript-eslint/consistent-type-definitions': 'off',
+    '@tanstack/query/exhaustive-deps': 'error',
+    '@tanstack/query/no-rest-destructuring': 'warn',
+    '@tanstack/query/stable-query-client': 'error',
   },
   settings: {
     react: {

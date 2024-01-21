@@ -1,199 +1,199 @@
-.layout-generic[data-position='relative'] {
+.layout-generic:where([data-position='relative']) {
   position: relative;
 }
 
-.layout-generic[data-position='absolute'] {
+.layout-generic:where([data-position='absolute']) {
   position: absolute;
 }
 
-.layout-generic[data-position='fixed'] {
+.layout-generic:where([data-position='fixed']) {
   position: fixed;
 }
 
-.layout-generic[data-position='sticky'] {
+.layout-generic:where([data-position='sticky']) {
   position: sticky;
 }
 
-.layout-generic[data-top='0'] {
+.layout-generic:where([data-top='0']) {
   top: 0;
 }
 
-.layout-generic[data-top='50%'] {
+.layout-generic:where([data-top='50%']) {
   top: 50%;
 }
 
-.layout-generic[data-top='100%'] {
+.layout-generic:where([data-top='100%']) {
   top: 100%;
 }
 
-.layout-generic[data-bottom='0'] {
+.layout-generic:where([data-bottom='0']) {
   bottom: 0;
 }
 
-.layout-generic[data-bottom='50%'] {
+.layout-generic:where([data-bottom='50%']) {
   bottom: 50%;
 }
 
-.layout-generic[data-bottom='100%'] {
+.layout-generic:where([data-bottom='100%']) {
   bottom: 100%;
 }
 
-.layout-generic[data-right='0'] {
+.layout-generic:where([data-right='0']) {
   right: 0;
 }
 
-.layout-generic[data-right='50%'] {
+.layout-generic:where([data-right='50%']) {
   right: 50%;
 }
 
-.layout-generic[data-right='100%'] {
+.layout-generic:where([data-right='100%']) {
   right: 100%;
 }
 
-.layout-generic[data-left='0'] {
+.layout-generic:where([data-left='0']) {
   left: 0;
 }
 
-.layout-generic[data-left='50%'] {
+.layout-generic:where([data-left='50%']) {
   left: 50%;
 }
 
-.layout-generic[data-left='100%'] {
+.layout-generic:where([data-left='100%']) {
   left: 100%;
 }
 
-.layout-generic[data-grow='0'] {
+.layout-generic:where([data-grow='0']) {
   flex-grow: 0;
 }
 
-.layout-generic[data-grow='1'] {
+.layout-generic:where([data-grow='1']) {
   flex-grow: 1;
 }
 
-.layout-generic[data-shrink='0'] {
+.layout-generic:where([data-shrink='0']) {
   flex-shrink: 0;
 }
 
-.layout-generic[data-shrink='1'] {
+.layout-generic:where([data-shrink='1']) {
   flex-shrink: 1;
 }
 
-.layout-generic[data-gap='xs'] {
+.layout-generic:where([data-gap='xs']) {
   gap: var(--layout-size-xs);
 }
 
-.layout-generic[data-gap='sm'] {
+.layout-generic:where([data-gap='sm']) {
   gap: var(--layout-size-sm);
 }
 
-.layout-generic[data-gap='md'] {
+.layout-generic:where([data-gap='md']) {
   gap: var(--layout-size-md);
 }
 
-.layout-generic[data-gap='lg'] {
+.layout-generic:where([data-gap='lg']) {
   gap: var(--layout-size-lg);
 }
 
-.layout-generic[data-gap='xl'] {
+.layout-generic:where([data-gap='xl']) {
   gap: var(--layout-size-xl);
 }
 
-.layout-generic[data-gap='none'] {
+.layout-generic:where([data-gap='none']) {
   gap: var(--layout-size-none);
 }
 
-.layout-generic[data-direction='row'] {
+.layout-generic:where([data-direction='row']) {
   flex-direction: row;
 }
 
-.layout-generic[data-direction='row-reverse'] {
+.layout-generic:where([data-direction='row-reverse']) {
   flex-direction: row-reverse;
 }
 
-.layout-generic[data-direction='column'] {
+.layout-generic:where([data-direction='column']) {
   flex-direction: column;
 }
 
-.layout-generic[data-direction='column-reverse'] {
+.layout-generic:where([data-direction='column-reverse']) {
   flex-direction: column-reverse;
 }
 
-.layout-generic[data-display='flex'] {
+.layout-generic:where([data-display='flex']) {
   display: flex;
 }
 
-.layout-generic[data-display='inline-flex'] {
+.layout-generic:where([data-display='inline-flex']) {
   display: inline-flex;
 }
 
-.layout-generic[data-display='inline'] {
+.layout-generic:where([data-display='inline']) {
   display: inline;
 }
 
-.layout-generic[data-display='inline-block'] {
+.layout-generic:where([data-display='inline-block']) {
   display: inline-block;
 }
 
-.layout-generic[data-display='block'] {
+.layout-generic:where([data-display='block']) {
   display: block;
 }
 
-.layout-generic[data-display='none'] {
+.layout-generic:where([data-display='none']) {
   display: none;
 }
 
-.layout-generic[data-wrap='nowrap'] {
+.layout-generic:where([data-wrap='nowrap']) {
   flex-wrap: nowrap;
 }
 
-.layout-generic[data-wrap='wrap'] {
+.layout-generic:where([data-wrap='wrap']) {
   flex-wrap: wrap;
 }
 
-.layout-generic[data-justify='start'] {
+.layout-generic:where([data-justify='start']) {
   justify-content: flex-start;
 }
 
-.layout-generic[data-justify='end'] {
+.layout-generic:where([data-justify='end']) {
   justify-content: flex-end;
 }
 
-.layout-generic[data-justify='center'] {
+.layout-generic:where([data-justify='center']) {
   justify-content: center;
 }
 
-.layout-generic[data-justify='between'] {
+.layout-generic:where([data-justify='between']) {
   justify-content: space-between;
 }
 
-.layout-generic[data-justify='around'] {
+.layout-generic:where([data-justify='around']) {
   justify-content: space-around;
 }
 
-.layout-generic[data-justify='baseline'] {
+.layout-generic:where([data-justify='baseline']) {
   justify-content: baseline;
 }
 
-.layout-generic[data-justify='stretch'] {
+.layout-generic:where([data-justify='stretch']) {
   justify-content: stretch;
 }
 
-.layout-generic[data-align='start'] {
+.layout-generic:where([data-align='start']) {
   align-items: flex-start;
 }
 
-.layout-generic[data-align='end'] {
+.layout-generic:where([data-align='end']) {
   align-items: flex-end;
 }
 
-.layout-generic[data-align='center'] {
+.layout-generic:where([data-align='center']) {
   align-items: center;
 }
 
-.layout-generic[data-align='baseline'] {
+.layout-generic:where([data-align='baseline']) {
   align-items: baseline;
 }
 
-.layout-generic[data-align='stretch'] {
+.layout-generic:where([data-align='stretch']) {
   align-items: stretch;
 }

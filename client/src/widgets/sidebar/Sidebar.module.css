@@ -1,6 +1,6 @@
 .Sidebar {
   width: 3.75rem;
-  height: 100%;
-  position: fixed;
+  height: calc(100vh - 2.5rem);
+  position: sticky;
   background: var(--neutral-color-400);
 }

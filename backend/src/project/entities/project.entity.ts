@@ -12,7 +12,7 @@ export class ProjectEntity {
   description: string;
 
   @Column()
-  avatar: string;
+  icon: string;
 
   @Column()
   color: string;

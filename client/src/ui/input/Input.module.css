@@ -12,6 +12,6 @@
   color: var(--font-sub);
 }
 
-.Input[data-error='true'] {
+.Input:where([data-error='true']) {
   border-color: var(--font-error);
 }
