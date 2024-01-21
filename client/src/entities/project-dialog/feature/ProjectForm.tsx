@@ -3,6 +3,7 @@ import { useNavigate } from '@tanstack/react-router';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 
 import { colors } from 'shared/avatar-picker/model';
+import { ErrorMessage } from 'shared/error-message/feature';
 import { toast } from 'shared/toaster';
 
 import { useCreateProject } from 'entities/project-dialog/api';
@@ -46,9 +47,18 @@ export const ProjectForm = ({ closeDialog }: ProjectFormProps) => {
     });
   };
 
-  const { mutate: createProject, isPending } = useCreateProject({
+  const {
+    mutate: createProject,
+    isPending,
+    error,
+    reset,
+  } = useCreateProject({
     onSuccess,
   });
+
+  if (error) {
+    return <ErrorMessage error={error} reset={reset} />;
+  }
 
   return (
     // eslint-disable-next-line

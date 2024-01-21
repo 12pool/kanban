@@ -45,7 +45,7 @@ export function ProjectFormRenderer({
   }, [isPending]);
 
   return (
-    <FormBody buttons={buttons}>
+    <FormBody isPending={isPending} buttons={buttons}>
       <FormField
         label="Name"
         fieldId="name"
