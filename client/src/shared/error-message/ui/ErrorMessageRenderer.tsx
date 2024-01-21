@@ -31,7 +31,7 @@ export const ErrorMessageRenderer = ({ reset }: ErrorMessageRendererProps) => {
           &apos;Try Again&apos; button below to give it another shot.
         </Text>
         <Box margin={['lg', 'none', 'none', 'none']}>
-          <Button onClick={reset}>Try Again</Button>
+          <Button onPointerDown={reset}>Try Again</Button>
         </Box>
       </Flex>
     </Flex>

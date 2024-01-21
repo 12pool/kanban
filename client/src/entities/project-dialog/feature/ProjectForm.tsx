@@ -8,7 +8,11 @@ import { toast } from 'shared/toaster';
 
 import { useCreateProject } from 'entities/project-dialog/api';
 import type { Avatar, Project } from 'entities/project-dialog/model';
-import { ProjectFormRenderer, type Inputs } from 'entities/project-dialog/ui';
+import {
+  ProjectFormRenderer,
+  type Inputs,
+  ProjectCreatedToast,
+} from 'entities/project-dialog/ui';
 
 type ProjectFormProps = {
   closeDialog: () => void;
@@ -36,7 +40,7 @@ export const ProjectForm = ({ closeDialog }: ProjectFormProps) => {
   };
 
   const onSuccess = async (data: Required<Project>) => {
-    toast.success('Project created successfully');
+    toast.success(<ProjectCreatedToast />);
 
     closeDialog();
 
