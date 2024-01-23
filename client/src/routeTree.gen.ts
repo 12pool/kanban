@@ -4,11 +4,9 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
-import { Route as UserIndexImport } from './routes/user/index'
-import { Route as ProjectIndexImport } from './routes/project/index'
-import { Route as UserUserIdImport } from './routes/user/$userId'
-import { Route as ProjectProjectIdImport } from './routes/project/$projectId'
-import { Route as UserUserIdSettingsImport } from './routes/user/$userId.settings'
+import { Route as TeamTeamNameImport } from './routes/team/$teamName'
+import { Route as TeamTeamNameProjectImport } from './routes/team/$teamName.project'
+import { Route as TeamTeamNameProjectNameImport } from './routes/team/$teamName.$projectName'
 
 // Create/Update Routes
 
@@ -17,29 +15,19 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const UserIndexRoute = UserIndexImport.update({
-  path: '/user/',
+const TeamTeamNameRoute = TeamTeamNameImport.update({
+  path: '/team/$teamName',
   getParentRoute: () => rootRoute,
 } as any)
 
-const ProjectIndexRoute = ProjectIndexImport.update({
-  path: '/project/',
-  getParentRoute: () => rootRoute,
+const TeamTeamNameProjectRoute = TeamTeamNameProjectImport.update({
+  path: '/project',
+  getParentRoute: () => TeamTeamNameRoute,
 } as any)
 
-const UserUserIdRoute = UserUserIdImport.update({
-  path: '/user/$userId',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const ProjectProjectIdRoute = ProjectProjectIdImport.update({
-  path: '/project/$projectId',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const UserUserIdSettingsRoute = UserUserIdSettingsImport.update({
-  path: '/settings',
-  getParentRoute: () => UserUserIdRoute,
+const TeamTeamNameProjectNameRoute = TeamTeamNameProjectNameImport.update({
+  path: '/$projectName',
+  getParentRoute: () => TeamTeamNameRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -50,25 +38,17 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/project/$projectId': {
-      preLoaderRoute: typeof ProjectProjectIdImport
+    '/team/$teamName': {
+      preLoaderRoute: typeof TeamTeamNameImport
       parentRoute: typeof rootRoute
     }
-    '/user/$userId': {
-      preLoaderRoute: typeof UserUserIdImport
-      parentRoute: typeof rootRoute
+    '/team/$teamName/$projectName': {
+      preLoaderRoute: typeof TeamTeamNameProjectNameImport
+      parentRoute: typeof TeamTeamNameImport
     }
-    '/project/': {
-      preLoaderRoute: typeof ProjectIndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/user/': {
-      preLoaderRoute: typeof UserIndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/user/$userId/settings': {
-      preLoaderRoute: typeof UserUserIdSettingsImport
-      parentRoute: typeof UserUserIdImport
+    '/team/$teamName/project': {
+      preLoaderRoute: typeof TeamTeamNameProjectImport
+      parentRoute: typeof TeamTeamNameImport
     }
   }
 }
@@ -77,8 +57,8 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   IndexRoute,
-  ProjectProjectIdRoute,
-  UserUserIdRoute.addChildren([UserUserIdSettingsRoute]),
-  ProjectIndexRoute,
-  UserIndexRoute,
+  TeamTeamNameRoute.addChildren([
+    TeamTeamNameProjectNameRoute,
+    TeamTeamNameProjectRoute,
+  ]),
 ])

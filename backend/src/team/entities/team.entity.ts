@@ -1,8 +1,15 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToMany,
+  Unique,
+} from 'typeorm';
 
 import { ProjectEntity } from 'src/project/entities/project.entity';
 
 @Entity('team')
+@Unique(['name'])
 export class TeamEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -12,6 +19,8 @@ export class TeamEntity {
 
   @OneToMany(() => ProjectEntity, (project) => project.team)
   projects: ProjectEntity[];
+
+  // Owner of the team
 
   // TODO: Add users relationship teamMembership [user, team, role]?
 }

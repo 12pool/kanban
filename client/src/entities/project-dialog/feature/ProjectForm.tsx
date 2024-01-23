@@ -14,12 +14,15 @@ import {
   ProjectCreatedToast,
 } from 'entities/project-dialog/ui';
 
+import { Route as teamRoute } from 'routes/team/$teamName';
+
 type ProjectFormProps = {
   closeDialog: () => void;
 };
 
 export const ProjectForm = ({ closeDialog }: ProjectFormProps) => {
   const navigate = useNavigate();
+  const { teamName } = teamRoute.useParams();
 
   const [projectAvatar, setProjectAvatar] = useState<Avatar>({
     icon: 'AvatarIcon',
@@ -45,8 +48,11 @@ export const ProjectForm = ({ closeDialog }: ProjectFormProps) => {
     closeDialog();
 
     await navigate({
-      to: `/project/$projectId`,
-      params: { projectId: data.id },
+      to: `/team/$teamName/$projectName`,
+      params: { 
+        teamName,
+        projectName: data.name,
+      },
       search: (prev) => ({ ...prev, insertProjectDialogOpen: false }),
     });
   };

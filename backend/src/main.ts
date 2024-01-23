@@ -7,7 +7,7 @@ async function bootstrap() {
 
   // Temporary solution until we have a proper auth system and team cration flow
   const teamService = app.get(TeamService);
-  await teamService.createIfNotExists('Test Team');
+  await teamService.createIfNotExists('test-team');
 
   // TODO: Change origin to the frontend URL based on env config
   app.enableCors({ origin: '*' });
