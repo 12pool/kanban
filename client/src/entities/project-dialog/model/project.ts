@@ -6,6 +6,7 @@ export type Project = {
   description: string;
   icon: Icons;
   color: string;
+  teamName: string;
 };
 
 export type CreateProjectDTO = Omit<Project, 'id'>;

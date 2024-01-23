@@ -39,6 +39,7 @@ export const ProjectForm = ({ closeDialog }: ProjectFormProps) => {
     createProject({
       ...data,
       ...projectAvatar,
+      teamName,
     });
   };
 

@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 
 import { ProjectService } from './project.service';
@@ -18,8 +19,8 @@ export class ProjectController {
   constructor(private readonly projectService: ProjectService) {}
 
   @Get()
-  async findAll() {
-    return await this.projectService.findAll();
+  async findAll(@Query('teamName') teamName: string) {
+    return await this.projectService.findAll(teamName);
   }
 
   @Get(':id')

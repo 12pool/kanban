@@ -9,8 +9,8 @@ import { Flex } from 'ui/layout';
 import { Route as teamRoute } from 'routes/team/$teamName';
 
 export const ProjectsList = () => {
-  const { data, isPending, isError, error, refetch } = useProjects();
   const { teamName } = teamRoute.useParams();
+  const { data, isPending, isError, error, refetch } = useProjects(teamName);
 
   if (isError) {
     return <ErrorMessage error={error} reset={() => void refetch()} />;

@@ -11,8 +11,9 @@ export const Home = () => {
     void navigate({
       to: '/team/$teamName',
       params: { teamName: 'test-team' },
+      search: (prev) => prev,
     });
-  }, []);
+  }, [navigate]);
 
   return <div>home</div>;
 };

@@ -5,16 +5,25 @@ import { Repository } from 'typeorm';
 import { CreateProjectDTO } from './dtos/create-project.dto';
 import { UpdateProjectDTO } from './dtos/update-project.dto';
 import { ProjectEntity } from './entities/project.entity';
+import { TeamEntity } from 'src/team/entities/team.entity';
 
 @Injectable()
 export class ProjectService {
   constructor(
     @InjectRepository(ProjectEntity)
     private projectRepository: Repository<ProjectEntity>,
+    @InjectRepository(TeamEntity)
+    private teamRepository: Repository<TeamEntity>,
   ) {}
 
-  async findAll() {
-    return await this.projectRepository.find();
+  async findAll(teamName: string) {
+    return await this.projectRepository.find({
+      where: {
+        team: {
+          name: teamName,
+        },
+      },
+    });
   }
 
   async findOne(id: string) {
@@ -32,7 +41,29 @@ export class ProjectService {
   }
 
   async create(createProjectDTO: CreateProjectDTO) {
-    const project = await this.projectRepository.create(createProjectDTO);
+    const team = await this.teamRepository.findOne({
+      where: {
+        name: createProjectDTO.teamName,
+      },
+    });
+
+    if (!team) {
+      throw new NotFoundException(
+        `Team ${createProjectDTO.teamName} not found`,
+      );
+    }
+
+    // to make sure we don't have two projects with the same name
+    // because we use name in the url and browsers don't care about case
+    const lowerCasedName = createProjectDTO.name.toLowerCase();
+
+    const project = await this.projectRepository.create({
+      ...createProjectDTO,
+      name: lowerCasedName,
+      originalName: createProjectDTO.name,
+      team,
+    });
+
     return await this.projectRepository.save(project);
   }
 

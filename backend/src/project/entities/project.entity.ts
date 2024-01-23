@@ -17,6 +17,9 @@ export class ProjectEntity {
   @Column()
   name: string;
 
+  @Column()
+  originalName: string;
+
   @Column({ nullable: true })
   description: string;
 
