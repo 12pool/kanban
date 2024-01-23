@@ -5,7 +5,7 @@ import { TeamService } from './team/team.service';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Temporary solution until we have a proper auth system and team cration flow
+  // Temporary solution until we have a proper auth system and team creation flow
   const teamService = app.get(TeamService);
   await teamService.createIfNotExists('test-team');
 

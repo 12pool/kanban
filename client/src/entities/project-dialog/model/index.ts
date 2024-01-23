@@ -1,1 +1,1 @@
-export { type Project, type CreateProjectDTO, type Avatar } from './project';
+export type { CreateProjectDTO } from './project';

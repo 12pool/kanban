@@ -2,19 +2,19 @@ import { useState } from 'react';
 import { useNavigate } from '@tanstack/react-router';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 
+import { Route as teamRoute } from 'routes/team/$teamName';
+
 import { colors } from 'shared/avatar-picker/model';
 import { ErrorMessage } from 'shared/error-message/feature';
 import { toast } from 'shared/toaster';
+import type { ProjectWithTeam, ProjectAvatar } from 'shared/project/model';
 
 import { useCreateProject } from 'entities/project-dialog/api';
-import type { Avatar, Project } from 'entities/project-dialog/model';
 import {
   ProjectFormRenderer,
   type Inputs,
   ProjectCreatedToast,
 } from 'entities/project-dialog/ui';
-
-import { Route as teamRoute } from 'routes/team/$teamName';
 
 type ProjectFormProps = {
   closeDialog: () => void;
@@ -24,7 +24,7 @@ export const ProjectForm = ({ closeDialog }: ProjectFormProps) => {
   const navigate = useNavigate();
   const { teamName } = teamRoute.useParams();
 
-  const [projectAvatar, setProjectAvatar] = useState<Avatar>({
+  const [projectAvatar, setProjectAvatar] = useState<ProjectAvatar>({
     icon: 'AvatarIcon',
     color: colors.blue,
   });
@@ -43,7 +43,7 @@ export const ProjectForm = ({ closeDialog }: ProjectFormProps) => {
     });
   };
 
-  const onSuccess = async (data: Required<Project>) => {
+  const onSuccess = async (data: ProjectWithTeam) => {
     toast.success(<ProjectCreatedToast />);
 
     closeDialog();
@@ -51,7 +51,7 @@ export const ProjectForm = ({ closeDialog }: ProjectFormProps) => {
     await navigate({
       to: `/team/$teamName/$projectName`,
       params: { 
-        teamName,
+        teamName: data.team.name,
         projectName: data.name,
       },
       search: (prev) => ({ ...prev, insertProjectDialogOpen: false }),

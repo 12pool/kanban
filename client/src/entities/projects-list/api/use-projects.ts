@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { type Project } from 'entities/project-dialog/model';
+import { type Project } from 'shared/project/model';
 
 import { fetchProjects } from './fetch-projects';
 

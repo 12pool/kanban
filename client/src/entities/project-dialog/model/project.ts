@@ -1,14 +1,5 @@
-import { type Icons } from 'shared/avatar-picker/model';
+import type { Project } from 'shared/project/model';
 
-export type Project = {
-  id?: string;
-  name: string;
-  description: string;
-  icon: Icons;
-  color: string;
+export type CreateProjectDTO = Omit<Project, 'id'> & {
   teamName: string;
 };
-
-export type CreateProjectDTO = Omit<Project, 'id'>;
-
-export type Avatar = Pick<Project, 'icon' | 'color'>;
