@@ -1,8 +1,8 @@
 import { Link } from '@tanstack/react-router';
 
 import { ErrorMessage } from 'shared/error-message/feature';
+import { useProjects } from 'shared/project/api';
 
-import { useProjects } from 'entities/projects-list/api';
 import { Text } from 'ui/text';
 import { Flex } from 'ui/layout';
 
