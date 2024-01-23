@@ -1,6 +1,15 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  Unique,
+} from 'typeorm';
+
+import { TeamEntity } from 'src/team/entities/team.entity';
 
 @Entity('project')
+@Unique(['name', 'team'])
 export class ProjectEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -16,4 +25,7 @@ export class ProjectEntity {
 
   @Column()
   color: string;
+
+  @ManyToOne(() => TeamEntity, (team) => team.projects)
+  team: TeamEntity;
 }
