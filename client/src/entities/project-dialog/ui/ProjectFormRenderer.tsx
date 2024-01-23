@@ -10,14 +10,14 @@ import { Loader } from 'ui/loader';
 import { FormBody, FormField } from 'shared/form/ui';
 import { AvatarPicker } from 'shared/avatar-picker/feature';
 
-import type { Avatar, Project } from 'entities/project-dialog/model';
+import type { ProjectAvatar, Project } from 'shared/project/model';
 
 export type Inputs = Pick<Project, 'description' | 'name'>;
 
 type ProjectFormProps = {
   errors: FieldErrors<Inputs>;
-  projectAvatar: Avatar;
-  setProjectAvatar: React.Dispatch<React.SetStateAction<Avatar>>;
+  projectAvatar: ProjectAvatar;
+  setProjectAvatar: React.Dispatch<React.SetStateAction<ProjectAvatar>>;
   register: UseFormRegister<Inputs>;
   isPending?: boolean;
 };

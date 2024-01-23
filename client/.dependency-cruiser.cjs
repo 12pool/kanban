@@ -53,7 +53,7 @@ module.exports = {
         'Code in the feature segment is not allowed to import code from any segment other than api, ui, model, or feature.',
       severity: 'error',
       from: { path: '^src/(entities|shared)/.*/feature' },
-      to: { path: '^src/(?!.*api|.*ui|.*model|.*feature)' },
+      to: { path: '^src/(?!.*api|.*ui|.*model|.*feature|route)' },
     },
     {
       name: 'segment-violation for api',

@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { CardStackIcon, PlusIcon } from '@radix-ui/react-icons';
 import { Link, useNavigate } from '@tanstack/react-router';
 
-import { Route as rootRoute } from 'routes/__root.ts';
-
 import { ProjectDialog } from 'entities/project-dialog/feature';
 
 import { UserAvatar } from 'entities/user-avatar/feature';
@@ -12,12 +10,15 @@ import { DropdownMenu } from 'ui/dropdown-menu';
 import { Flex } from 'ui/layout';
 import { Text } from 'ui/text';
 
+import { Route as teamRoute } from 'routes/team/$teamName';
+
 import styles from './UserDropdownMenu.module.css';
 
 export const UserDropdownMenu = () => {
   const navigate = useNavigate();
 
-  const { insertProjectDialogOpen } = rootRoute.useSearch();
+  const { insertProjectDialogOpen } = teamRoute.useSearch();
+  const { teamName } = teamRoute.useParams();
 
   const [projectCreationDialogOpen, setProjectCreationDialogOpen] = useState(
     insertProjectDialogOpen ?? false,
@@ -38,8 +39,12 @@ export const UserDropdownMenu = () => {
   const closeProjectCreationDialog = () => {
     handleClose();
     setProjectCreationDialogOpen(false);
+
     void navigate({
-      search: (prev) => ({ ...prev, insertProjectDialogOpen: true }),
+      search: (prev) => ({
+        insertProjectDialogOpen: true,
+        ...prev,
+      }),
       params: (params) => params,
     });
   };
@@ -80,7 +85,12 @@ export const UserDropdownMenu = () => {
           <Text size="sm">placeholder@gmail.com</Text>
         </Flex>
         <DropdownMenu.Separator />
-        <Link to="/project">
+        <Link
+          to="/team/$teamName/project"
+          params={{
+            teamName: teamName,
+          }}
+        >
           <DropdownMenu.Item icon={<CardStackIcon />}>
             Projects
           </DropdownMenu.Item>

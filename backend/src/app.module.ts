@@ -6,6 +6,8 @@ import { AppService } from './app.service';
 
 import { ProjectModule } from './project/project.module';
 import { ProjectEntity } from './project/entities/project.entity';
+import { TeamEntity } from './team/entities/team.entity';
+import { TeamModule } from './team/team.module';
 
 @Module({
   imports: [
@@ -13,9 +15,10 @@ import { ProjectEntity } from './project/entities/project.entity';
       type: 'sqlite',
       database: 'db/sql.sqlite',
       synchronize: true,
-      entities: [ProjectEntity],
+      entities: [ProjectEntity, TeamEntity],
     }),
     ProjectModule,
+    TeamModule,
   ],
   controllers: [AppController],
   providers: [AppService],
