@@ -1,7 +1,13 @@
 import { render } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { createTestRouter } from './setup';
-import { RouterProvider } from '@tanstack/react-router';
+import {
+  Outlet,
+  RootRoute,
+  Route,
+  Router,
+  RouterProvider,
+  createMemoryHistory,
+} from '@tanstack/react-router';
 
 const createTestQueryClient = () =>
   new QueryClient({
@@ -11,6 +17,25 @@ const createTestQueryClient = () =>
       },
     },
   });
+
+export function createTestRouter(component: () => JSX.Element) {
+  const rootRoute = new RootRoute({
+    component: Outlet,
+  });
+
+  const componentRoute = new Route({
+    getParentRoute: () => rootRoute,
+    path: '/',
+    component,
+  });
+
+  const router = new Router({
+    routeTree: rootRoute.addChildren([componentRoute]),
+    history: createMemoryHistory(),
+  });
+
+  return router;
+}
 
 const _router = createTestRouter(() => <></>);
 

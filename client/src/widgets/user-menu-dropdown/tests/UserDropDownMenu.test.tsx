@@ -1,10 +1,12 @@
-import { createTestRouter } from 'tests/setup';
+import { createTestRouter } from 'tests/test-utils';
 import { fireEvent, render, screen, waitFor } from 'tests/test-utils';
 import { UserDropdownMenu } from 'widgets/user-menu-dropdown';
 
-const router = createTestRouter(UserDropdownMenu);
-
 describe('User dropdown menu', () => {
+  let router: ReturnType<typeof createTestRouter>;
+  beforeAll(() => {
+    router = createTestRouter(UserDropdownMenu);
+  });
   it('should allow to open menu on trigger click', async () => {
     render(router);
 

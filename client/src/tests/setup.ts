@@ -3,13 +3,6 @@ import '@testing-library/jest-dom';
 import { cleanup } from '@testing-library/react';
 import { setupServer } from 'msw/node';
 import { handlers } from './handlers';
-import {
-  Router,
-  RootRoute,
-  Outlet,
-  Route,
-  createMemoryHistory,
-} from '@tanstack/react-router';
 
 afterEach(() => {
   cleanup();
@@ -71,22 +64,3 @@ export class PointerEvent extends Event {
   }
 }
 window.PointerEvent = PointerEvent;
-
-export function createTestRouter(component: () => JSX.Element) {
-  const rootRoute = new RootRoute({
-    component: Outlet,
-  });
-
-  const componentRoute = new Route({
-    getParentRoute: () => rootRoute,
-    path: '/',
-    component,
-  });
-
-  const router = new Router({
-    routeTree: rootRoute.addChildren([componentRoute]),
-    history: createMemoryHistory(),
-  });
-
-  return router;
-}
