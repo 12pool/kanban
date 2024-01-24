@@ -54,6 +54,7 @@ function DropdownMenuRaw({
             handleDropdownToggle();
           }
         }}
+        data-testid="dropdown-menu-trigger"
       >
         {trigger}
       </RadixDropdownMenu.Trigger>

@@ -5,7 +5,6 @@ export const Route = new FileRoute('/team/$teamName/$projectName').createRoute({
   component: Project,
 });
 
-
 function Project() {
-  return <div>Project</div>
+  return <div>Project</div>;
 }

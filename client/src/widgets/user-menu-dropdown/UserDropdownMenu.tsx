@@ -91,7 +91,7 @@ export const UserDropdownMenu = () => {
             teamName: teamName,
           }}
         >
-          <DropdownMenu.Item icon={<CardStackIcon />}>
+          <DropdownMenu.Item icon={<CardStackIcon />} data-testid="projects">
             Projects
           </DropdownMenu.Item>
         </Link>
@@ -104,6 +104,7 @@ export const UserDropdownMenu = () => {
             <DropdownMenu.Item
               icon={<PlusIcon />}
               onPointerDown={openProjectCreationDialog}
+              data-testid="add-project"
             >
               Add project
             </DropdownMenu.Item>

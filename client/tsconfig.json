@@ -29,8 +29,12 @@
       "entities/*": ["src/entities/*"],
       "shared/*": ["src/shared/*"],
       "ui/*": ["src/ui/*"],
+      "tests/*": ["src/tests/*"],
       "routes/*": ["src/routes/*"]
-    }
+    },
+
+    //for globals
+    "types": ["vitest/globals"]
   },
   "include": ["./src/**/*.ts", "./src/**/*.tsx", "scripts", ".storybook"],
   "exclude": ["node_modules", "./src/routeTree.gen.ts"],
