@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 
 import { CreateProjectDTO } from './dtos/create-project.dto';
 import { UpdateProjectDTO } from './dtos/update-project.dto';
@@ -38,6 +38,14 @@ export class ProjectService {
     }
 
     return project;
+  }
+
+  async findAllContains(projectSearch: string) {
+    return await this.projectRepository.find({
+      where: {
+        name: Like(`%${projectSearch}%`),
+      },
+    });
   }
 
   async create(createProjectDTO: CreateProjectDTO) {

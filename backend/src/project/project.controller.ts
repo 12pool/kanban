@@ -28,6 +28,11 @@ export class ProjectController {
     return await this.projectService.findOne(id);
   }
 
+  @Get()
+  async findAllContains(@Query('projectSearch') projectSearch: string) {
+    return await this.projectService.findAllContains(projectSearch);
+  }
+
   @Post()
   async create(@Body() createProjectDTO: CreateProjectDTO) {
     return await this.projectService.create(createProjectDTO);
