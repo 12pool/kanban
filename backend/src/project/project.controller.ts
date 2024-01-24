@@ -18,9 +18,12 @@ import { UpdateProjectDTO } from './dtos/update-project.dto';
 export class ProjectController {
   constructor(private readonly projectService: ProjectService) {}
 
-  @Get()
-  async findAll(@Query('teamName') teamName: string) {
-    return await this.projectService.findAll(teamName);
+  @Get('/:teamName')
+  async findAll(
+    @Param('teamName') teamName: string,
+    @Query('projectSearch') projectSearch: string,
+  ) {
+    return await this.projectService.findAll(teamName, projectSearch);
   }
 
   @Get(':id')
@@ -28,9 +31,15 @@ export class ProjectController {
     return await this.projectService.findOne(id);
   }
 
-  @Get()
-  async findAllContains(@Query('projectSearch') projectSearch: string) {
-    return await this.projectService.findAllContains(projectSearch);
+  @Get('/:teamName/:projectName')
+  async findOneByProjectIdentifier(
+    @Param('teamName') teamName: string,
+    @Param('projectName') projectName: string,
+  ) {
+    return await this.projectService.findOneByProjectIdentifier(
+      teamName,
+      projectName,
+    );
   }
 
   @Post()

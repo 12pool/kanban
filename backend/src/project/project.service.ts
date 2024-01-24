@@ -16,12 +16,13 @@ export class ProjectService {
     private teamRepository: Repository<TeamEntity>,
   ) {}
 
-  async findAll(teamName: string) {
+  async findAll(teamName: string, projectSearch: string) {
     return await this.projectRepository.find({
       where: {
         team: {
           name: teamName,
         },
+        name: Like(`%${projectSearch}%`),
       },
     });
   }
@@ -40,10 +41,13 @@ export class ProjectService {
     return project;
   }
 
-  async findAllContains(projectSearch: string) {
-    return await this.projectRepository.find({
+  async findOneByProjectIdentifier(teamName: string, projectName: string) {
+    return await this.projectRepository.findOne({
       where: {
-        name: Like(`%${projectSearch}%`),
+        team: {
+          name: teamName,
+        },
+        name: projectName,
       },
     });
   }
