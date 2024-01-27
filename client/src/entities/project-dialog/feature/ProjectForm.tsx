@@ -50,7 +50,7 @@ export const ProjectForm = ({ closeDialog }: ProjectFormProps) => {
 
     await navigate({
       to: `/team/$teamName/$projectName`,
-      params: { 
+      params: {
         teamName: data.team.name,
         projectName: data.name,
       },

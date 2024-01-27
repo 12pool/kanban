@@ -1,11 +1,10 @@
-import { FileRoute } from '@tanstack/react-router';
+import { createFileRoute } from '@tanstack/react-router';
 // import { Project } from 'pages/project/Project';
 
-export const Route = new FileRoute('/team/$teamName/$projectName').createRoute({
+export const Route = createFileRoute('/team/$teamName/$projectName')({
   component: Project,
 });
 
-
 function Project() {
-  return <div>Project</div>
+  return <div>Project</div>;
 }
