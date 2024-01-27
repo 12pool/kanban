@@ -5,7 +5,6 @@ import {
   Outlet,
   RouterProvider,
   createHashHistory,
-  createMemoryHistory,
   createRoute,
   createRouter,
   rootRouteWithContext,
