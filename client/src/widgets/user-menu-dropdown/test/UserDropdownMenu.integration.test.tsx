@@ -6,7 +6,7 @@ describe('User dropdown menu', () => {
     render(<UserDropdownMenu />);
 
     await waitFor(async () => {
-      const button = await screen.getByTestId('dropdown-menu-trigger');
+      const button = await screen.getByTestId('user-menu-trigger');
 
       await fireEvent.pointerDown(
         button,
@@ -17,7 +17,62 @@ describe('User dropdown menu', () => {
       );
 
       expect(button).toHaveAttribute('aria-expanded', 'true');
-      expect(screen.getByTestId('dropdown-menu-content')).toBeInTheDocument();
+      expect(screen.getByTestId('user-menu-content')).toBeInTheDocument();
+    });
+  });
+
+  it('should allow to close menu on outside click', async () => {
+    render(<UserDropdownMenu />);
+
+    await waitFor(async () => {
+      const button = await screen.getByTestId('user-menu-trigger');
+
+      await fireEvent.pointerDown(
+        button,
+        new PointerEvent('pointerdown', {
+          ctrlKey: false,
+          button: 0,
+        }),
+      );
+
+      await expect(button).toHaveAttribute('aria-expanded', 'true');
+      await expect(screen.getByTestId('user-menu-content')).toBeInTheDocument();
+    });
+
+    await waitFor(async () => {
+      const button = await screen.getByTestId('user-menu-trigger');
+      await fireEvent.pointerDown(
+        document.body,
+        new PointerEvent('pointerdown', {
+          ctrlKey: false,
+          button: 0,
+        }),
+      );
+
+      expect(button).toHaveAttribute('aria-expanded', 'false');
+      expect(screen.queryByTestId('user-menu-content')).not.toBeInTheDocument();
+    });
+  });
+
+  const menuItemsIds = ['user-menu-project', 'user-menu-add-project'];
+
+  it('should container expected menu items', async () => {
+    render(<UserDropdownMenu />);
+
+    await waitFor(async () => {
+      const button = await screen.getByTestId('user-menu-trigger');
+
+      await fireEvent.pointerDown(
+        button,
+        new PointerEvent('pointerdown', {
+          ctrlKey: false,
+          button: 0,
+        }),
+      );
+
+      for (const id of menuItemsIds) {
+        expect(screen.getByTestId(id)).toBeInTheDocument();
+      }
     });
   });
 });
