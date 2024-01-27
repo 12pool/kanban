@@ -47,8 +47,9 @@ function DropdownMenuRaw({
       onOpenChange={onOpenChange}
     >
       <RadixDropdownMenu.Trigger
+        data-testId="dropdown-menu-trigger"
         className={styles.DropdownMenuTrigger}
-        onClick={handleDropdownToggle}
+        onPointerDown={handleDropdownToggle}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
             handleDropdownToggle();
@@ -84,6 +85,7 @@ const DropdownMenuContent = forwardRef<
 >(function DropdownMenu({ children, className, ...props }, ref) {
   return (
     <RadixDropdownMenu.Content
+      data-testid="dropdown-menu-content"
       ref={ref}
       className={`${styles.DropdownMenuContent} ${className}`}
       {...props}

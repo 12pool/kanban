@@ -1,4 +1,4 @@
-import { render, screen } from 'test/test-utils';
+import { render, screen, waitFor } from 'test/test-utils';
 
 import { UserAvatar } from 'entities/user-avatar/feature';
 
@@ -6,8 +6,9 @@ describe('User Avatar', async () => {
   it('should render', async () => {
     render(<UserAvatar />);
 
-    const appEntry = screen.getByTestId('user-avatar');
-
-    expect(appEntry).toBeVisible();
+    await waitFor(() => {
+      const appEntry = screen.getByTestId('user-avatar');
+      expect(appEntry).toBeVisible();
+    });
   });
 });

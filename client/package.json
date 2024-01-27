@@ -16,9 +16,11 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "vitest",
-    "test:ui": "vitest --ui",
     "test:unit": "vitest unit",
-    "test:integration": "vitest integration"
+    "test:integration": "vitest integration",
+    "test:ui": "vitest --ui",
+    "test:ui-unit": "vitest unit --ui",
+    "test:ui-integration": "vitest integration --ui"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.0.4",
