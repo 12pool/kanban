@@ -30,7 +30,9 @@
       "shared/*": ["src/shared/*"],
       "ui/*": ["src/ui/*"],
       "routes/*": ["src/routes/*"]
-    }
+    },
+
+    "types": ["vitest/globals"]
   },
   "include": ["./src/**/*.ts", "./src/**/*.tsx", "scripts", ".storybook"],
   "exclude": ["node_modules", "./src/routeTree.gen.ts"],

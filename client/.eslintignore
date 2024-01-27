@@ -8,3 +8,4 @@ public/
 vite-env.d.ts
 scripts/
 routeTree.gen.ts
+test/
