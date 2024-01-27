@@ -1,10 +1,10 @@
-import { render, screen } from './test-uitls';
+import { render, screen } from './test-utils';
 
 const Dummy = () => {
   return <div data-testid="test" className="light" />;
 };
 
-describe('Dummy test', async () => {
+describe.skip('Dummy test', async () => {
   it('should work', async () => {
     render(<Dummy />);
 

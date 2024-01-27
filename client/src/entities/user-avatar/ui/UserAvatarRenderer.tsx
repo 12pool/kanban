@@ -14,6 +14,7 @@ export const UserAvatarRenderer = ({
 }: UserAvatarRendererProps) => {
   return (
     <Avatar
+      data-testId="user-avatar"
       src={src}
       fallback={<UserAvatarFallback className={fallbackClassName} />}
       imageClassName={imageClassName}

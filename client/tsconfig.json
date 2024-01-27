@@ -29,7 +29,8 @@
       "entities/*": ["src/entities/*"],
       "shared/*": ["src/shared/*"],
       "ui/*": ["src/ui/*"],
-      "routes/*": ["src/routes/*"]
+      "routes/*": ["src/routes/*"],
+      "test/*": ["src/test/*"]
     },
 
     "types": ["vitest/globals"]
