@@ -21,6 +21,7 @@ type DropdownMenuPortalProps = {
 export type DropdownMenuProps = {
   children: React.ReactNode;
   trigger: React.ReactNode;
+  triggerRole?: string;
 } & DropdownMenuContentProps &
   DropdownMenuPortalProps;
 
@@ -38,6 +39,7 @@ function DropdownMenuRaw({
   forceMount,
   onOpenChange,
   handleDropdownToggle,
+  triggerRole,
 }: DropdownMenuProps) {
   return (
     <RadixDropdownMenu.Root
@@ -47,8 +49,9 @@ function DropdownMenuRaw({
       onOpenChange={onOpenChange}
     >
       <RadixDropdownMenu.Trigger
+        data-testId={triggerRole ?? 'dropdown-menu-trigger'}
         className={styles.DropdownMenuTrigger}
-        onClick={handleDropdownToggle}
+        onPointerDown={handleDropdownToggle}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
             handleDropdownToggle();

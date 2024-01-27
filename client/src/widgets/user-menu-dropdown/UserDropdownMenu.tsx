@@ -62,6 +62,7 @@ export const UserDropdownMenu = () => {
       defaultOpen
       open={userMenuOpen}
       handleDropdownToggle={handleToggle}
+      triggerRole="user-menu-trigger"
       trigger={
         <UserAvatar
           fallbackClassName={styles.UserAvatar}
@@ -71,6 +72,7 @@ export const UserDropdownMenu = () => {
       modal={false}
     >
       <DropdownMenu.Content
+        data-testid="user-menu-content"
         sideOffset={8}
         align="end"
         onEscapeKeyDown={handleClose}
@@ -91,7 +93,10 @@ export const UserDropdownMenu = () => {
             teamName: teamName,
           }}
         >
-          <DropdownMenu.Item icon={<CardStackIcon />}>
+          <DropdownMenu.Item
+            data-testid="user-menu-project"
+            icon={<CardStackIcon />}
+          >
             Projects
           </DropdownMenu.Item>
         </Link>
@@ -102,6 +107,7 @@ export const UserDropdownMenu = () => {
           triggerClassName={styles.ProjectDialogTrigger}
           trigger={
             <DropdownMenu.Item
+              data-testid="user-menu-add-project"
               icon={<PlusIcon />}
               onPointerDown={openProjectCreationDialog}
             >

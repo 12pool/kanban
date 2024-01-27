@@ -1,22 +1,26 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
-import checker from 'vite-plugin-checker';
 import { TanStackRouterVite } from '@tanstack/router-vite-plugin';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    checker({
-      typescript: true,
-    }),
+    tsconfigPaths(),
     TanStackRouterVite({
       routesDirectory: './src/routes',
       generatedRouteTree: './src/routeTree.gen.ts',
       routeFileIgnorePrefix: '_',
     }),
-
   ],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/test/setup.ts',
+    css: true,
+  },
   server: {
     open: true,
   },
@@ -29,6 +33,7 @@ export default defineConfig({
       shared: '/src/shared',
       ui: '/src/ui',
       routes: '/src/routes',
+      test: 'src/test',
     },
   },
 });

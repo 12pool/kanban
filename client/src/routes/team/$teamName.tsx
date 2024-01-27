@@ -1,4 +1,4 @@
-import { FileRoute } from '@tanstack/react-router';
+import { createFileRoute } from '@tanstack/react-router';
 import { TeamLayout } from 'pages/team/TeamLayout';
 import { z } from 'zod';
 
@@ -8,7 +8,7 @@ const schema = z.object({
 
 type TeamLayout = z.infer<typeof schema>;
 
-export const Route = new FileRoute('/team/$teamName').createRoute({
+export const Route = createFileRoute('/team/$teamName')({
   component: TeamLayout,
   validateSearch: (search): TeamLayout => schema.parse(search),
 });
