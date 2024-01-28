@@ -24,6 +24,10 @@ export const ProjectsList = () => {
       {data.length > 0 ? (
         data.map(({ id, name }) => (
           <Link
+            style={{
+              border: "1px solid #fff",
+              padding: "1rem"
+            }}
             key={id}
             to={`/team/$teamName/$projectName`}
             params={{
@@ -31,7 +35,7 @@ export const ProjectsList = () => {
               projectName: name,
             }}
           >
-            {name}
+            project: {name}
           </Link>
         ))
       ) : (
