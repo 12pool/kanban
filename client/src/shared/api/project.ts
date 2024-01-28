@@ -16,3 +16,13 @@ export type ProjectWithTeam = Project & {
 };
 
 export type ProjectAvatar = Pick<Project, 'icon' | 'color'>;
+
+export class ProjectAPI {
+  public static findOne = ({ teamName }: { teamName: string }) => {
+    return `/project?teamName=${teamName}`;
+  };
+
+  public static create = () => {
+    return '/project';
+  };
+}

@@ -49,7 +49,7 @@ function DropdownMenuRaw({
       onOpenChange={onOpenChange}
     >
       <RadixDropdownMenu.Trigger
-        data-testId={triggerRole ?? 'dropdown-menu-trigger'}
+        data-testid={triggerRole ?? 'dropdown-menu-trigger'}
         className={styles.DropdownMenuTrigger}
         onPointerDown={handleDropdownToggle}
         onKeyDown={(e) => {

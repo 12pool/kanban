@@ -2,7 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import type { AxiosPromise } from 'axios';
 
 import type { CreateProjectDTO } from 'entities/project-dialog/model';
-import type { ProjectWithTeam } from 'shared/project/model';
+import type { ProjectWithTeam } from 'shared/api';
 
 import { createProject } from './create-project';
 

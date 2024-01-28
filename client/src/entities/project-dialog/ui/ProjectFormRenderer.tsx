@@ -10,7 +10,7 @@ import { Loader } from 'ui/loader';
 import { FormBody, FormField } from 'shared/form/ui';
 import { AvatarPicker } from 'shared/avatar-picker/feature';
 
-import type { ProjectAvatar, Project } from 'shared/project/model';
+import type { ProjectAvatar, Project } from 'shared/api';
 
 export type Inputs = Pick<Project, 'description' | 'name'>;
 

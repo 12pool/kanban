@@ -1,1 +1,1 @@
-export { useProjects } from './use-projects';
+export { projectsQueryOptions } from './projectQueryOptions';
