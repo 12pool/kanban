@@ -7,7 +7,7 @@ import { Route as teamRoute } from 'routes/team/$teamName';
 import { colors } from 'shared/avatar-picker/model';
 import { ErrorMessage } from 'shared/error-message/feature';
 import { toast } from 'shared/toaster';
-import type { ProjectWithTeam, ProjectAvatar } from 'shared/project/model';
+import type { ProjectWithTeam, ProjectAvatar } from 'shared/api';
 
 import { useCreateProject } from 'entities/project-dialog/api';
 import {

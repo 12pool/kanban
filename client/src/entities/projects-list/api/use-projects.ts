@@ -1,7 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { type Project } from 'shared/project/model';
-
 import { fetchProjects } from './fetch-projects';
 
 export const useProjects = (teamName: string) => {
@@ -10,7 +8,7 @@ export const useProjects = (teamName: string) => {
     queryFn: async () => {
       const response = await fetchProjects(teamName);
 
-      return response.data as Required<Project>[];
+      return response.data;
     },
   });
 };
