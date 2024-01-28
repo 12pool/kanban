@@ -1,9 +1,9 @@
-import { useQuery } from '@tanstack/react-query';
+import { queryOptions } from '@tanstack/react-query';
 
 import { fetchProjects } from './fetch-projects';
 
-export const useProjects = (teamName: string) => {
-  return useQuery({
+export const projectsQueryOptions = (teamName: string) =>
+  queryOptions({
     queryKey: ['projects', teamName],
     queryFn: async () => {
       const response = await fetchProjects(teamName);
@@ -11,4 +11,3 @@ export const useProjects = (teamName: string) => {
       return response.data;
     },
   });
-};
