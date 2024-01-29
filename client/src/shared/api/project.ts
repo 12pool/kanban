@@ -25,4 +25,14 @@ export class ProjectAPI {
   public static create = () => {
     return '/project';
   };
+
+  public static checkName = ({
+    teamName,
+    name,
+  }: {
+    teamName: string;
+    name: string;
+  }) => {
+    return `/project/${teamName}/check-name?name=${name}`;
+  };
 }

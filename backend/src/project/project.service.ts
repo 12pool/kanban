@@ -109,4 +109,17 @@ export class ProjectService {
       message: `Project ${id} deleted`,
     };
   }
+
+  async checkName(teamName: string, name: string) {
+    const project = await this.projectRepository.findOne({
+      where: {
+        team: {
+          name: teamName,
+        },
+        name,
+      },
+    });
+
+    return !!project;
+  }
 }

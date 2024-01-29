@@ -20,6 +20,7 @@ type ProjectFormProps = {
   setProjectAvatar: React.Dispatch<React.SetStateAction<ProjectAvatar>>;
   register: UseFormRegister<Inputs>;
   isPending?: boolean;
+  isValid?: boolean;
 };
 
 export function ProjectFormRenderer({
@@ -28,6 +29,7 @@ export function ProjectFormRenderer({
   setProjectAvatar,
   register,
   isPending,
+  isValid,
 }: ProjectFormProps) {
   const buttons = useMemo(() => {
     if (isPending) {
@@ -41,15 +43,21 @@ export function ProjectFormRenderer({
       );
     }
 
-    return <Button>Create Project</Button>;
-  }, [isPending]);
+    return <Button disabled={!isValid}>Create Project</Button>;
+  }, [isPending, isValid]);
 
   return (
     <FormBody isPending={isPending} buttons={buttons}>
       <FormField
         label="Name"
         fieldId="name"
-        error={errors.name && 'This field is required'}
+        error={
+          errors.name
+            ? errors.name.type === 'manual'
+              ? errors.name.message
+              : 'This field is required'
+            : undefined
+        }
       >
         <Input<Inputs>
           error={!!errors.name}
@@ -58,6 +66,7 @@ export function ProjectFormRenderer({
             register,
           }}
           required
+          autoComplete="off"
         />
       </FormField>
 

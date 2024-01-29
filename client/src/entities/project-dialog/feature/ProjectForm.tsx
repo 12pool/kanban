@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from '@tanstack/react-router';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 
@@ -15,6 +15,8 @@ import {
   type Inputs,
   ProjectCreatedToast,
 } from 'entities/project-dialog/ui';
+
+import { useCheckNameValidator } from './use-check-name-validator';
 
 type ProjectFormProps = {
   closeDialog: () => void;
@@ -33,7 +35,13 @@ export const ProjectForm = ({ closeDialog }: ProjectFormProps) => {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
+    getValues,
+    setError,
+    clearErrors,
   } = useForm<Inputs>();
+
+  const isFormValid = Object.keys(errors).length === 0;
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     createProject({
@@ -42,6 +50,22 @@ export const ProjectForm = ({ closeDialog }: ProjectFormProps) => {
       teamName,
     });
   };
+
+  const nameCheck = useCheckNameValidator({
+    teamName,
+    name: watch('name'),
+  });
+
+  useEffect(() => {
+    if (nameCheck) {
+      setError('name', {
+        type: 'manual',
+        message: `The name ${getValues('name')} is already taken`,
+      });
+    } else {
+      clearErrors('name');
+    }
+  }, [nameCheck, setError, getValues, clearErrors]);
 
   const onSuccess = async (data: ProjectWithTeam) => {
     toast.success(<ProjectCreatedToast />);
@@ -76,6 +100,7 @@ export const ProjectForm = ({ closeDialog }: ProjectFormProps) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <ProjectFormRenderer
         isPending={isPending}
+        isValid={isFormValid}
         errors={errors}
         projectAvatar={projectAvatar}
         setProjectAvatar={setProjectAvatar}

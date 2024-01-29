@@ -25,8 +25,8 @@ export const ProjectsList = () => {
         data.map(({ id, name }) => (
           <Link
             style={{
-              border: "1px solid #fff",
-              padding: "1rem"
+              border: '1px solid #fff',
+              padding: '1rem',
             }}
             key={id}
             to={`/team/$teamName/$projectName`}
