@@ -12,11 +12,21 @@ import type { ProjectWithTeam, ProjectAvatar } from 'shared/api';
 import { useCreateProject } from 'entities/project-dialog/api';
 import {
   ProjectFormRenderer,
-  type Inputs,
   ProjectCreatedToast,
 } from 'entities/project-dialog/ui';
+import {
+  type Inputs,
+  isKeyOfInputs,
+  inputKeys,
+} from 'entities/project-dialog/model';
 
 import { useCheckNameValidator } from './use-check-name-validator';
+
+import {
+  handleServerFormError,
+  hasValidFormFields,
+  isFormException,
+} from 'shared/api/exceptions/form-exception';
 
 type ProjectFormProps = {
   closeDialog: () => void;
@@ -82,18 +92,36 @@ export const ProjectForm = ({ closeDialog }: ProjectFormProps) => {
     });
   };
 
+  const onError = (error: Error) => {
+    if (
+      isFormException(error) &&
+      hasValidFormFields<Inputs>(inputKeys, error.response.data.errors)
+    ) {
+      handleServerFormError({
+        predicate: isKeyOfInputs,
+        response: error.response.data.errors,
+        setError,
+      });
+    }
+
+    // Unhandled error fallback
+    return <ErrorMessage error={error} reset={reset} />;
+  };
+
+  const handleClearCustomErrorOnFocus = (key: keyof Inputs) => {
+    if (errors[key]?.type === 'manual' || errors[key]?.type === 'form') {
+      clearErrors(key);
+    }
+  };
+
   const {
     mutate: createProject,
     isPending,
-    error,
     reset,
   } = useCreateProject({
     onSuccess,
+    onError,
   });
-
-  if (error) {
-    return <ErrorMessage error={error} reset={reset} />;
-  }
 
   return (
     // eslint-disable-next-line
@@ -105,6 +133,7 @@ export const ProjectForm = ({ closeDialog }: ProjectFormProps) => {
         projectAvatar={projectAvatar}
         setProjectAvatar={setProjectAvatar}
         register={register}
+        clearCustomErrorOnFocus={handleClearCustomErrorOnFocus}
       />
     </form>
   );

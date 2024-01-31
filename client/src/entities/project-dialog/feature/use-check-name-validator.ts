@@ -10,7 +10,7 @@ export const useCheckNameValidator = ({
   teamName,
   name,
 }: useCheckNameValidator) => {
-  const debouncedName = useDebouncedValue(name, 350);
+  const debouncedName = useDebouncedValue(name, 100);
   const { data } = useCheckName({ teamName, name: debouncedName });
 
   return data?.data;

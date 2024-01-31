@@ -9,27 +9,28 @@ import { Loader } from 'ui/loader';
 
 import { FormBody, FormField } from 'shared/form/ui';
 import { AvatarPicker } from 'shared/avatar-picker/feature';
+import type { Inputs } from 'entities/project-dialog/model';
 
-import type { ProjectAvatar, Project } from 'shared/api';
-
-export type Inputs = Pick<Project, 'description' | 'name'>;
+import type { ProjectAvatar } from 'shared/api';
 
 type ProjectFormProps = {
   errors: FieldErrors<Inputs>;
   projectAvatar: ProjectAvatar;
-  setProjectAvatar: React.Dispatch<React.SetStateAction<ProjectAvatar>>;
-  register: UseFormRegister<Inputs>;
   isPending?: boolean;
   isValid?: boolean;
+  setProjectAvatar: React.Dispatch<React.SetStateAction<ProjectAvatar>>;
+  register: UseFormRegister<Inputs>;
+  clearCustomErrorOnFocus: (key: keyof Inputs) => void;
 };
 
 export function ProjectFormRenderer({
   errors,
   projectAvatar,
-  setProjectAvatar,
-  register,
   isPending,
   isValid,
+  setProjectAvatar,
+  register,
+  clearCustomErrorOnFocus,
 }: ProjectFormProps) {
   const buttons = useMemo(() => {
     if (isPending) {
@@ -64,6 +65,9 @@ export function ProjectFormRenderer({
           reactHookForm={{
             label: 'name',
             register,
+          }}
+          onFocus={() => {
+            clearCustomErrorOnFocus('name');
           }}
           required
           autoComplete="off"
