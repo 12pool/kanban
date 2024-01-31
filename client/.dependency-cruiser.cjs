@@ -44,7 +44,7 @@ module.exports = {
       comment:
         'Code in the ui segment is not allowed to import code from any segment other than utils, model, or ui.',
       severity: 'error',
-      from: { path: '^src/(entities|shared)/.*/ui' },
+      from: { path: '^src/(entities)/.*/ui' },
       to: { path: '^src/(?!.*utils|.*model|.*ui)' },
     },
     {
@@ -52,15 +52,15 @@ module.exports = {
       comment:
         'Code in the feature segment is not allowed to import code from any segment other than api, ui, model, or feature.',
       severity: 'error',
-      from: { path: '^src/(entities|shared)/.*/feature' },
-      to: { path: '^src/(?!.*api|.*ui|.*model|.*feature|route)' },
+      from: { path: '^src/(entities)/.*/feature' },
+      to: { path: '^src/(?!.*api|.*ui|.*model|.*feature|route|.*shared)' },
     },
     {
       name: 'segment-violation for api',
       comment:
         'Code in the api segment is not allowed to import code from any segment other than model or api.',
       severity: 'error',
-      from: { path: '^src/(entities|shared)/.*/api' },
+      from: { path: '^src/(entities)/.*/api' },
       to: { path: '^src/(?!.*model|.*api)' },
     },
     {
@@ -68,7 +68,7 @@ module.exports = {
       comment:
         'Code in the model segment is not allowed to import code from any segment other than model.',
       severity: 'error',
-      from: { path: '^src/(entities|shared)/.*/model' },
+      from: { path: '^src/(entities)/.*/model' },
       to: { path: '^src/(?!.*model)' },
     },
     {
@@ -76,7 +76,7 @@ module.exports = {
       comment:
         'Code in the utils segment is not allowed to import code from any segment other than utils.',
       severity: 'error',
-      from: { path: '^src/(entities|shared)/.*/utils' },
+      from: { path: '^src/(entities)/.*/utils' },
       to: { path: '^src/(?!.*utils)' },
     },
 

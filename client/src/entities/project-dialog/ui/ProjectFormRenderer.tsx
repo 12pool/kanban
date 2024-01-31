@@ -9,25 +9,28 @@ import { Loader } from 'ui/loader';
 
 import { FormBody, FormField } from 'shared/form/ui';
 import { AvatarPicker } from 'shared/avatar-picker/feature';
+import type { Inputs } from 'entities/project-dialog/model';
 
-import type { ProjectAvatar, Project } from 'shared/api';
-
-export type Inputs = Pick<Project, 'description' | 'name'>;
+import type { ProjectAvatar } from 'shared/api';
 
 type ProjectFormProps = {
   errors: FieldErrors<Inputs>;
   projectAvatar: ProjectAvatar;
+  isPending?: boolean;
+  isValid?: boolean;
   setProjectAvatar: React.Dispatch<React.SetStateAction<ProjectAvatar>>;
   register: UseFormRegister<Inputs>;
-  isPending?: boolean;
+  clearCustomErrorOnFocus: (key: keyof Inputs) => void;
 };
 
 export function ProjectFormRenderer({
   errors,
   projectAvatar,
+  isPending,
+  isValid,
   setProjectAvatar,
   register,
-  isPending,
+  clearCustomErrorOnFocus,
 }: ProjectFormProps) {
   const buttons = useMemo(() => {
     if (isPending) {
@@ -41,15 +44,21 @@ export function ProjectFormRenderer({
       );
     }
 
-    return <Button>Create Project</Button>;
-  }, [isPending]);
+    return <Button disabled={!isValid}>Create Project</Button>;
+  }, [isPending, isValid]);
 
   return (
     <FormBody isPending={isPending} buttons={buttons}>
       <FormField
         label="Name"
         fieldId="name"
-        error={errors.name && 'This field is required'}
+        error={
+          errors.name
+            ? errors.name.type === 'manual'
+              ? errors.name.message
+              : 'This field is required'
+            : undefined
+        }
       >
         <Input<Inputs>
           error={!!errors.name}
@@ -57,7 +66,11 @@ export function ProjectFormRenderer({
             label: 'name',
             register,
           }}
+          onFocus={() => {
+            clearCustomErrorOnFocus('name');
+          }}
           required
+          autoComplete="off"
         />
       </FormField>
 

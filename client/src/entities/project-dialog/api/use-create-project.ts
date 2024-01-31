@@ -8,15 +8,19 @@ import { createProject } from './create-project';
 
 type UseCreateProject = {
   onSuccess?: (project: ProjectWithTeam) => Promise<void>;
+  onError?: (error: Error) => void;
 };
 
-export const useCreateProject = ({ onSuccess }: UseCreateProject) => {
+export const useCreateProject = ({ onSuccess, onError }: UseCreateProject) => {
   return useMutation({
     mutationFn: (project: CreateProjectDTO) => {
       return createProject(project) as AxiosPromise<Required<ProjectWithTeam>>;
     },
     onSuccess: async (response) => {
       await onSuccess?.(response.data);
+    },
+    onError: (error) => {
+      onError?.(error);
     },
   });
 };

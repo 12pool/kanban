@@ -42,6 +42,14 @@ export class ProjectController {
     );
   }
 
+  @Get(':teamName/check-name')
+  async checkName(
+    @Param('teamName') teamName: string,
+    @Query('name') name: string,
+  ) {
+    return await this.projectService.checkName(teamName, name);
+  }
+
   @Post()
   async create(@Body() createProjectDTO: CreateProjectDTO) {
     return await this.projectService.create(createProjectDTO);
