@@ -26,7 +26,7 @@ import {
   handleServerFormError,
   hasValidFormFields,
   isFormException,
-} from 'shared/api/exceptions/form-exception';
+} from 'shared/exceptions/server';
 
 type ProjectFormProps = {
   closeDialog: () => void;

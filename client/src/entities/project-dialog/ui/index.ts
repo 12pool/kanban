@@ -1,2 +1,2 @@
-export { ProjectFormRenderer, type Inputs } from './ProjectFormRenderer';
+export { ProjectFormRenderer } from './ProjectFormRenderer';
 export { ProjectCreatedToast } from './ProjectCreatedToast';
