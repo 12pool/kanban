@@ -6,6 +6,8 @@ import { CreateProjectDTO } from './dtos/create-project.dto';
 import { UpdateProjectDTO } from './dtos/update-project.dto';
 import { ProjectEntity } from './entities/project.entity';
 import { TeamEntity } from 'src/team/entities/team.entity';
+import { SimpleException } from 'exceptions/SimpleManual.exception';
+import { FormException } from 'exceptions/Form.exception';
 
 @Injectable()
 export class ProjectService {
@@ -60,14 +62,29 @@ export class ProjectService {
     });
 
     if (!team) {
-      throw new NotFoundException(
-        `Team ${createProjectDTO.teamName} not found`,
-      );
+      throw new SimpleException(`Team ${createProjectDTO.teamName} not found`);
     }
 
     // to make sure we don't have two projects with the same name
     // because we use name in the url and browsers don't care about case
     const lowerCasedName = createProjectDTO.name.toLowerCase();
+
+    // check if project with such name already exists
+    const projectWithSameName = await this.projectRepository.findOne({
+      where: {
+        name: lowerCasedName,
+        team,
+      },
+    });
+
+    if (projectWithSameName) {
+      throw new FormException([
+        {
+          field: 'name',
+          message: `Project with name ${createProjectDTO.name} already exists`,
+        },
+      ]);
+    }
 
     const project = await this.projectRepository.create({
       ...createProjectDTO,
