@@ -31,6 +31,14 @@ export class ProjectController {
     return await this.projectService.findOne(id);
   }
 
+  @Get(':teamName/check-name')
+  async checkName(
+    @Param('teamName') teamName: string,
+    @Query('name') name: string,
+  ) {
+    return await this.projectService.checkName(teamName, name);
+  }
+
   @Get('/:teamName/:projectName')
   async findOneByProjectIdentifier(
     @Param('teamName') teamName: string,
@@ -40,14 +48,6 @@ export class ProjectController {
       teamName,
       projectName,
     );
-  }
-
-  @Get(':teamName/check-name')
-  async checkName(
-    @Param('teamName') teamName: string,
-    @Query('name') name: string,
-  ) {
-    return await this.projectService.checkName(teamName, name);
   }
 
   @Post()

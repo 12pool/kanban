@@ -15,5 +15,6 @@ export const useCheckName = ({
       return checkName({ teamName, name }) as AxiosPromise<boolean>;
     },
     enabled: !!name,
+    staleTime: Infinity,
   });
 };
