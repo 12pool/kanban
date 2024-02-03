@@ -1,5 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { Like, Repository } from 'typeorm';
 
 import { CreateProjectDTO } from './dtos/create-project.dto';
@@ -8,13 +7,14 @@ import { ProjectEntity } from './entities/project.entity';
 import { TeamEntity } from 'src/team/entities/team.entity';
 import { SimpleException } from 'exceptions/SimpleManual.exception';
 import { FormException } from 'exceptions/Form.exception';
+import { DB } from 'src/constants';
 
 @Injectable()
 export class ProjectService {
   constructor(
-    @InjectRepository(ProjectEntity)
+    @Inject(DB.repositories.project)
     private projectRepository: Repository<ProjectEntity>,
-    @InjectRepository(TeamEntity)
+    @Inject(DB.repositories.team)
     private teamRepository: Repository<TeamEntity>,
   ) {}
 
