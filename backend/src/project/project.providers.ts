@@ -3,7 +3,7 @@ import { DB } from 'src/constants';
 
 import { ProjectEntity } from './entities/project.entity';
 
-export const photoProviders = [
+export const projectProviders = [
   {
     provide: DB.repositories.project,
     useFactory: (dataSource: DataSource) =>
