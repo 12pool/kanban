@@ -12,8 +12,8 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('kanban')
-    .setDescription('this is tne kanban API version 1.0')
-    .setVersion('1.0')
+    .setDescription('this is the kanban API version 0.1')
+    .setVersion('0.1')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
