@@ -4,6 +4,6 @@ import { ApiProperty } from '@nestjs/swagger';
 export class CreateTeamDTO {
   @IsNotEmpty({ message: 'Name is required' })
   @IsString()
-  @ApiProperty({ description: 'Name is required', required: true })
+  @ApiProperty({ required: true })
   name: string;
 }
