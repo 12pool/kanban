@@ -1,5 +1,4 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import { Like, Repository } from 'typeorm';
 
 import { CreateProjectDTO } from './dtos/create-project.dto';
@@ -15,7 +14,7 @@ export class ProjectService {
   constructor(
     @Inject(DB.repositories.project)
     private projectRepository: Repository<ProjectEntity>,
-    @InjectRepository(TeamEntity)
+    @Inject(DB.repositories.team)
     private teamRepository: Repository<TeamEntity>,
   ) {}
 
