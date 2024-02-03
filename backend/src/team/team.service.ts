@@ -1,6 +1,7 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
+
+import { DB } from 'src/constants';
 
 import { CreateTeamDTO } from './dtos/create-team.dto';
 import { UpdateTeamDTO } from './dtos/update-team.dto';
@@ -9,7 +10,7 @@ import { TeamEntity } from './entities/team.entity';
 @Injectable()
 export class TeamService {
   constructor(
-    @InjectRepository(TeamEntity)
+    @Inject(DB.repositories.team)
     private teamRepository: Repository<TeamEntity>,
   ) {}
 
