@@ -13,7 +13,9 @@ import { ProjectService } from './project.service';
 
 import { CreateProjectDTO } from './dtos/create-project.dto';
 import { UpdateProjectDTO } from './dtos/update-project.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('project')
 @Controller('project')
 export class ProjectController {
   constructor(private readonly projectService: ProjectService) {}
