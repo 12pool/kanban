@@ -13,7 +13,7 @@ import { ProjectService } from './project.service';
 
 import { CreateProjectDTO } from './dtos/create-project.dto';
 import { UpdateProjectDTO } from './dtos/update-project.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiQuery, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('project')
 @Controller('project')
@@ -21,6 +21,7 @@ export class ProjectController {
   constructor(private readonly projectService: ProjectService) {}
 
   @Get('/:teamName')
+  @ApiQuery({ name: 'projectSearch', required: false })
   async findAll(
     @Param('teamName') teamName: string,
     @Query('projectSearch') projectSearch: string,

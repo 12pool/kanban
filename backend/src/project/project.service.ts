@@ -24,7 +24,7 @@ export class ProjectService {
         team: {
           name: teamName,
         },
-        name: Like(`%${projectSearch}%`),
+        name: projectSearch ? Like(`%${projectSearch}%`) : undefined,
       },
     });
   }
