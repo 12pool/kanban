@@ -1,8 +1,9 @@
+import { DB } from 'src/constants';
 import { DataSource } from 'typeorm';
 
 export const databaseProviders = [
   {
-    provide: 'DATA_SOURCE',
+    provide: DB.dataSource,
     useFactory: async () => {
       const dataSource = new DataSource({
         type: 'sqlite',
