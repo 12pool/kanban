@@ -35,3 +35,8 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 sql.sqlite
+test.sqlite
+
+.env.dev
+.env.test
+.env
