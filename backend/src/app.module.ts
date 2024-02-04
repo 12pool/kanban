@@ -7,10 +7,12 @@ import { AppService } from './app.service';
 import { ProjectModule } from './project/project.module';
 import { TeamModule } from './team/team.module';
 
+const ENV = process.env.NODE_ENV;
+
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: ['.development.env', '.test.env', '.env'],
+      envFilePath: !ENV ? '.env' : `.env.${ENV}`,
       isGlobal: true,
     }),
     ProjectModule,

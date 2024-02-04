@@ -1,12 +1,13 @@
 import { DataSource } from 'typeorm';
 import { ConfigService } from '@nestjs/config';
 import { DB } from 'src/constants';
+import type { EnvironmentVariables } from 'src/shared/config/config.interface';
 
 export const databaseProviders = [
   {
     provide: DB.dataSource,
-    useFactory: async (configService: ConfigService) => {
-      const dbName = configService.get<string>('DB_NAME');
+    useFactory: async (configService: ConfigService<EnvironmentVariables>) => {
+      const dbName = configService.get('DB_NAME', { infer: true });
 
       const dataSource = new DataSource({
         type: 'sqlite',
