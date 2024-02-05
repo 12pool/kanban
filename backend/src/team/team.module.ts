@@ -9,6 +9,6 @@ import { teamProviders } from './team.providers';
   imports: [DatabaseModule],
   providers: [...teamProviders, TeamService],
   controllers: [TeamController],
-  exports: [TeamService],
+  exports: [TeamService, ...teamProviders],
 })
 export class TeamModule {}
