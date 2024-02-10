@@ -1,2 +1,2 @@
 export { ProjectFormRenderer } from './ProjectFormRenderer';
-export { ProjectCreatedToast } from './ProjectCreatedToast';
+export { SuccessToast } from './SuccessToast';

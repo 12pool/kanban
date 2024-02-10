@@ -9,9 +9,8 @@ import { Loader } from 'ui/loader';
 
 import { FormBody, FormField } from 'shared/form/ui';
 import { AvatarPicker } from 'shared/avatar-picker/feature';
-import type { Inputs } from 'entities/project-dialog/model';
-
-import type { ProjectAvatar } from 'shared/api';
+import type { Inputs } from 'entities/project-form/model';
+import { type ProjectAvatar } from 'shared/project/model';
 
 type ProjectFormProps = {
   errors: FieldErrors<Inputs>;
@@ -55,7 +54,7 @@ export function ProjectFormRenderer({
         error={
           errors.name
             ? errors.name.type === 'manual'
-              ? errors.name.message
+              ? String(errors.name.message)
               : 'This field is required'
             : undefined
         }

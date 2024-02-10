@@ -34,6 +34,8 @@ module.exports = {
     '@typescript-eslint/no-extraneous-class': 'off',
     // needed for tanstack-router
     '@typescript-eslint/no-unsafe-return': 'warn',
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+    '@typescript-eslint/prefer-nullish-coalescing': 'off',
   },
   settings: {
     react: {

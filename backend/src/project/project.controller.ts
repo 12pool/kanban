@@ -1,5 +1,6 @@
 import {
   Body,
+  ClassSerializerInterceptor,
   Controller,
   Delete,
   Get,
@@ -7,6 +8,7 @@ import {
   Post,
   Put,
   Query,
+  UseInterceptors,
 } from '@nestjs/common';
 
 import { ProjectService } from './project.service';
@@ -20,18 +22,18 @@ import { ApiQuery, ApiTags } from '@nestjs/swagger';
 export class ProjectController {
   constructor(private readonly projectService: ProjectService) {}
 
-  @Get('/:teamName')
+  @Get(':id')
+  async findOne(@Param('id') id: string) {
+    return await this.projectService.findOne(id);
+  }
+
+  @Get(':teamName/all')
   @ApiQuery({ name: 'projectSearch', required: false })
   async findAll(
     @Param('teamName') teamName: string,
     @Query('projectSearch') projectSearch: string,
   ) {
     return await this.projectService.findAll(teamName, projectSearch);
-  }
-
-  @Get(':id')
-  async findOne(@Param('id') id: string) {
-    return await this.projectService.findOne(id);
   }
 
   @Get(':teamName/check-name')
@@ -42,23 +44,14 @@ export class ProjectController {
     return await this.projectService.checkName(teamName, name);
   }
 
-  @Get('/:teamName/:projectName')
-  async findOneByProjectIdentifier(
-    @Param('teamName') teamName: string,
-    @Param('projectName') projectName: string,
-  ) {
-    return await this.projectService.findOneByProjectIdentifier(
-      teamName,
-      projectName,
-    );
-  }
-
   @Post()
+  @UseInterceptors(ClassSerializerInterceptor)
   async create(@Body() createProjectDTO: CreateProjectDTO) {
     return await this.projectService.create(createProjectDTO);
   }
 
   @Put(':id')
+  @UseInterceptors(ClassSerializerInterceptor)
   async update(
     @Param('id') id: string,
     @Body() updateProjectDTO: UpdateProjectDTO,

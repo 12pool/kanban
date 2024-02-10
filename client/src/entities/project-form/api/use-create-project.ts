@@ -1,10 +1,10 @@
 import { useMutation } from '@tanstack/react-query';
 import type { AxiosPromise } from 'axios';
 
-import type { CreateProjectDTO } from 'entities/project-dialog/model';
-import type { ProjectWithTeam } from 'shared/api';
+import type { CreateProjectDTO } from 'entities/project-form/model';
 
 import { createProject } from './create-project';
+import { type ProjectWithTeam } from 'shared/project/model';
 
 type UseCreateProject = {
   onSuccess?: (project: ProjectWithTeam) => Promise<void>;

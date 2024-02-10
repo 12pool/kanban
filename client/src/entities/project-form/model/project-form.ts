@@ -1,4 +1,4 @@
-import type { Project } from 'shared/api';
+import { type Project } from 'shared/project/model';
 
 export type Inputs = Pick<Project, 'description' | 'name'>;
 

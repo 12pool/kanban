@@ -3,7 +3,8 @@ import { TeamLayout } from 'pages/team/TeamLayout';
 import { z } from 'zod';
 
 const schema = z.object({
-  insertProjectDialogOpen: z.boolean().optional().catch(undefined),
+  insertProjectFormWithDialogOpen: z.boolean().optional().catch(undefined),
+  updateProjectFormWithDialogOpen: z.boolean().optional().catch(undefined),
 });
 
 type TeamLayout = z.infer<typeof schema>;

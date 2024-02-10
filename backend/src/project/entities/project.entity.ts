@@ -15,6 +15,9 @@ export class ProjectEntity {
   id: string;
 
   @Column()
+  projectIdentifier: string;
+
+  @Column()
   name: string;
 
   @Column()
