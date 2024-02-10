@@ -1,4 +1,4 @@
-import { Transform } from 'class-transformer';
+import { Expose, Transform } from 'class-transformer';
 import { IsNotEmpty, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
@@ -27,4 +27,9 @@ export class CreateProjectDTO {
   @IsString({ message: 'Color must be a string' })
   @ApiProperty({ required: true })
   color: string;
+
+  @Expose()
+  get projectIdentifier() {
+    return `${this.teamName.toLocaleLowerCase()}.${this.name.toLocaleLowerCase()}`;
+  }
 }

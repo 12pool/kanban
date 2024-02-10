@@ -90,6 +90,7 @@ export class ProjectService {
       ...createProjectDTO,
       name: lowerCasedName,
       originalName: createProjectDTO.name,
+      projectIdentifier: createProjectDTO.projectIdentifier,
       team,
     });
 
