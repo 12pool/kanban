@@ -4,6 +4,7 @@ import { z } from 'zod';
 
 const schema = z.object({
   insertProjectFormWithDialogOpen: z.boolean().optional().catch(undefined),
+  updateProjectFormWithDialogOpen: z.boolean().optional().catch(undefined),
 });
 
 type TeamLayout = z.infer<typeof schema>;

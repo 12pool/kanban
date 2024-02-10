@@ -51,6 +51,7 @@ export class ProjectController {
   }
 
   @Put(':id')
+  @UseInterceptors(ClassSerializerInterceptor)
   async update(
     @Param('id') id: string,
     @Body() updateProjectDTO: UpdateProjectDTO,

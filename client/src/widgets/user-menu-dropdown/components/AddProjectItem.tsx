@@ -5,7 +5,6 @@ import { ProjectFormWithDialog } from 'entities/project-form/feature';
 import { useNavigate } from '@tanstack/react-router';
 import { DropdownMenu } from 'ui/dropdown-menu';
 
-
 type AddProjectItemProps = {
   handleUserMenuClose: () => void;
   insertProjectFormWithDialogOpen?: boolean;

@@ -107,6 +107,7 @@ export class ProjectService {
       where: {
         id,
       },
+      relations: ['team'],
     });
 
     if (!project) {
@@ -116,6 +117,10 @@ export class ProjectService {
     const updatedProject = {
       ...project,
       ...updateProjectDTO,
+      projectIdentifier: this.createProjectIdentifier({
+        projectName: updateProjectDTO.name,
+        teamName: project.team.name,
+      }),
     };
 
     return await this.projectRepository.save(updatedProject);
@@ -144,5 +149,15 @@ export class ProjectService {
     });
 
     return !!project;
+  }
+
+  createProjectIdentifier({
+    projectName,
+    teamName,
+  }: {
+    projectName: string;
+    teamName: string;
+  }) {
+    return `${teamName.toLowerCase()}.${projectName.toLowerCase()}`;
   }
 }

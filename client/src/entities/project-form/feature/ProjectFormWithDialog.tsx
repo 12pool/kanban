@@ -1,15 +1,15 @@
 import { Dialog, type DialogProps } from 'ui/dialog';
 
 import { ProjectForm } from './ProjectForm.tsx';
-import { type Project } from 'shared/api/project.ts';
+import type { Project } from 'shared/project/model';
 
 type ProjectFormWithDialogProps = Pick<
   DialogProps,
   'trigger' | 'triggerClassName' | 'defaultOpen' | 'open' | 'onOpenChange'
 > & {
   closeDialog: () => void;
-  initProject?: Project;
-}
+  project?: Project;
+};
 
 export const ProjectFormWithDialog = ({
   trigger,
@@ -18,7 +18,7 @@ export const ProjectFormWithDialog = ({
   onOpenChange,
   open,
   closeDialog,
-  initProject,
+  project,
 }: ProjectFormWithDialogProps) => {
   return (
     <Dialog
@@ -28,8 +28,11 @@ export const ProjectFormWithDialog = ({
       trigger={trigger}
       triggerClassName={triggerClassName}
     >
-      <Dialog.Content title={`${initProject ? "Edit" : "Create"} project`} closeDialog={closeDialog}>
-        <ProjectForm initProject={initProject} handleSuccess={closeDialog} />
+      <Dialog.Content
+        title={`${project ? 'Edit' : 'Create'} project`}
+        closeDialog={closeDialog}
+      >
+        <ProjectForm initProject={project} handleSuccess={closeDialog} />
       </Dialog.Content>
     </Dialog>
   );

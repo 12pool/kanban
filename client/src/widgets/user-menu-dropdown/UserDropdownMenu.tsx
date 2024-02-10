@@ -9,16 +9,17 @@ import { Flex } from 'ui/layout';
 import { Text } from 'ui/text';
 import { Route as teamRoute } from 'routes/team/$teamName';
 
-import { AddProjectItem } from './AddProjectItem';
+import { AddProjectItem, EditProjectItem } from './components';
 
 import styles from './UserDropdownMenu.module.css';
- 
+
 export const UserDropdownMenu = () => {
-  const { insertProjectFormWithDialogOpen } = teamRoute.useSearch();
+  const { insertProjectFormWithDialogOpen, updateProjectFormWithDialogOpen } =
+    teamRoute.useSearch();
   const { teamName } = teamRoute.useParams();
 
   const [userMenuOpen, setUserMenuOpen] = useState(
-    insertProjectFormWithDialogOpen ?? false,
+    insertProjectFormWithDialogOpen || updateProjectFormWithDialogOpen,
   );
 
   const handleToggle = () => {
@@ -75,6 +76,11 @@ export const UserDropdownMenu = () => {
         <AddProjectItem
           handleUserMenuClose={handleClose}
           insertProjectFormWithDialogOpen={insertProjectFormWithDialogOpen}
+          className={styles.ProjectFormWithDialogTrigger}
+        />
+        <EditProjectItem
+          handleUserMenuClose={handleClose}
+          updateProjectFormWithDialogOpen={updateProjectFormWithDialogOpen}
           className={styles.ProjectFormWithDialogTrigger}
         />
       </DropdownMenu.Content>

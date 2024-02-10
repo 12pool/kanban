@@ -2,7 +2,7 @@ import styles from './Loader.module.css';
 
 type LoaderProps = {
   center?: boolean;
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'xs' | 'sm' | 'md' | 'lg';
 };
 
 export const Loader = ({ center, size = 'sm' }: LoaderProps) => {

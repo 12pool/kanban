@@ -7,13 +7,8 @@ import { Route as teamRoute } from 'routes/team/$teamName';
 import { colors } from 'shared/avatar-picker/model';
 import { ErrorMessage } from 'shared/error-message/feature';
 import { toast } from 'shared/toaster';
-import type { ProjectWithTeam, ProjectAvatar, Project } from 'shared/api';
 
-import { useCreateProject } from 'entities/project-form/api';
-import {
-  ProjectFormRenderer,
-  ProjectCreatedToast,
-} from 'entities/project-form/ui';
+import { ProjectFormRenderer, SuccessToast } from 'entities/project-form/ui';
 import {
   type Inputs,
   isKeyOfInputs,
@@ -27,13 +22,22 @@ import {
   hasValidFormFields,
   isFormException,
 } from 'shared/exceptions/server';
+import type {
+  Project,
+  ProjectAvatar,
+  ProjectWithTeam,
+} from 'shared/project/model';
+import { useUpsertProject } from '../api/use-upsert-project';
 
 type ProjectFormProps = {
   initProject?: Project;
   handleSuccess?: () => void;
 };
 
-export const ProjectForm = ({ handleSuccess, initProject }: ProjectFormProps) => {
+export const ProjectForm = ({
+  handleSuccess,
+  initProject,
+}: ProjectFormProps) => {
   const navigate = useNavigate();
   const { teamName } = teamRoute.useParams();
 
@@ -54,14 +58,14 @@ export const ProjectForm = ({ handleSuccess, initProject }: ProjectFormProps) =>
     defaultValues: {
       name: initProject?.name ?? '',
       description: initProject?.description ?? '',
-    }
+    },
   });
 
   const isFormValid = Object.keys(errors).length === 0;
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    // TODO: change to upsert?
-    createProject({
+    upsertProject({
+      id: initProject?.id,
       ...data,
       ...projectAvatar,
       teamName,
@@ -69,6 +73,7 @@ export const ProjectForm = ({ handleSuccess, initProject }: ProjectFormProps) =>
   };
 
   const nameCheck = useCheckNameValidator({
+    initName: initProject?.name,
     teamName,
     name: watch('name'),
   });
@@ -85,7 +90,7 @@ export const ProjectForm = ({ handleSuccess, initProject }: ProjectFormProps) =>
   }, [nameCheck, setError, getValues, clearErrors]);
 
   const onSuccess = async (data: ProjectWithTeam) => {
-    toast.success(<ProjectCreatedToast />);
+    toast.success(<SuccessToast isEdit={!!initProject} />);
 
     handleSuccess?.();
 
@@ -95,7 +100,11 @@ export const ProjectForm = ({ handleSuccess, initProject }: ProjectFormProps) =>
         teamName: data.team.name,
         projectName: data.name,
       },
-      search: (prev) => ({ ...prev, insertProjectFormWithDialogOpen: false }),
+      search: (prev) => ({
+        ...prev,
+        insertProjectFormWithDialogOpen: false,
+        updateProjectFormWithDialogOpen: false,
+      }),
     });
   };
 
@@ -122,10 +131,10 @@ export const ProjectForm = ({ handleSuccess, initProject }: ProjectFormProps) =>
   };
 
   const {
-    mutate: createProject,
+    mutate: upsertProject,
     isPending,
     reset,
-  } = useCreateProject({
+  } = useUpsertProject({
     onSuccess,
     onError,
   });
