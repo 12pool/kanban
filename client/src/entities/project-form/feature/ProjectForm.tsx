@@ -7,18 +7,18 @@ import { Route as teamRoute } from 'routes/team/$teamName';
 import { colors } from 'shared/avatar-picker/model';
 import { ErrorMessage } from 'shared/error-message/feature';
 import { toast } from 'shared/toaster';
-import type { ProjectWithTeam, ProjectAvatar } from 'shared/api';
+import type { ProjectWithTeam, ProjectAvatar, Project } from 'shared/api';
 
-import { useCreateProject } from 'entities/project-dialog/api';
+import { useCreateProject } from 'entities/project-form/api';
 import {
   ProjectFormRenderer,
   ProjectCreatedToast,
-} from 'entities/project-dialog/ui';
+} from 'entities/project-form/ui';
 import {
   type Inputs,
   isKeyOfInputs,
   inputKeys,
-} from 'entities/project-dialog/model';
+} from 'entities/project-form/model';
 
 import { useCheckNameValidator } from './use-check-name-validator';
 
@@ -29,16 +29,17 @@ import {
 } from 'shared/exceptions/server';
 
 type ProjectFormProps = {
-  closeDialog: () => void;
+  initProject?: Project;
+  handleSuccess?: () => void;
 };
 
-export const ProjectForm = ({ closeDialog }: ProjectFormProps) => {
+export const ProjectForm = ({ handleSuccess, initProject }: ProjectFormProps) => {
   const navigate = useNavigate();
   const { teamName } = teamRoute.useParams();
 
   const [projectAvatar, setProjectAvatar] = useState<ProjectAvatar>({
-    icon: 'AvatarIcon',
-    color: colors.blue,
+    icon: initProject?.icon ?? 'AvatarIcon',
+    color: initProject?.color ?? colors.blue,
   });
 
   const {
@@ -49,11 +50,17 @@ export const ProjectForm = ({ closeDialog }: ProjectFormProps) => {
     getValues,
     setError,
     clearErrors,
-  } = useForm<Inputs>();
+  } = useForm<Inputs>({
+    defaultValues: {
+      name: initProject?.name ?? '',
+      description: initProject?.description ?? '',
+    }
+  });
 
   const isFormValid = Object.keys(errors).length === 0;
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
+    // TODO: change to upsert?
     createProject({
       ...data,
       ...projectAvatar,
@@ -80,7 +87,7 @@ export const ProjectForm = ({ closeDialog }: ProjectFormProps) => {
   const onSuccess = async (data: ProjectWithTeam) => {
     toast.success(<ProjectCreatedToast />);
 
-    closeDialog();
+    handleSuccess?.();
 
     await navigate({
       to: `/team/$teamName/$projectName`,
@@ -88,7 +95,7 @@ export const ProjectForm = ({ closeDialog }: ProjectFormProps) => {
         teamName: data.team.name,
         projectName: data.name,
       },
-      search: (prev) => ({ ...prev, insertProjectDialogOpen: false }),
+      search: (prev) => ({ ...prev, insertProjectFormWithDialogOpen: false }),
     });
   };
 

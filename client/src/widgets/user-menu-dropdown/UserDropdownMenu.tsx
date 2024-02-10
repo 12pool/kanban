@@ -1,31 +1,24 @@
 import { useState } from 'react';
-import { CardStackIcon, PlusIcon } from '@radix-ui/react-icons';
-import { Link, useNavigate } from '@tanstack/react-router';
-
-import { ProjectDialog } from 'entities/project-dialog/feature';
+import { CardStackIcon } from '@radix-ui/react-icons';
+import { Link } from '@tanstack/react-router';
 
 import { UserAvatar } from 'entities/user-avatar/feature';
 
 import { DropdownMenu } from 'ui/dropdown-menu';
 import { Flex } from 'ui/layout';
 import { Text } from 'ui/text';
-
 import { Route as teamRoute } from 'routes/team/$teamName';
 
+import { AddProjectItem } from './AddProjectItem';
+
 import styles from './UserDropdownMenu.module.css';
-
+ 
 export const UserDropdownMenu = () => {
-  const navigate = useNavigate();
-
-  const { insertProjectDialogOpen } = teamRoute.useSearch();
+  const { insertProjectFormWithDialogOpen } = teamRoute.useSearch();
   const { teamName } = teamRoute.useParams();
 
-  const [projectCreationDialogOpen, setProjectCreationDialogOpen] = useState(
-    insertProjectDialogOpen ?? false,
-  );
-
   const [userMenuOpen, setUserMenuOpen] = useState(
-    insertProjectDialogOpen ?? false,
+    insertProjectFormWithDialogOpen ?? false,
   );
 
   const handleToggle = () => {
@@ -34,27 +27,6 @@ export const UserDropdownMenu = () => {
 
   const handleClose = () => {
     setUserMenuOpen(false);
-  };
-
-  const closeProjectCreationDialog = () => {
-    handleClose();
-    setProjectCreationDialogOpen(false);
-
-    void navigate({
-      search: (prev) => ({
-        insertProjectDialogOpen: true,
-        ...prev,
-      }),
-      params: (params) => params,
-    });
-  };
-
-  const openProjectCreationDialog = () => {
-    setProjectCreationDialogOpen(true);
-    void navigate({
-      search: (prev) => ({ ...prev, insertProjectDialogOpen: true }),
-      params: (params) => params,
-    });
   };
 
   return (
@@ -100,20 +72,10 @@ export const UserDropdownMenu = () => {
             Projects
           </DropdownMenu.Item>
         </Link>
-        <ProjectDialog
-          defaultOpen={insertProjectDialogOpen}
-          open={projectCreationDialogOpen}
-          closeDialog={closeProjectCreationDialog}
-          triggerClassName={styles.ProjectDialogTrigger}
-          trigger={
-            <DropdownMenu.Item
-              data-testid="user-menu-add-project"
-              icon={<PlusIcon />}
-              onPointerDown={openProjectCreationDialog}
-            >
-              Add project
-            </DropdownMenu.Item>
-          }
+        <AddProjectItem
+          handleUserMenuClose={handleClose}
+          insertProjectFormWithDialogOpen={insertProjectFormWithDialogOpen}
+          className={styles.ProjectFormWithDialogTrigger}
         />
       </DropdownMenu.Content>
     </DropdownMenu>

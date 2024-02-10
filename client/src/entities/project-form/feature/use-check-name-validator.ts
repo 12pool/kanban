@@ -1,5 +1,5 @@
 import useDebouncedValue from 'shared/hooks/use-debounced-value';
-import { useCheckName } from 'entities/project-dialog/api/use-check-name';
+import { useCheckName } from 'entities/project-form/api/use-check-name';
 
 type useCheckNameValidator = {
   teamName: string;

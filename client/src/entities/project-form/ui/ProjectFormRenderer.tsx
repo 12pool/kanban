@@ -9,7 +9,7 @@ import { Loader } from 'ui/loader';
 
 import { FormBody, FormField } from 'shared/form/ui';
 import { AvatarPicker } from 'shared/avatar-picker/feature';
-import type { Inputs } from 'entities/project-dialog/model';
+import type { Inputs } from 'entities/project-form/model';
 
 import type { ProjectAvatar } from 'shared/api';
 
