@@ -31,9 +31,14 @@ export class ProjectService {
 
   async findOne(id: string) {
     const project = await this.projectRepository.findOne({
-      where: {
-        id,
-      },
+      where: [
+        {
+          id,
+        },
+        {
+          projectIdentifier: id,
+        },
+      ],
     });
 
     if (!project) {

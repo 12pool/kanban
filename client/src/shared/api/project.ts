@@ -25,21 +25,13 @@ export class ProjectAPI {
     teamName: string;
     projectSearch?: string;
   }) => {
-    return `/project/${teamName}?projectSearch=${projectSearch ?? ''}`;
+    return `/project/${teamName}/all?projectSearch=${projectSearch ?? ''}`;
   };
-
+  /***
+   * Can be fetched by id or projectIdentifier
+   */
   public static findOne = ({ id }: { id: string }) => {
     return `/project/${id}`;
-  };
-
-  public static findOneByProjectIdentifier = ({
-    teamName,
-    projectName,
-  }: {
-    teamName: string;
-    projectName: string;
-  }) => {
-    return `/project/${teamName}/${projectName}`;
   };
 
   public static create = () => {

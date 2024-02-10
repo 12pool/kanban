@@ -22,18 +22,18 @@ import { ApiQuery, ApiTags } from '@nestjs/swagger';
 export class ProjectController {
   constructor(private readonly projectService: ProjectService) {}
 
-  @Get('/:teamName')
+  @Get(':id')
+  async findOne(@Param('id') id: string) {
+    return await this.projectService.findOne(id);
+  }
+
+  @Get(':teamName/all')
   @ApiQuery({ name: 'projectSearch', required: false })
   async findAll(
     @Param('teamName') teamName: string,
     @Query('projectSearch') projectSearch: string,
   ) {
     return await this.projectService.findAll(teamName, projectSearch);
-  }
-
-  @Get(':id')
-  async findOne(@Param('id') id: string) {
-    return await this.projectService.findOne(id);
   }
 
   @Get(':teamName/check-name')
