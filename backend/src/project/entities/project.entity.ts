@@ -4,9 +4,11 @@ import {
   Column,
   ManyToOne,
   Unique,
+  OneToMany,
 } from 'typeorm';
 
 import { TeamEntity } from 'src/team/entities/team.entity';
+import { StatusEntity } from 'src/project/entities/status.entity';
 
 @Entity('project')
 @Unique(['name', 'team'])
@@ -34,4 +36,7 @@ export class ProjectEntity {
 
   @ManyToOne(() => TeamEntity, (team) => team.projects)
   team: TeamEntity;
+
+  @OneToMany(() => StatusEntity, (status) => status.project)
+  statuses: StatusEntity[];
 }
