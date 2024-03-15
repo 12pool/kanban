@@ -6,10 +6,11 @@ import { DatabaseModule } from 'src/database/database.module';
 import { ProjectService } from './project.service';
 import { ProjectController } from './project.controller';
 import { projectProviders } from './project.providers';
+import { StatusService } from './status.service';
 
 @Module({
   imports: [DatabaseModule, TeamModule],
-  providers: [...projectProviders, ProjectService],
+  providers: [...projectProviders, ProjectService, StatusService],
   controllers: [ProjectController],
 })
 export class ProjectModule {}
