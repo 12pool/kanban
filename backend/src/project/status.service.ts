@@ -3,16 +3,16 @@ import { Repository } from 'typeorm';
 
 import { CreateStatusDTO } from 'src/project/dtos/create-status.dto';
 import { StatusEntity } from './entities/status.entity';
-import { ProjectEntity } from './entities/project.entity';
 import { DB } from 'src/constants';
+import { ProjectService } from './project.service';
 
 @Injectable()
 export class StatusService {
   constructor(
     @Inject(DB.repositories.status)
     private statusRepository: Repository<StatusEntity>,
-    @Inject(DB.repositories.project)
-    private projectRepository: Repository<ProjectEntity>,
+    @Inject(ProjectService)
+    private projectService: ProjectService,
   ) {}
 
   async findOne(id: string) {
@@ -29,18 +29,11 @@ export class StatusService {
     return status;
   }
 
-  async create(createStatusDTO: CreateStatusDTO) {
-    const project = await this.projectRepository.findOne({
-      where: {
-        projectIdentifier: createStatusDTO.projectIdentifier,
-      },
-    });
-
-    const lowerCasedLabel = createStatusDTO.label.toLowerCase();
+  async create(id: string, createStatusDTO: CreateStatusDTO) {
+    const project = await this.projectService.findOne(id);
 
     const status = await this.statusRepository.create({
-      ...CreateStatusDTO,
-      label: lowerCasedLabel,
+      ...createStatusDTO,
       project,
     });
 
