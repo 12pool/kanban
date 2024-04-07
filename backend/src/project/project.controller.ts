@@ -18,7 +18,7 @@ import {
   CreateProjectDTO,
   UpdateProjectDTO,
   CreateStatusDTO,
-  //UpdateStatusDTO,
+  UpdateStatusDTO,
 } from './dtos';
 import { ApiQuery, ApiTags } from '@nestjs/swagger';
 
@@ -78,6 +78,19 @@ export class ProjectController {
   @Get('/status/:statusId')
   async findOneStatus(@Param('statusId') statusId: string) {
     return await this.statusService.findOne(statusId);
+  }
+
+  @Put('/status/:statusId')
+  async updateStatus(
+    @Param('statusId') statusId: string,
+    @Body() updateStatusDTO: UpdateStatusDTO,
+  ) {
+    return await this.statusService.update(statusId, updateStatusDTO);
+  }
+
+  @Delete('/status/:statusId')
+  async removeStatus(@Param('statusId') statusId: string) {
+    return await this.statusService.remove(statusId);
   }
 
   @Post()

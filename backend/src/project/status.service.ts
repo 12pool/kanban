@@ -2,6 +2,7 @@ import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
 import { CreateStatusDTO } from 'src/project/dtos/create-status.dto';
+import { UpdateStatusDTO } from './dtos/update-status.dto';
 import { StatusEntity } from './entities/status.entity';
 import { DB } from 'src/constants';
 import { ProjectService } from './project.service';
@@ -38,5 +39,36 @@ export class StatusService {
     });
 
     return await this.statusRepository.save(status);
+  }
+
+  async update(id: string, updateStatusDTO: UpdateStatusDTO) {
+    const status = await this.statusRepository.findOne({
+      where: {
+        id,
+      },
+    });
+
+    if (!status) {
+      throw new NotFoundException(`Status ${id} not found`);
+    }
+
+    const updatedStatus = {
+      ...status,
+      ...updateStatusDTO,
+    };
+
+    return await this.statusRepository.save(updatedStatus);
+  }
+
+  async remove(id: string) {
+    const result = await this.statusRepository.delete(id);
+
+    if (result.affected === 0) {
+      throw new NotFoundException(`Status ${id} not found`);
+    }
+
+    return {
+      message: `Status ${id} deleted`,
+    };
   }
 }

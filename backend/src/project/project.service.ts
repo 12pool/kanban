@@ -5,8 +5,8 @@ import { CreateProjectDTO } from './dtos/create-project.dto';
 import { UpdateProjectDTO } from './dtos/update-project.dto';
 import { ProjectEntity } from './entities/project.entity';
 import { TeamEntity } from 'src/team/entities/team.entity';
-import { SimpleException } from 'exceptions/SimpleManual.exception';
-import { FormException } from 'exceptions/Form.exception';
+import { SimpleException } from 'src/shared/exceptions/SimpleManual.exception';
+import { FormException } from 'src/shared/exceptions/Form.exception';
 import { DB } from 'src/constants';
 
 @Injectable()
