@@ -5,5 +5,5 @@ export class UpdateStatusDTO {
   @IsNotEmpty()
   @IsString()
   @ApiProperty({ required: true })
-  label?: string;
+  label: string;
 }

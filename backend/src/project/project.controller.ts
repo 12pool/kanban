@@ -30,6 +30,12 @@ export class ProjectController {
     private readonly statusService: StatusService,
   ) {}
 
+  @Post()
+  @UseInterceptors(ClassSerializerInterceptor)
+  async create(@Body() createProjectDTO: CreateProjectDTO) {
+    return await this.projectService.create(createProjectDTO);
+  }
+
   @Get(':id')
   async findOne(@Param('id') id: string) {
     return await this.projectService.findOne(id);
@@ -81,6 +87,7 @@ export class ProjectController {
   }
 
   @Put('/status/:statusId')
+  @UseInterceptors(ClassSerializerInterceptor)
   async updateStatus(
     @Param('statusId') statusId: string,
     @Body() updateStatusDTO: UpdateStatusDTO,
@@ -91,11 +98,5 @@ export class ProjectController {
   @Delete('/status/:statusId')
   async removeStatus(@Param('statusId') statusId: string) {
     return await this.statusService.remove(statusId);
-  }
-
-  @Post()
-  @UseInterceptors(ClassSerializerInterceptor)
-  async create(@Body() createProjectDTO: CreateProjectDTO) {
-    return await this.projectService.create(createProjectDTO);
   }
 }

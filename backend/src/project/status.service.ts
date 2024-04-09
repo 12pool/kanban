@@ -1,4 +1,9 @@
-import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Inject,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { Repository } from 'typeorm';
 
 import { CreateStatusDTO } from 'src/project/dtos/create-status.dto';
@@ -64,7 +69,7 @@ export class StatusService {
     const result = await this.statusRepository.delete(id);
 
     if (result.affected === 0) {
-      throw new NotFoundException(`Status ${id} not found`);
+      throw new BadRequestException(`Deletion of status ${id} failed`);
     }
 
     return {
