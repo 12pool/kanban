@@ -12,15 +12,29 @@ import {
 } from '@nestjs/common';
 
 import { ProjectService } from './project.service';
+import { StatusService } from './status.service';
 
-import { CreateProjectDTO } from './dtos/create-project.dto';
-import { UpdateProjectDTO } from './dtos/update-project.dto';
+import {
+  CreateProjectDTO,
+  UpdateProjectDTO,
+  CreateStatusDTO,
+  UpdateStatusDTO,
+} from './dtos';
 import { ApiQuery, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('project')
 @Controller('project')
 export class ProjectController {
-  constructor(private readonly projectService: ProjectService) {}
+  constructor(
+    private readonly projectService: ProjectService,
+    private readonly statusService: StatusService,
+  ) {}
+
+  @Post()
+  @UseInterceptors(ClassSerializerInterceptor)
+  async create(@Body() createProjectDTO: CreateProjectDTO) {
+    return await this.projectService.create(createProjectDTO);
+  }
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
@@ -44,12 +58,6 @@ export class ProjectController {
     return await this.projectService.checkName(teamName, name);
   }
 
-  @Post()
-  @UseInterceptors(ClassSerializerInterceptor)
-  async create(@Body() createProjectDTO: CreateProjectDTO) {
-    return await this.projectService.create(createProjectDTO);
-  }
-
   @Put(':id')
   @UseInterceptors(ClassSerializerInterceptor)
   async update(
@@ -62,5 +70,33 @@ export class ProjectController {
   @Delete(':id')
   async remove(@Param('id') id: string) {
     return await this.projectService.remove(id);
+  }
+
+  @Post('/status/:projectIdentifier')
+  @UseInterceptors(ClassSerializerInterceptor)
+  async createStatus(
+    @Param('projectIdentifier') projectIdentifier: string,
+    @Body() createStatusDTO: CreateStatusDTO,
+  ) {
+    return await this.statusService.create(projectIdentifier, createStatusDTO);
+  }
+
+  @Get('/status/:statusId')
+  async findOneStatus(@Param('statusId') statusId: string) {
+    return await this.statusService.findOne(statusId);
+  }
+
+  @Put('/status/:statusId')
+  @UseInterceptors(ClassSerializerInterceptor)
+  async updateStatus(
+    @Param('statusId') statusId: string,
+    @Body() updateStatusDTO: UpdateStatusDTO,
+  ) {
+    return await this.statusService.update(statusId, updateStatusDTO);
+  }
+
+  @Delete('/status/:statusId')
+  async removeStatus(@Param('statusId') statusId: string) {
+    return await this.statusService.remove(statusId);
   }
 }
