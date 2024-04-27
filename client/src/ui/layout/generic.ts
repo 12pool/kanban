@@ -2,7 +2,7 @@ export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'none';
 
 export const SizeOptions: Size[] = ['none', 'sm', 'md', 'lg', 'xl'];
 
-export type ElementType = 'layout' | 'font';
+export type ElementType = 'layout';
 
 export type GenericProps = {
   position?: 'relative' | 'absolute' | 'fixed' | 'sticky';
