@@ -1,8 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../../reset.css';
-import '../../../index.css';
-
 import { Flex } from './Flex';
 import { SizeOptions } from '../generic';
 

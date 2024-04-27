@@ -1,8 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../reset.css';
-import '../../index.css';
-
 import { Button } from './Button';
 import { Box, Flex } from 'ui/layout';
 import { Text } from 'ui/text';

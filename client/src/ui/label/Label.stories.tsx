@@ -1,8 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../reset.css';
-import '../../index.css';
-
 import { Label } from './Label';
 
 const meta = {
