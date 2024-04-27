@@ -18,6 +18,11 @@ export type Project = {
   projectIdentifier: string;
 };
 
+export type ProjectStatus = {
+  id: string;
+  label: string;
+};
+
 export const createProjectIdentifier = ({
   projectName,
   teamName,
