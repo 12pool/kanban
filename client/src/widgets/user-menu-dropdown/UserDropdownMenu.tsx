@@ -16,10 +16,12 @@ import styles from './UserDropdownMenu.module.css';
 export const UserDropdownMenu = () => {
   const { insertProjectFormWithDialogOpen, updateProjectFormWithDialogOpen } =
     teamRoute.useSearch();
+
   const { teamName } = teamRoute.useParams();
 
   const [userMenuOpen, setUserMenuOpen] = useState(
-    insertProjectFormWithDialogOpen || updateProjectFormWithDialogOpen,
+    (insertProjectFormWithDialogOpen || updateProjectFormWithDialogOpen) ??
+      false,
   );
 
   const handleToggle = () => {
