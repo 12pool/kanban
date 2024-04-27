@@ -1,0 +1,35 @@
+.Badge {
+  width: max-content;
+  font-weight: var(--font-weight-semibold);
+}
+
+.Badge:where([data-size='sm']) {
+  line-height: 1;
+  padding-block: var(--layout-size-xxs);
+  padding-inline: var(--layout-size-xs);
+  font-size: var(--font-size-xs);
+}
+
+.Badge:where([data-size='md']) {
+  padding-block: var(--layout-size-xxs);
+  padding-inline: var(--layout-size-sm);
+  font-size: var(--font-size-sm);
+}
+
+.Badge:where([data-radius='sm']) {
+  border-radius: var(--border-radius-sm);
+}
+
+.Badge:where([data-radius='md']) {
+  border-radius: var(--border-radius-md);
+}
+
+.Badge:where([data-color='blue']) {
+  background-color: #0077ff3a;
+  color: #70b8ff;
+}
+
+.Badge:where([data-color='orange']) {
+  background-color: #fb6a0025;
+  color: #ffa057;
+}
